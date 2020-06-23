@@ -499,10 +499,10 @@
             this.Page.Location = new System.Drawing.Point(0, 0);
             this.Page.Multiline = true;
             this.Page.Name = "Page";
-            this.Page.Page = this.tabReservate;
-            this.Page.PageIndex = 0;
-            this.Page.PageName = "tabReservate";
-            this.Page.PageTitle = "tabReservate";
+            this.Page.Page = this.tabSearch;
+            this.Page.PageIndex = 1;
+            this.Page.PageName = "tabSearch";
+            this.Page.PageTitle = "tabSearch";
             this.Page.SelectedIndex = 0;
             this.Page.Size = new System.Drawing.Size(1028, 726);
             this.Page.TabIndex = 1;
@@ -568,6 +568,7 @@
             // 
             // btSelect
             // 
+            this.btSelect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btSelect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
             this.btSelect.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btSelect.FlatAppearance.BorderSize = 0;
@@ -583,6 +584,8 @@
             // 
             // lbNotify1
             // 
+            this.lbNotify1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lbNotify1.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbNotify1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(186)))), ((int)(((byte)(29)))));
             this.lbNotify1.Location = new System.Drawing.Point(56, 10);

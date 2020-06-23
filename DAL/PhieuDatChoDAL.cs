@@ -46,10 +46,11 @@ namespace Flight.DAL
             }
         }
 
-        public void insertPhieuDatCho(PhieuDatCho PDC)
+        public bool insertPhieuDatCho(PhieuDatCho PDC)
         {
             string sql = "insert into PHIEUDATCHO(MaPhieuDatCho, MaChuyenBay, HangVe, GiaTien, TrangThai, HoTen, CMND, SDT)" +
-               " VALUES(@MaPhieuDatCho, @MaChuyenBay, @HangVe, @GiaTien, @TrangThai, @HoTen, @CMND, @SDT";
+               " VALUES(@MaPhieuDatCho, @MaChuyenBay, @HangVe, @GiaTien, @TrangThai, @HoTen, @CMND, @SDT)";
+
             using (SqlConnection con = dc.getConnect())
             {
                 try
@@ -66,10 +67,13 @@ namespace Flight.DAL
                     cmd.Parameters.Add("@SDT", SqlDbType.VarChar).Value = PDC.SDT;
                     cmd.ExecuteNonQuery();
                     con.Close();
+
+                    return true;
                 }
                 catch (Exception e)
                 {
                     MessageBox.Show(e.Message, "Thông báo lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
                 }
             }
         }

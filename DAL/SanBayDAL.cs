@@ -19,5 +19,31 @@ namespace Flight.DAL
         {
             dc = new DataConnection();
         }
+
+        public DataTable getSanBay()
+        {
+            string sql = "select TenSanBay from SANBAY";
+
+            using (SqlConnection con = dc.getConnect())
+            {
+                try
+                {
+                    DataTable dt = new DataTable();
+                    da = new SqlDataAdapter(sql, con);
+
+                    con.Open();
+                    da.Fill(dt);
+                    da.Dispose();
+                    con.Close();
+
+                    return dt;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message, "Thông báo lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+        }
     }
 }

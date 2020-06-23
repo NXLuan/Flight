@@ -21,9 +21,9 @@ namespace Flight.BLL
         {
             return dalPDC.getTongSoLuong();
         }
-        public void insertPhieuDatCho(PhieuDatCho PDC)
+        public bool insertPhieuDatCho(PhieuDatCho PDC)
         {
-            dalPDC.insertPhieuDatCho(PDC);
+            return dalPDC.insertPhieuDatCho(PDC);
         }
     }
 }

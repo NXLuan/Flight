@@ -20,6 +20,8 @@ namespace Flight.GUI
         ChuyenBayBLL bllCB;
         ThamSoBLL bllTS;
 
+        SearchForm search;
+
         public ReservateForm()
         {
             InitializeComponent();
@@ -42,7 +44,7 @@ namespace Flight.GUI
             Page.SetPage("tabSearch");
             pnForm.Controls.Clear();
 
-            SearchForm search = new SearchForm();
+            search = new SearchForm();
             search.TopLevel = false;
             pnForm.Controls.Add(search);
             search.Dock = DockStyle.Fill;
@@ -69,7 +71,16 @@ namespace Flight.GUI
                 PDC.CMND = tbCMND.Text;
                 PDC.SDT = tbSDT.Text;
 
-                bllPDC.insertPhieuDatCho(PDC);
+                if (bllPDC.insertPhieuDatCho(PDC))
+                {
+                    lbNotify.Text = "Thành công";
+                    lbNotify.ForeColor = Color.FromArgb(8, 186, 29);
+                }
+                else
+                {
+                    lbNotify.ForeColor = Color.Red;
+                    lbNotify.Text = "Đã có lỗi xảy ra, vui lòng thử lại sau";
+                }
             }
         }
 
@@ -118,13 +129,13 @@ namespace Flight.GUI
                 return false;
             }
 
-            lbNotify.ForeColor = Color.FromArgb(8, 186, 29);
             return true;
         }
 
         private void btSelect_Click(object sender, EventArgs e)
         {
-
+            tbMaChuyenBay.Text = search.getMaChuyenBay();
+            Page.SetPage("tabReservate");
         }
 
         bool CheckSDT(string s)
