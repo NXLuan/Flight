@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Flight.DTO;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -18,6 +19,26 @@ namespace Flight.DAL
         public DanhSachGheDAL()
         {
             dc = new DataConnection();
+        }
+
+        public void ExcuteNonQuery(string sql)
+        {
+            using (SqlConnection con = dc.getConnect())
+            {
+                try
+                {
+                    cmd = new SqlCommand(sql, con);
+
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    cmd.Dispose();
+                    con.Close();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message, "Thông báo lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         public int getSoGheTrong(string MaChuyenBay, string HangVe)
@@ -44,6 +65,14 @@ namespace Flight.DAL
                     return -1;
                 }
             }
+        }
+
+        public void UpdateSoGheTrong(DanhSachGhe DSG)
+        {
+            string sql = "update DANHSACHGHE set SoGheTrong = " + DSG.SoGheTrong +
+                " where MaChuyenBay = '" + DSG.MaChuyenBay + "' and HangVe = '" + DSG.HangVe + "'";
+
+            ExcuteNonQuery(sql);
         }
     }
 }

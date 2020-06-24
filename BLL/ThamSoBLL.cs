@@ -17,9 +17,9 @@ namespace Flight.BLL
             dalTS = new ThamSoDAL();
         }
 
-        public DataTable getQuyDinhPhieuDat()
+        public int getThoiGianChoPhepDatVe()
         {
-            return dalTS.getQuyDinhPhieuDat();
+            return dalTS.getThoiGianChoPhepDatVe();
         }
     }
 }

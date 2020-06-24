@@ -574,7 +574,7 @@
             this.btSelect.FlatAppearance.BorderSize = 0;
             this.btSelect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btSelect.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btSelect.Location = new System.Drawing.Point(899, 6);
+            this.btSelect.Location = new System.Drawing.Point(891, 3);
             this.btSelect.Name = "btSelect";
             this.btSelect.Size = new System.Drawing.Size(102, 37);
             this.btSelect.TabIndex = 23;
@@ -587,7 +587,7 @@
             this.lbNotify1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lbNotify1.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbNotify1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(186)))), ((int)(((byte)(29)))));
+            this.lbNotify1.ForeColor = System.Drawing.Color.Red;
             this.lbNotify1.Location = new System.Drawing.Point(56, 10);
             this.lbNotify1.Name = "lbNotify1";
             this.lbNotify1.Size = new System.Drawing.Size(843, 23);

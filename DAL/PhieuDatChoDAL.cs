@@ -20,10 +20,8 @@ namespace Flight.DAL
         {
             dc = new DataConnection();
         }
-
-        public string getTongSoLuong()
+        public DataTable GetData(string sql)
         {
-            string sql = "select count(*) from PHIEUDATCHO";
             using (SqlConnection con = dc.getConnect())
             {
                 try
@@ -36,7 +34,7 @@ namespace Flight.DAL
                     da.Dispose();
                     con.Close();
 
-                    return dt.Rows[0][0].ToString();
+                    return dt;
                 }
                 catch (Exception e)
                 {
@@ -48,8 +46,8 @@ namespace Flight.DAL
 
         public bool insertPhieuDatCho(PhieuDatCho PDC)
         {
-            string sql = "insert into PHIEUDATCHO(MaPhieuDatCho, MaChuyenBay, HangVe, GiaTien, TrangThai, HoTen, CMND, SDT)" +
-               " VALUES(@MaPhieuDatCho, @MaChuyenBay, @HangVe, @GiaTien, @TrangThai, @HoTen, @CMND, @SDT)";
+            string sql = "insert into PHIEUDATCHO(MaChuyenBay, HangVe, GiaTien, HoTen, CMND, SDT)" +
+               " VALUES(@MaChuyenBay, @HangVe, @GiaTien, @HoTen, @CMND, @SDT)";
 
             using (SqlConnection con = dc.getConnect())
             {
@@ -57,11 +55,9 @@ namespace Flight.DAL
                 {
                     cmd = new SqlCommand(sql, con);
                     con.Open();
-                    cmd.Parameters.Add("@MaPhieuDatCho", SqlDbType.VarChar).Value = PDC.MaPhieuDatCho;
                     cmd.Parameters.Add("@MaChuyenBay", SqlDbType.VarChar).Value = PDC.MaChuyenBay;
                     cmd.Parameters.Add("@HangVe", SqlDbType.VarChar).Value = PDC.HangVe;
                     cmd.Parameters.Add("@GiaTien", SqlDbType.Int).Value = PDC.GiaTien;
-                    cmd.Parameters.Add("@TrangThai", SqlDbType.Bit).Value = PDC.TrangThai;
                     cmd.Parameters.Add("@HoTen", SqlDbType.NVarChar).Value = PDC.HoTen;
                     cmd.Parameters.Add("@CMND", SqlDbType.VarChar).Value = PDC.CMND;
                     cmd.Parameters.Add("@SDT", SqlDbType.VarChar).Value = PDC.SDT;
@@ -76,6 +72,16 @@ namespace Flight.DAL
                     return false;
                 }
             }
+        }
+
+        public string getMaPhieuDatCho()
+        {
+            string sql = "select dbo.AUTO_IDPDC()";
+
+            DataTable dt = GetData(sql);
+
+            if (dt == null) return null;
+            return dt.Rows[0][0].ToString();
         }
     }
 }

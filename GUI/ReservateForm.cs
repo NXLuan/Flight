@@ -42,6 +42,7 @@ namespace Flight.GUI
         private void btSelectFlight_Click(object sender, EventArgs e)
         {
             Page.SetPage("tabSearch");
+            lbNotify1.Visible = false;
             pnForm.Controls.Clear();
 
             search = new SearchForm();
@@ -62,19 +63,25 @@ namespace Flight.GUI
             {
                 PhieuDatCho PDC = new PhieuDatCho();
 
-                PDC.MaPhieuDatCho = tbMaChuyenBay.Text + bllPDC.getTongSoLuong();
                 PDC.MaChuyenBay = tbMaChuyenBay.Text;
                 PDC.HangVe = cbHangVe.Text;
                 PDC.GiaTien = int.Parse(lbGiaTien.Text);
-                PDC.TrangThai = true;
                 PDC.HoTen = tbHoTen.Text;
                 PDC.CMND = tbCMND.Text;
                 PDC.SDT = tbSDT.Text;
+                PDC.MaPhieuDatCho = bllPDC.getMaPhieuDatCho();
 
                 if (bllPDC.insertPhieuDatCho(PDC))
                 {
                     lbNotify.Text = "Thành công";
                     lbNotify.ForeColor = Color.FromArgb(8, 186, 29);
+
+                    DanhSachGhe DSG = new DanhSachGhe();
+                    DSG.MaChuyenBay = PDC.MaChuyenBay;
+                    DSG.HangVe = PDC.HangVe;
+                    DSG.SoGheTrong = bllDSG.getSoGheTrong(tbMaChuyenBay.Text, cbHangVe.Text);
+
+                    bllDSG.UpdateSoGheTrong(DSG);
                 }
                 else
                 {
@@ -107,7 +114,7 @@ namespace Flight.GUI
                 tbHoTen.Focus();
                 return false;
             }
-            if (!string.IsNullOrEmpty(tbCMND.Text) && !CheckCMND(tbCMND.Text))
+            if (!string.IsNullOrWhiteSpace(tbCMND.Text) && !CheckCMND(tbCMND.Text))
             {
                 lbNotify.ForeColor = Color.Red;
                 lbNotify.Text = "CMND không hợp lệ, CMND phải đủ 9 số";
@@ -135,6 +142,28 @@ namespace Flight.GUI
         private void btSelect_Click(object sender, EventArgs e)
         {
             tbMaChuyenBay.Text = search.getMaChuyenBay();
+
+            if (string.IsNullOrEmpty(tbMaChuyenBay.Text))
+            {
+                lbNotify1.Visible = true;
+                lbNotify1.Text = "Bạn chưa chọn chuyến bay";
+                return;
+            }
+
+            int ThoiGianChoPhepDatVe = bllTS.getThoiGianChoPhepDatVe();
+
+            if (ThoiGianChoPhepDatVe == -1)
+            {
+                lbNotify1.Visible = true;
+                lbNotify1.Text = "Đã có lỗi xảy ra, vui lòng thử lại sau";
+                return;
+            }
+            if ((bllCB.getNgayKhoiHanh(tbMaChuyenBay.Text) - DateTime.Now).TotalDays < ThoiGianChoPhepDatVe)
+            {
+                lbNotify1.Visible = true;
+                lbNotify1.Text = "Chỉ được phép đặt vé chậm nhất " + ThoiGianChoPhepDatVe + " ngày trước khi khởi hành";
+                return;
+            }
             Page.SetPage("tabReservate");
         }
 

@@ -38,7 +38,7 @@ namespace Flight.GUI
         {
             pnTicket.Visible = false;
             pnReservateList.Visible = true;
-            Page.SetPage("ReservateList");
+            Page.SetPage("TicketList");
         }
 
         private void btSeclectFlight_Click(object sender, EventArgs e)

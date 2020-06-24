@@ -17,13 +17,14 @@ namespace Flight.BLL
             dalPDC = new PhieuDatChoDAL();
         }
 
-        public string getTongSoLuong()
-        {
-            return dalPDC.getTongSoLuong();
-        }
         public bool insertPhieuDatCho(PhieuDatCho PDC)
         {
             return dalPDC.insertPhieuDatCho(PDC);
+        }
+
+        public string getMaPhieuDatCho()
+        {
+            return dalPDC.getMaPhieuDatCho();
         }
     }
 }

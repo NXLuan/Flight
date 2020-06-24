@@ -1,4 +1,5 @@
 ﻿using Flight.DAL;
+using Flight.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,11 @@ namespace Flight.BLL
         public int getSoGheTrong(string MaChuyenBay, string HangVe)
         {
             return dalDSG.getSoGheTrong(MaChuyenBay, HangVe);
+        }
+        public void UpdateSoGheTrong(DanhSachGhe DSG)
+        {
+            DSG.SoGheTrong -= 1;
+            dalDSG.UpdateSoGheTrong(DSG);
         }
     }
 }

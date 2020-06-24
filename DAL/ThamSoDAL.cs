@@ -20,10 +20,8 @@ namespace Flight.DAL
             dc = new DataConnection();
         }
 
-        public DataTable getQuyDinhPhieuDat()
+        public DataTable GetData(string sql)
         {
-            string sql = "select * from THAMSO where TenThamSo = 'ThoiGianChoPhepDatVe'";
-
             using (SqlConnection con = dc.getConnect())
             {
                 try
@@ -44,6 +42,15 @@ namespace Flight.DAL
                     return null;
                 }
             }
+        }
+
+        public int getThoiGianChoPhepDatVe()
+        {
+            string sql = "select GiaTri from THAMSO where TenThamSo = 'ThoiGianChoPhepDatVe'";
+
+            DataTable dt = GetData(sql);
+            if (dt != null) return int.Parse(dt.Rows[0][0].ToString());
+            return -1;
         }
     }
 }

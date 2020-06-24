@@ -51,7 +51,6 @@
             this.Page = new Bunifu.UI.WinForms.BunifuPages();
             this.Ticket = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.bunifuMaterialTextbox1 = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.label1 = new System.Windows.Forms.Label();
@@ -61,7 +60,6 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.bunifuImageButton1 = new Bunifu.Framework.UI.BunifuImageButton();
             this.label2 = new System.Windows.Forms.Label();
             this.btSeclectFlight = new Bunifu.Framework.UI.BunifuThinButton2();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -73,9 +71,8 @@
             this.bunifuTextBox2 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.bunifuTextBox1 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
-            this.ReservateList = new System.Windows.Forms.TabPage();
+            this.TicketList = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label8 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.bunifuMaterialTextbox2 = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.label9 = new System.Windows.Forms.Label();
@@ -90,17 +87,18 @@
             this.label6 = new System.Windows.Forms.Label();
             this.btReturn = new Bunifu.Framework.UI.BunifuImageButton();
             this.lbTicket = new System.Windows.Forms.Label();
-            this.lbReservateList = new System.Windows.Forms.Label();
+            this.lbTicketList = new System.Windows.Forms.Label();
             this.pnTicket = new System.Windows.Forms.Panel();
             this.pnReservateList = new System.Windows.Forms.Panel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.Page.SuspendLayout();
             this.Ticket.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuCustomDataGrid1)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
-            this.ReservateList.SuspendLayout();
+            this.TicketList.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuCustomDataGrid2)).BeginInit();
@@ -114,7 +112,7 @@
             this.Page.Alignment = System.Windows.Forms.TabAlignment.Bottom;
             this.Page.AllowTransitions = false;
             this.Page.Controls.Add(this.Ticket);
-            this.Page.Controls.Add(this.ReservateList);
+            this.Page.Controls.Add(this.TicketList);
             this.Page.Controls.Add(this.tabSearch);
             this.Page.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.Page.Location = new System.Drawing.Point(0, 63);
@@ -160,6 +158,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.comboBox1);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.bunifuMaterialTextbox1);
@@ -169,17 +168,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(954, 326);
             this.panel2.TabIndex = 5;
-            // 
-            // label4
-            // 
-            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(186)))), ((int)(((byte)(29)))));
-            this.label4.Location = new System.Drawing.Point(277, 69);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(674, 36);
-            this.label4.TabIndex = 35;
-            this.label4.Text = "Thông báo";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureBox1
             // 
@@ -225,7 +213,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(954, 60);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Danh sách vé đã bán";
+            this.label1.Text = "Danh sách phiếu đặt";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // bunifuCustomDataGrid1
@@ -297,7 +285,6 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.comboBox2);
-            this.panel1.Controls.Add(this.bunifuImageButton1);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.btSeclectFlight);
             this.panel1.Controls.Add(this.textBox1);
@@ -323,19 +310,6 @@
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(127, 31);
             this.comboBox2.TabIndex = 35;
-            // 
-            // bunifuImageButton1
-            // 
-            this.bunifuImageButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuImageButton1.Image = ((System.Drawing.Image)(resources.GetObject("bunifuImageButton1.Image")));
-            this.bunifuImageButton1.ImageActive = null;
-            this.bunifuImageButton1.Location = new System.Drawing.Point(783, 123);
-            this.bunifuImageButton1.Name = "bunifuImageButton1";
-            this.bunifuImageButton1.Size = new System.Drawing.Size(137, 43);
-            this.bunifuImageButton1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.bunifuImageButton1.TabIndex = 34;
-            this.bunifuImageButton1.TabStop = false;
-            this.bunifuImageButton1.Zoom = 10;
             // 
             // label2
             // 
@@ -668,21 +642,20 @@
             this.bunifuTextBox1.UseSystemPasswordChar = false;
             this.bunifuTextBox1.WordWrap = true;
             // 
-            // ReservateList
+            // TicketList
             // 
-            this.ReservateList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(243)))), ((int)(((byte)(246)))));
-            this.ReservateList.Controls.Add(this.panel3);
-            this.ReservateList.Location = new System.Drawing.Point(4, 4);
-            this.ReservateList.Name = "ReservateList";
-            this.ReservateList.Padding = new System.Windows.Forms.Padding(3);
-            this.ReservateList.Size = new System.Drawing.Size(1020, 634);
-            this.ReservateList.TabIndex = 1;
-            this.ReservateList.Text = "ReservateList";
+            this.TicketList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(243)))), ((int)(((byte)(246)))));
+            this.TicketList.Controls.Add(this.panel3);
+            this.TicketList.Location = new System.Drawing.Point(4, 4);
+            this.TicketList.Name = "TicketList";
+            this.TicketList.Padding = new System.Windows.Forms.Padding(3);
+            this.TicketList.Size = new System.Drawing.Size(1020, 634);
+            this.TicketList.TabIndex = 1;
+            this.TicketList.Text = "TicketList";
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.Controls.Add(this.label8);
             this.panel3.Controls.Add(this.pictureBox2);
             this.panel3.Controls.Add(this.bunifuMaterialTextbox2);
             this.panel3.Controls.Add(this.label9);
@@ -692,17 +665,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1014, 628);
             this.panel3.TabIndex = 6;
-            // 
-            // label8
-            // 
-            this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(186)))), ((int)(((byte)(29)))));
-            this.label8.Location = new System.Drawing.Point(277, 69);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(674, 36);
-            this.label8.TabIndex = 35;
-            this.label8.Text = "Thông báo";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureBox2
             // 
@@ -748,7 +710,7 @@
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(1014, 60);
             this.label9.TabIndex = 4;
-            this.label9.Text = "Danh sách phiếu đặt";
+            this.label9.Text = "Danh sách vé";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // bunifuCustomDataGrid2
@@ -898,17 +860,17 @@
             this.lbTicket.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbTicket.Click += new System.EventHandler(this.lbTicket_Click);
             // 
-            // lbReservateList
+            // lbTicketList
             // 
-            this.lbReservateList.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lbReservateList.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbReservateList.Location = new System.Drawing.Point(145, 6);
-            this.lbReservateList.Name = "lbReservateList";
-            this.lbReservateList.Size = new System.Drawing.Size(202, 55);
-            this.lbReservateList.TabIndex = 2;
-            this.lbReservateList.Text = "Danh sách phiếu đặt";
-            this.lbReservateList.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lbReservateList.Click += new System.EventHandler(this.lbReservateList_Click);
+            this.lbTicketList.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lbTicketList.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTicketList.Location = new System.Drawing.Point(145, 6);
+            this.lbTicketList.Name = "lbTicketList";
+            this.lbTicketList.Size = new System.Drawing.Size(202, 55);
+            this.lbTicketList.TabIndex = 2;
+            this.lbTicketList.Text = "Danh sách vé ";
+            this.lbTicketList.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbTicketList.Click += new System.EventHandler(this.lbReservateList_Click);
             // 
             // pnTicket
             // 
@@ -923,8 +885,27 @@
             this.pnReservateList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(153)))), ((int)(((byte)(204)))));
             this.pnReservateList.Location = new System.Drawing.Point(195, 59);
             this.pnReservateList.Name = "pnReservateList";
-            this.pnReservateList.Size = new System.Drawing.Size(101, 5);
+            this.pnReservateList.Size = new System.Drawing.Size(91, 5);
             this.pnReservateList.TabIndex = 4;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(801, 75);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(127, 31);
+            this.comboBox1.TabIndex = 37;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(704, 78);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(91, 23);
+            this.label4.TabIndex = 36;
+            this.label4.Text = "Trạng thái:";
             // 
             // TicketForm
             // 
@@ -934,7 +915,7 @@
             this.ClientSize = new System.Drawing.Size(1028, 726);
             this.Controls.Add(this.pnReservateList);
             this.Controls.Add(this.pnTicket);
-            this.Controls.Add(this.lbReservateList);
+            this.Controls.Add(this.lbTicketList);
             this.Controls.Add(this.lbTicket);
             this.Controls.Add(this.Page);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -943,12 +924,12 @@
             this.Page.ResumeLayout(false);
             this.Ticket.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuCustomDataGrid1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).EndInit();
-            this.ReservateList.ResumeLayout(false);
+            this.TicketList.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuCustomDataGrid2)).EndInit();
@@ -962,7 +943,7 @@
         #endregion
         private Bunifu.UI.WinForms.BunifuPages Page;
         private System.Windows.Forms.TabPage Ticket;
-        private System.Windows.Forms.TabPage ReservateList;
+        private System.Windows.Forms.TabPage TicketList;
         private Bunifu.Framework.UI.BunifuCustomDataGrid bunifuCustomDataGrid1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
@@ -983,14 +964,11 @@
         private Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox bunifuTextBox2;
         private System.Windows.Forms.Label label5;
         private Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox bunifuTextBox1;
-        private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton1;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lbTicket;
-        private System.Windows.Forms.Label lbReservateList;
+        private System.Windows.Forms.Label lbTicketList;
         private System.Windows.Forms.Panel pnTicket;
         private System.Windows.Forms.Panel pnReservateList;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.PictureBox pictureBox2;
         private Bunifu.Framework.UI.BunifuMaterialTextbox bunifuMaterialTextbox2;
         private System.Windows.Forms.Label label9;
@@ -1005,5 +983,7 @@
         private System.Windows.Forms.Label label6;
         private Bunifu.Framework.UI.BunifuImageButton btReturn;
         private System.Windows.Forms.Panel pnForm;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label4;
     }
 }
