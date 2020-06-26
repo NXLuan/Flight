@@ -58,6 +58,9 @@
     <Reference Include="Bunifu.UI.WinForms.BunifuDatePicker">
       <HintPath>..\Bunifu UI WinForms 1.11.5.1\Bunifu.UI.WinForms.BunifuDatePicker.dll</HintPath>
     </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuImageButton">
+      <HintPath>..\Bunifu UI WinForms 1.11.5.1\Bunifu.UI.WinForms.BunifuImageButton.dll</HintPath>
+    </Reference>
     <Reference Include="Bunifu.UI.WinForms.BunifuPages">
       <HintPath>..\Bunifu UI WinForms 1.11.5.1\Bunifu.UI.WinForms.BunifuPages.dll</HintPath>
     </Reference>
@@ -66,6 +69,11 @@
     </Reference>
     <Reference Include="Bunifu_UI_v1.5.3">
       <HintPath>..\Bunifu UI WinForms 1.11.5.1\Bunifu_UI_v1.5.3.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -87,7 +95,7 @@
     <Compile Include="BLL\ChuyenBayBLL.cs" />
     <Compile Include="BLL\DanhSachGheBLL.cs" />
     <Compile Include="BLL\DanhSachVeBLL.cs" />
-    <Compile Include="BLL\VeChuyenBay.cs" />
+    <Compile Include="BLL\VeChuyenBayBLL.cs" />
     <Compile Include="BLL\PhieuDatChoBLL.cs" />
     <Compile Include="BLL\SanBayBLL.cs" />
     <Compile Include="BLL\ThamSoBLL.cs" />
@@ -136,6 +144,12 @@
     <Compile Include="GUI\ManagerCotrol.Designer.cs">
       <DependentUpon>ManagerCotrol.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Regulation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Regulation.designer.cs">
+      <DependentUpon>Regulation.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -183,6 +197,9 @@
     <EmbeddedResource Include="GUI\ManagerCotrol.resx">
       <DependentUpon>ManagerCotrol.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Regulation.resx">
+      <DependentUpon>Regulation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\ReportForm.resx">
       <DependentUpon>ReportForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -221,7 +238,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="Database\Flight.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -231,6 +247,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Flight.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\close.png" />
+    <None Include="Resources\save.png" />
+    <None Include="Resources\rubbish-bin.png" />
+    <None Include="Resources\edit.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

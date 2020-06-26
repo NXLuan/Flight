@@ -1,4 +1,5 @@
 ﻿using Flight.DAL;
+using Flight.DTO;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -20,6 +21,16 @@ namespace Flight.BLL
         public int getThoiGianChoPhepDatVe()
         {
             return dalTS.getThoiGianChoPhepDatVe();
+        }
+
+        public DataTable getThamSo()
+        {
+            return dalTS.getThamSo();
+        }
+
+        public bool setThamSo(ThamSo[] thamso, int n)
+        {
+            return dalTS.setThamSo(thamso, n);
         }
     }
 }

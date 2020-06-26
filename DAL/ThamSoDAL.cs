@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Flight.DTO;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -51,6 +52,39 @@ namespace Flight.DAL
             DataTable dt = GetData(sql);
             if (dt != null) return int.Parse(dt.Rows[0][0].ToString());
             return -1;
+        }
+
+        public DataTable getThamSo()
+        {
+            string sql = "select * from THAMSO";
+
+            return GetData(sql);
+        }
+        public bool setThamSo(ThamSo[] thamso, int n)
+        {
+            string GiaTri = "", TenThamSo = "";
+            using (SqlConnection con = dc.getConnect())
+            {
+                try
+                {
+                    con.Open();
+                    for (int i = 0; i < n; i++)
+                    {
+                        TenThamSo = thamso[i].TenThamSo;
+                        GiaTri = thamso[i].GiaTri.ToString();
+                        string sql = "update THAMSO set GiaTri = " + GiaTri + " where TenThamSo = '" + TenThamSo + "'";
+                        cmd = new SqlCommand(sql, con);
+                        cmd.ExecuteNonQuery();
+                    }
+                    con.Close();
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message, "Thông báo lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
         }
     }
 }
