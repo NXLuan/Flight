@@ -53,6 +53,7 @@
             this.btLogin = new Bunifu.Framework.UI.BunifuThinButton2();
             this.pnRight = new System.Windows.Forms.Panel();
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.pnTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -170,6 +171,7 @@
             // pnLeft
             // 
             this.pnLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(57)))), ((int)(((byte)(66)))));
+            this.pnLeft.Controls.Add(this.richTextBox1);
             this.pnLeft.Controls.Add(this.pnFunction);
             this.pnLeft.Controls.Add(this.panel6);
             this.pnLeft.Controls.Add(this.panel3);
@@ -398,6 +400,20 @@
             this.bunifuDragControl1.TargetControl = this.pnTop;
             this.bunifuDragControl1.Vertical = true;
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(57)))), ((int)(((byte)(66)))));
+            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.richTextBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox1.ForeColor = System.Drawing.Color.DimGray;
+            this.richTextBox1.Location = new System.Drawing.Point(0, 572);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(272, 154);
+            this.richTextBox1.TabIndex = 10;
+            this.richTextBox1.Text = "      Flight Project\n      \n      Nguyến Xuân Luân\n      Nguyễn Hữu Hiếu\n      Ph" +
+    "an Đức Cường\n      Trương Nhật Tiến";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -449,6 +465,7 @@
         private System.Windows.Forms.Panel pnSelect;
         private System.Windows.Forms.Panel pnFunction;
         private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl1;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 

@@ -1,4 +1,5 @@
 ﻿using Flight.BLL;
+using Flight.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -17,6 +19,7 @@ namespace Flight.GUI
         DanhSachGheBLL bllDSG;
         ChuyenBayBLL bllCB;
         ThamSoBLL bllTS;
+        VeChuyenBayBLL bllVCB;
         SearchForm search;
 
         public TicketForm()
@@ -26,12 +29,12 @@ namespace Flight.GUI
             bllDSV = new DanhSachVeBLL();
             bllDSG = new DanhSachGheBLL();
             bllCB = new ChuyenBayBLL();
+            bllVCB = new VeChuyenBayBLL();
             bllTS = new ThamSoBLL();
 
             lbNotify.Visible = false;
             lbNotify1.Visible = false;
 
-            cbHangVe.DataSource = bllDSV.getDanhSachVe();
             cbHangVe.DisplayMember = "HangVe";
             cbHangVe.ValueMember = "TiLe";
         }
@@ -121,7 +124,20 @@ namespace Flight.GUI
                 tbSDT.Focus();
                 return false;
             }
-
+            if (string.IsNullOrEmpty(tbEmail.Text))
+            {
+                lbNotify.ForeColor = Color.Red;
+                lbNotify.Text = "Bạn chưa nhập Email";
+                tbSDT.Focus();
+                return false;
+            }
+            if (!CheckEmail(tbEmail.Text))
+            {
+                lbNotify.ForeColor = Color.Red;
+                lbNotify.Text = "Email không hợp lệ";
+                tbSDT.Focus();
+                return false;
+            }
             return true;
         }
 
@@ -138,6 +154,12 @@ namespace Flight.GUI
             return false;
         }
 
+        bool CheckEmail(string s)
+        {
+            string Rules = @"^[\w\.]+@[\w]+\.[\w]+";
+            Regex MyRegex = new Regex(Rules);
+            return MyRegex.IsMatch(s);
+        }
         private void tbCMND_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
@@ -162,7 +184,7 @@ namespace Flight.GUI
 
         private void tbMaChuyenBay_TextChanged(object sender, EventArgs e)
         {
-            lbGiaTien.Text = (bllCB.getDonGia(tbMaChuyenBay.Text) * float.Parse(cbHangVe.SelectedValue.ToString())).ToString();
+            cbHangVe.DataSource = bllDSG.getDanhSachGheChuyenBay(tbMaChuyenBay.Text);
         }
 
         private void btSelect_Click(object sender, EventArgs e)
@@ -175,22 +197,51 @@ namespace Flight.GUI
                 lbNotify1.Text = "Bạn chưa chọn chuyến bay";
                 return;
             }
-
-            int ThoiGianChoPhepDatVe = bllTS.getThoiGianChoPhepDatVe();
-
-            if (ThoiGianChoPhepDatVe == -1)
+            if ((bllCB.getNgayKhoiHanh(tbMaChuyenBay.Text) - DateTime.Now).TotalMinutes < 0)
             {
                 lbNotify1.Visible = true;
-                lbNotify1.Text = "Đã có lỗi xảy ra, vui lòng thử lại sau";
+                lbNotify1.Text = "Chuyến bay này đã khởi hành";
                 return;
             }
-            if ((bllCB.getNgayKhoiHanh(tbMaChuyenBay.Text) - DateTime.Now).TotalDays < ThoiGianChoPhepDatVe)
+            Page.SetPage("Ticket");
+        }
+
+        private void btPrintTicket_Click(object sender, EventArgs e)
+        {
+            if (CheckInput())
             {
-                lbNotify1.Visible = true;
-                lbNotify1.Text = "Chỉ được phép đặt vé chậm nhất " + ThoiGianChoPhepDatVe + " ngày trước khi khởi hành";
-                return;
+                DialogResult result = MessageBox.Show("Vé đã in sẽ không được thay đổi, bạn chắc chắn thông tin đã chính xác", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (result == DialogResult.Yes)
+                {
+                    VeChuyenBay VCB = new VeChuyenBay();
+
+                    VCB.MaChuyenBay = tbMaChuyenBay.Text;
+                    VCB.HangVe = cbHangVe.Text;
+                    VCB.GiaTien = int.Parse(lbGiaTien.Text);
+                    VCB.HoTen = tbHoTen.Text;
+                    VCB.CMND = tbCMND.Text;
+                    VCB.SDT = tbSDT.Text;
+                    VCB.Email = tbEmail.Text;
+
+                    if (bllVCB.insertVeChuyenBay(VCB))
+                    {
+                        lbNotify.Text = "Thành công";
+                        lbNotify.ForeColor = Color.FromArgb(8, 186, 29);
+
+                        DanhSachGhe DSG = new DanhSachGhe();
+                        DSG.MaChuyenBay = VCB.MaChuyenBay;
+                        DSG.HangVe = VCB.HangVe;
+                        DSG.SoGheTrong = bllDSG.getSoGheTrong(tbMaChuyenBay.Text, cbHangVe.Text);
+
+                        bllDSG.UpdateSoGheTrong(DSG);
+                    }
+                    else
+                    {
+                        lbNotify.ForeColor = Color.Red;
+                        lbNotify.Text = "Đã có lỗi xảy ra, vui lòng thử lại sau";
+                    }
+                }
             }
-            Page.SetPage("tabReservate");
         }
     }
 }

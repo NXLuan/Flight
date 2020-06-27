@@ -95,11 +95,13 @@
     <Compile Include="BLL\ChuyenBayBLL.cs" />
     <Compile Include="BLL\DanhSachGheBLL.cs" />
     <Compile Include="BLL\DanhSachVeBLL.cs" />
+    <Compile Include="BLL\SanBayTrungGianBLL.cs" />
     <Compile Include="BLL\VeChuyenBayBLL.cs" />
     <Compile Include="BLL\PhieuDatChoBLL.cs" />
     <Compile Include="BLL\SanBayBLL.cs" />
     <Compile Include="BLL\ThamSoBLL.cs" />
     <Compile Include="DAL\PhieuDatChoDAL.cs" />
+    <Compile Include="DAL\SanBayTrungGianDAL.cs" />
     <Compile Include="DAL\VeChuyeBayDAL.cs" />
     <Compile Include="DAL\SanBayDAL.cs" />
     <Compile Include="DAL\ChuyenBayDAL.cs" />
@@ -107,6 +109,7 @@
     <Compile Include="DAL\DanhSachVeDAL.cs" />
     <Compile Include="DAL\ThamSoDAL.cs" />
     <Compile Include="DataConnection.cs" />
+    <Compile Include="DTO\SanBayTrungGian.cs" />
     <Compile Include="DTO\VeChuyenBay.cs" />
     <Compile Include="DTO\SanBay.cs" />
     <Compile Include="DTO\ChuyenBay.cs" />
@@ -123,7 +126,7 @@
     <Compile Include="GUI\FlightReception.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\FlightReception.Designer.cs">
+    <Compile Include="GUI\FlightReception.designer.cs">
       <DependentUpon>FlightReception.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\LoginForm.cs">

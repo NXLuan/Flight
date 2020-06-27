@@ -1,4 +1,5 @@
 ﻿using Flight.DAL;
+using Flight.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,10 @@ namespace Flight.BLL
         public VeChuyenBayBLL()
         {
             dalVCB = new VeChuyenBayDAL();
+        }
+        public bool insertVeChuyenBay(VeChuyenBay VCB)
+        {
+            return dalVCB.insertVeChuyenBay(VCB);
         }
     }
 }

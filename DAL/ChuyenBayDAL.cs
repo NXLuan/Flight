@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Flight.DTO;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -69,6 +70,101 @@ namespace Flight.DAL
                    "group by DANHSACHGHE.MaChuyenBay, CHUYENBAY.MaChuyenBay, DI.TenSanBay, DEN.TenSanBay, NgayGio, ThoiGianBay";
 
             return GetData(sql);
+        }
+        public DataTable getChuyenBay()
+        {
+            string sql = "select * from CHUYENBAY";
+            using (SqlConnection con = dc.getConnect())
+            {
+                try
+                {
+                    DataTable dt = new DataTable();
+                    da = new SqlDataAdapter(sql, con);
+
+                    con.Open();
+                    da.Fill(dt);
+                    da.Dispose();
+                    con.Close();
+
+                    return dt;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message, "Thông báo lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+        }
+        public void insertChuyenBay(ChuyenBay CB)
+        {
+            string sql = "insert into CHUYENBAY(MaChuyenBay, DonGia, MaSanBayDen, MaSanBayDi, NgayGio, ThoiGianBay)" +
+               " VALUES(@MaChuyenBay, @DonGia, @MaSanBayDen, @MaSanBayDi, @NgayGio, @ThoiGianBay)";
+            using (SqlConnection con = dc.getConnect())
+            {
+                try
+                {
+                    cmd = new SqlCommand(sql, con);
+                    con.Open();
+                    cmd.Parameters.Add("@MaChuyenBay", SqlDbType.VarChar).Value = CB.MaChuyenBay;
+                    cmd.Parameters.Add("@DonGia", SqlDbType.Int).Value = CB.DonGia;
+                    cmd.Parameters.Add("@MaSanBayDen", SqlDbType.VarChar).Value = CB.MaSanBayDen;
+                    cmd.Parameters.Add("@MaSanBayDi", SqlDbType.VarChar).Value = CB.MaSanBayDi;
+                    cmd.Parameters.Add("@NgayGio", SqlDbType.DateTime).Value = CB.NgayGio;
+                    cmd.Parameters.Add("@ThoiGianBay", SqlDbType.VarChar).Value = (CB.ThoiGianBay).ToString();
+
+
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message, "Thông báo lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+        public bool DeleteChuyenBay(string MaChuyenBay)
+        {
+            string sql = "DELETE CHUYENBAY WHERE MaChuyenBay = @MaChuyenBay";
+            SqlConnection con = dc.getConnect();
+            try
+            {
+                cmd = new SqlCommand(sql, con);
+                con.Open();
+                cmd.Parameters.Add("@MSSV", SqlDbType.VarChar).Value = MaChuyenBay;
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Thông báo lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
+        }
+        public bool UpdateChuyenBay(ChuyenBay CB)
+        {
+            string sql = "UPDATE CHUYENBAY SET MaChuyenBay = @MaChuyenBay, DonGia = @DonGia, MaSanBayDi = @MaSanBayDi, MaSanBayDen = @MaSanBayDen," +
+                " NgayGio = @NgayGio, ThoiGianBay = @ThoiGianBay WHERE MaChuyenBay = @MaChuyenBay";
+            SqlConnection con = dc.getConnect();
+            try
+            {
+                cmd = new SqlCommand(sql, con);
+                con.Open();
+                cmd.Parameters.Add("@MaChuyenBay", SqlDbType.VarChar).Value = CB.MaChuyenBay;
+                cmd.Parameters.Add("@DonGia", SqlDbType.Int).Value = CB.DonGia;
+                cmd.Parameters.Add("@MaSanBayDen", SqlDbType.VarChar).Value = CB.MaSanBayDen;
+                cmd.Parameters.Add("@MaSanBayDi", SqlDbType.VarChar).Value = CB.MaSanBayDi;
+                cmd.Parameters.Add("@NgayGio", SqlDbType.DateTime).Value = CB.NgayGio;
+                cmd.Parameters.Add("@ThoiGianBay", SqlDbType.VarChar).Value = (CB.ThoiGianBay).ToString();
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Thông báo lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
         }
     }
 }

@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -34,7 +35,6 @@ namespace Flight.GUI
             lbNotify.Visible = false;
             lbNotify1.Visible = false;
 
-            cbHangVe.DataSource = bllDSV.getDanhSachVe();
             cbHangVe.DisplayMember = "HangVe";
             cbHangVe.ValueMember = "TiLe";
         }
@@ -69,6 +69,7 @@ namespace Flight.GUI
                 PDC.HoTen = tbHoTen.Text;
                 PDC.CMND = tbCMND.Text;
                 PDC.SDT = tbSDT.Text;
+                PDC.Email = tbEmail.Text;
                 PDC.MaPhieuDatCho = bllPDC.getMaPhieuDatCho();
 
                 if (bllPDC.insertPhieuDatCho(PDC))
@@ -135,6 +136,20 @@ namespace Flight.GUI
                 tbSDT.Focus();
                 return false;
             }
+            if (string.IsNullOrEmpty(tbEmail.Text))
+            {
+                lbNotify.ForeColor = Color.Red;
+                lbNotify.Text = "Bạn chưa nhập Email";
+                tbSDT.Focus();
+                return false;
+            }
+            if (!CheckEmail(tbEmail.Text))
+            {
+                lbNotify.ForeColor = Color.Red;
+                lbNotify.Text = "Email không hợp lệ";
+                tbSDT.Focus();
+                return false;
+            }
 
             return true;
         }
@@ -180,6 +195,13 @@ namespace Flight.GUI
             return false;
         }
 
+        bool CheckEmail(string s)
+        {
+            string Rules = @"^[\w\.]+@[\w]+\.[\w]+";
+            Regex MyRegex = new Regex(Rules);
+            return MyRegex.IsMatch(s);
+        }
+
         private void tbCMND_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
@@ -204,7 +226,7 @@ namespace Flight.GUI
 
         private void tbMaChuyenBay_TextChanged(object sender, EventArgs e)
         {
-            lbGiaTien.Text = (bllCB.getDonGia(tbMaChuyenBay.Text) * float.Parse(cbHangVe.SelectedValue.ToString())).ToString();
+            cbHangVe.DataSource = bllDSG.getDanhSachGheChuyenBay(tbMaChuyenBay.Text);
         }
     }
 }

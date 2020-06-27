@@ -46,8 +46,8 @@ namespace Flight.DAL
 
         public bool insertPhieuDatCho(PhieuDatCho PDC)
         {
-            string sql = "insert into PHIEUDATCHO(MaChuyenBay, HangVe, GiaTien, HoTen, CMND, SDT)" +
-               " VALUES(@MaChuyenBay, @HangVe, @GiaTien, @HoTen, @CMND, @SDT)";
+            string sql = "insert into PHIEUDATCHO(MaChuyenBay, HangVe, GiaTien, HoTen, CMND, SDT, Email)" +
+               " VALUES(@MaChuyenBay, @HangVe, @GiaTien, @HoTen, @CMND, @SDT, @Email)";
 
             using (SqlConnection con = dc.getConnect())
             {
@@ -61,6 +61,7 @@ namespace Flight.DAL
                     cmd.Parameters.Add("@HoTen", SqlDbType.NVarChar).Value = PDC.HoTen;
                     cmd.Parameters.Add("@CMND", SqlDbType.VarChar).Value = PDC.CMND;
                     cmd.Parameters.Add("@SDT", SqlDbType.VarChar).Value = PDC.SDT;
+                    cmd.Parameters.Add("@Email", SqlDbType.VarChar).Value = PDC.Email;
                     cmd.ExecuteNonQuery();
                     con.Close();
 
