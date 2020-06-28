@@ -12,7 +12,7 @@ namespace Flight.DTO
         public string MaChuyenBay;
         public string HangVe;
         public int GiaTien;
-        public Boolean TrangThai;
+        public string TrangThai;
         public string HoTen;
         public string CMND;
         public string SDT;

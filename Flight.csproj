@@ -92,14 +92,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\BaoCaoBLL.cs" />
     <Compile Include="BLL\ChuyenBayBLL.cs" />
     <Compile Include="BLL\DanhSachGheBLL.cs" />
     <Compile Include="BLL\DanhSachVeBLL.cs" />
+    <Compile Include="BLL\LoginBLL.cs" />
+    <Compile Include="BLL\NguoiDungBLL.cs" />
     <Compile Include="BLL\SanBayTrungGianBLL.cs" />
     <Compile Include="BLL\VeChuyenBayBLL.cs" />
     <Compile Include="BLL\PhieuDatChoBLL.cs" />
     <Compile Include="BLL\SanBayBLL.cs" />
     <Compile Include="BLL\ThamSoBLL.cs" />
+    <Compile Include="DAL\BaoCaoDAL.cs" />
+    <Compile Include="DAL\LoginDAL.cs" />
+    <Compile Include="DAL\NguoiDungDAL.cs" />
     <Compile Include="DAL\PhieuDatChoDAL.cs" />
     <Compile Include="DAL\SanBayTrungGianDAL.cs" />
     <Compile Include="DAL\VeChuyeBayDAL.cs" />
@@ -109,6 +115,9 @@
     <Compile Include="DAL\DanhSachVeDAL.cs" />
     <Compile Include="DAL\ThamSoDAL.cs" />
     <Compile Include="DataConnection.cs" />
+    <Compile Include="DTO\BaoCao.cs" />
+    <Compile Include="DTO\Login.cs" />
+    <Compile Include="DTO\NguoiDung.cs" />
     <Compile Include="DTO\SanBayTrungGian.cs" />
     <Compile Include="DTO\VeChuyenBay.cs" />
     <Compile Include="DTO\SanBay.cs" />
@@ -117,6 +126,12 @@
     <Compile Include="DTO\DanhSachVe.cs" />
     <Compile Include="DTO\PhieuDatCho.cs" />
     <Compile Include="DTO\ThamSo.cs" />
+    <Compile Include="GUI\AccountForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\AccountForm.designer.cs">
+      <DependentUpon>AccountForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\AdminControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -156,7 +171,7 @@
     <Compile Include="GUI\ReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\ReportForm.Designer.cs">
+    <Compile Include="GUI\ReportForm.designer.cs">
       <DependentUpon>ReportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ReservateForm.cs">
@@ -185,6 +200,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="GUI\AccountForm.resx">
+      <DependentUpon>AccountForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\AdminControl.resx">
       <DependentUpon>AdminControl.cs</DependentUpon>
     </EmbeddedResource>

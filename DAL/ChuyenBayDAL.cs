@@ -166,5 +166,17 @@ namespace Flight.DAL
             }
             return true;
         }
+        public bool CheckTrungChuyenBay(string MaChuyenBay)
+        {
+            string sql = "select MaChuyenBay from CHUYENBAY where MaChuyenBay = '" + MaChuyenBay + "'";
+            SqlConnection con = dc.getConnect();
+            da = new SqlDataAdapter(sql, con);
+            con.Open();
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            con.Close();
+            if (dt.Rows.Count == 0) return false;
+            return true;
+        }
     }
 }

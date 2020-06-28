@@ -20,6 +20,29 @@ namespace Flight.DAL
         {
             dc = new DataConnection();
         }
+        public DataTable GetData(string sql)
+        {
+            using (SqlConnection con = dc.getConnect())
+            {
+                try
+                {
+                    DataTable dt = new DataTable();
+                    da = new SqlDataAdapter(sql, con);
+
+                    con.Open();
+                    da.Fill(dt);
+                    da.Dispose();
+                    con.Close();
+
+                    return dt;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message, "Thông báo lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+        }
         public bool insertVeChuyenBay(VeChuyenBay VCB)
         {
             string sql = "insert into VECHUYENBAY(MaChuyenBay, HangVe, GiaTien, HoTen, CMND, SDT, Email)" +
@@ -49,6 +72,13 @@ namespace Flight.DAL
                     return false;
                 }
             }
+        }
+        public DataTable getInforVeChuyenBay(string s)
+        {
+            string sql = "select * from VECHUYENBAY where MaVeChuyenBay like '" + s + "%' or " +
+                "MaChuyenBay like '" + s + "%' or HoTen like '" + s + "%' or CMND like '" + s + "%' or " +
+                "SDT like '" + s + "%' or Email like '" + s + "%'";
+            return GetData(sql);
         }
     }
 }

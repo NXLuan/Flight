@@ -42,5 +42,9 @@ namespace Flight.BLL
         {
             dalDSG.insertDanhSachGhe(CB);
         }
+        public bool CheckTrungDanhSachGhe(string MaChuyenBay, string HangVe)
+        {
+            return dalDSG.CheckTrungDanhSachGhe(MaChuyenBay, HangVe);
+        }
     }
 }

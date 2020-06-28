@@ -15,7 +15,6 @@ namespace Flight.GUI
 {
     public partial class ReservateForm : Form
     {
-        DanhSachVeBLL bllDSV;
         PhieuDatChoBLL bllPDC;
         DanhSachGheBLL bllDSG;
         ChuyenBayBLL bllCB;
@@ -26,7 +25,6 @@ namespace Flight.GUI
         public ReservateForm()
         {
             InitializeComponent();
-            bllDSV = new DanhSachVeBLL();
             bllPDC = new PhieuDatChoBLL();
             bllTS = new ThamSoBLL();
             bllDSG = new DanhSachGheBLL();
@@ -66,6 +64,7 @@ namespace Flight.GUI
                 PDC.MaChuyenBay = tbMaChuyenBay.Text;
                 PDC.HangVe = cbHangVe.Text;
                 PDC.GiaTien = int.Parse(lbGiaTien.Text);
+                PDC.TrangThai = "Chưa xuất vé";
                 PDC.HoTen = tbHoTen.Text;
                 PDC.CMND = tbCMND.Text;
                 PDC.SDT = tbSDT.Text;

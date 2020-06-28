@@ -46,5 +46,9 @@ namespace Flight.BLL
         {
             return dalCB.UpdateChuyenBay(CB);
         }
+        public bool CheckTrungChuyenBay(string MaChuyenBay)
+        {
+            return dalCB.CheckTrungChuyenBay(MaChuyenBay);
+        }
     }
 }

@@ -117,17 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="Column1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="colMaChuyenBay.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="Column2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="colSoVe.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="Column3.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="colDoanhThu.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="colTiLe.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="bunifuImageButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnExcel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAloAAAIzCAYAAADYoLd4AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
         dAAAEnQB3mYfeAAA/7JJREFUeF7s/YWDHkXa9Y///onv+z7P7gIxSGD38XefFSSCBFl2l8WCJziLJjiL
@@ -1270,25 +1273,28 @@
   </data>
   <data name="btReservate.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAGsAAAAtCAYAAACpvpV9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAEBSURBVHhe7dsxagJRFEZhU9hIQCzcQHbgLrIaK9fgIkI0
+        iVBORw0KGgoAAAANSUhEUgAAAGsAAAAuCAYAAAAvKufTAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAEDSURBVHhe7dsxagJRFEZhU9hIQCzcQHbgLrIaK9fgIkI0
         Kmm0sXQJYmeZSjBDCNgoEpImeGVmRJvpfQfOD6d6t/vqVwuHmVigiQWaWKCJBZpYoF2xFtlvdObf8fC6
         tYTKTV4+joVRgTXb/ERrklUe2/1rjrPorw8l1tP0q/LI0qnx9lliVT1aeokFSixQYoESC5RYoMQCJRYo
-        sUCJBUosUGKBEguUWKDEAiUWKLFAiQVKLFBigRILlFigxAIlFiixQIkFSixQYoEqsNrv/iBJvfrw8jGh
-        t9rH40iwVKsPtvG82JVY+brLfeWh3b8c6u//dMNy6U8s0MQCTSzQxMIs4gzrXvEFBs9DzwAAAABJRU5E
-        rkJggg==
+        sUCJBUosUGKBEguUWKDEAiUWKLFAiQVKLFBigRILlFigxAIlFiixQIkFSixQYoESC1SB1X73u0/q1YeX
+        XyS91T4eR4KlWn2wjefFrsTK113uKw/t/uVQf/+nG5ZLf2KBJhZoYoEmFmYRZ9Vn/NKtN0NhAAAAAElF
+        TkSuQmCC
 </value>
   </data>
-  <metadata name="dataGridViewTextBoxColumn1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="colThang.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="dataGridViewTextBoxColumn2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="colSoChuyenBay.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="dataGridViewTextBoxColumn3.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="colDoanhThuThang.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="bunifuImageButton2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <metadata name="colTiLeNam.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="btnExcelNam.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAloAAAIzCAYAAADYoLd4AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
         dAAAEnQB3mYfeAAA/7JJREFUeF7s/YWDHkXa9Y///onv+z7P7gIxSGD38XefFSSCBFl2l8WCJziLJjiL
@@ -2429,15 +2435,15 @@
         kAJB0SKEEEIIKRAULUIIIYSQAkHRIoQQQggpCCL/H+St7Dbalr6dAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="bunifuThinButton21.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnThongKeNam.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAGsAAAAtCAYAAACpvpV9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAEBSURBVHhe7dsxagJRFEZhU9hIQCzcQHbgLrIaK9fgIkI0
+        iVBORw0KGgoAAAANSUhEUgAAAGsAAAAuCAYAAAAvKufTAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAEDSURBVHhe7dsxagJRFEZhU9hIQCzcQHbgLrIaK9fgIkI0
         Kmm0sXQJYmeZSjBDCNgoEpImeGVmRJvpfQfOD6d6t/vqVwuHmVigiQWaWKCJBZpYoF2xFtlvdObf8fC6
         tYTKTV4+joVRgTXb/ERrklUe2/1rjrPorw8l1tP0q/LI0qnx9lliVT1aeokFSixQYoESC5RYoMQCJRYo
-        sUCJBUosUGKBEguUWKDEAiUWKLFAiQVKLFBigRILlFigxAIlFiixQIkFSixQYoEqsNrv/iBJvfrw8jGh
-        t9rH40iwVKsPtvG82JVY+brLfeWh3b8c6u//dMNy6U8s0MQCTSzQxMIs4gzrXvEFBs9DzwAAAABJRU5E
-        rkJggg==
+        sUCJBUosUGKBEguUWKDEAiUWKLFAiQVKLFBigRILlFigxAIlFiixQIkFSixQYoESC1SB1X73u0/q1YeX
+        XyS91T4eR4KlWn2wjefFrsTK113uKw/t/uVQf/+nG5ZLf2KBJhZoYoEmFmYRZ9Vn/NKtN0NhAAAAAElF
+        TkSuQmCC
 </value>
   </data>
   <data name="animation1.BlindCoeff" mimetype="application/x-microsoft.net.object.binary.base64">

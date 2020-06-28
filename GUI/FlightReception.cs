@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace Flight.GUI
 {
@@ -46,39 +47,186 @@ namespace Flight.GUI
             colSanBayTrungGian.DataSource = bllSB.getSanBay();
             colSanBayTrungGian.DisplayMember = "TenSanBay";
             colSanBayTrungGian.ValueMember = "MaSanBay";
-            DataTable dt = new DataTable();
-            dt = bllCB.getChuyenBay();
-            DataGrid_DanhSachChuyenBay.DataSource = dt;
-            DataGridViewImageColumn img_ChinhSua = new DataGridViewImageColumn();
-            Image image_ChinhSua = btn_ChinhSua.Image;
-            img_ChinhSua.Image = image_ChinhSua;
-            DataGrid_DanhSachChuyenBay.Columns.Add(img_ChinhSua);
-            img_ChinhSua.HeaderText = null;
-            img_ChinhSua.Name = null;
-            DataGridViewImageColumn img_Xoa = new DataGridViewImageColumn();
-            Image image_Xoa = btn_null.Image;
-            img_Xoa.Image = image_Xoa;
-            DataGrid_DanhSachChuyenBay.Columns.Add(img_Xoa);
-            img_Xoa.HeaderText = null;
-            img_Xoa.Name = null;
-            DataGrid_DanhSachChuyenBay.Columns[0].HeaderText = "Mã Chuyến bay";
-            DataGrid_DanhSachChuyenBay.Columns[1].HeaderText = "Đơn giá";
-            DataGrid_DanhSachChuyenBay.Columns[2].HeaderText = "Mã Sân Bay Đi";
-            DataGrid_DanhSachChuyenBay.Columns[3].HeaderText = "Mã Sân Bay Đến";
-            DataGrid_DanhSachChuyenBay.Columns[4].HeaderText = "Ngày-Giờ";
-            DataGrid_DanhSachChuyenBay.Columns[5].HeaderText = "Thời Gian Bay";
-            for(int i=0;i<=5;i++)
-            {
-                DataGrid_DanhSachChuyenBay.Columns[i].ReadOnly = true;
-            }
-            DataGrid_DanhSachChuyenBay.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            DataGrid_DanhSachChuyenBay.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
         }
 
+        string[] ConvertToStringArray(System.Array values)
+        {
+            string[] theArray = new string[values.Length];
+            for (int i = 1; i <= values.Length; i++)
+            {
+                if (values.GetValue(1, i) == null)
+                    theArray[i - 1] = "";
+                else
+                    theArray[i - 1] = (string)values.GetValue(1, i).ToString();
+            }
+            return theArray;
+        }
+        private void btn_Excel_Click(object sender, EventArgs e)
+        {
+            Excel.Application ExcelObj = new Excel.Application();
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Filter = "Excel files|*.xls; *.xlsx";
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                Excel.Workbook theWorkbook = ExcelObj.Workbooks.Open(dlg.FileName, 0, true, 5,
+        "", "", true, Excel.XlPlatform.xlWindows, "\t", false, false, 0, true);
+                Excel.Sheets sheets = theWorkbook.Worksheets;
+                Excel.Worksheet worksheet = (Excel.Worksheet)sheets.get_Item(1);
+                Excel.Range UsedRange = worksheet.UsedRange;
+                int lastUsedRow = UsedRange.Row + UsedRange.Rows.Count - 1;
+                for (int i = 2; i <= lastUsedRow; i++)
+                {
+                    if (!string.IsNullOrEmpty(worksheet.Cells[i, 1].Value))
+                    {
+                        ChuyenBay CB = new ChuyenBay();
+                        CB.MaChuyenBay = worksheet.Cells[i, 1].Value.ToString();
+                        CB.DonGia = Int32.Parse(worksheet.Cells[i, 2].Value.ToString());
+                        CB.MaSanBayDi = worksheet.Cells[i, 3].Value.ToString();
+                        CB.MaSanBayDen = worksheet.Cells[i, 4].Value.ToString();
+                        CB.NgayGio = DateTime.Parse(worksheet.Cells[i, 5].Value.ToString());
+                        CB.ThoiGianBay = TimeSpan.Parse(worksheet.Cells[i, 6].Value.ToString());
+                        if (!bllCB.CheckTrungChuyenBay(CB.MaChuyenBay))
+                            if (CheckinputExcel_ChuyenBay(CB))
+                                bllCB.InsertChuyenBay(CB);
+                    }
+                    if (!string.IsNullOrEmpty(worksheet.Cells[i, 7].Value))
+                    {
+                        DanhSachGhe DSG = new DanhSachGhe();
+                        DSG.MaChuyenBay = worksheet.Cells[i, 7].Value.ToString();
+                        DSG.HangVe = worksheet.Cells[i, 8].Value.ToString();
+                        DSG.TongSoGhe = Int32.Parse(worksheet.Cells[i, 9].Value.ToString());
+                        DSG.SoGheTrong = Int32.Parse(worksheet.Cells[i, 10].Value.ToString());
+                        if (!bllDSG.CheckTrungDanhSachGhe(DSG.MaChuyenBay, DSG.HangVe))
+                            if (CheckinputExcel_DanhSachGhe(DSG))
+                                bllDSG.InsertDanhSachGhe(DSG);
+                    }
+                    if (!string.IsNullOrEmpty(worksheet.Cells[i, 11].Value))
+                    {
+                        SanBayTrungGian SBTG = new SanBayTrungGian();
+                        SBTG.MaChuyenBay = worksheet.Cells[i, 11].Value.ToString();
+                        SBTG.MaSanBay = worksheet.Cells[i, 12].Value.ToString();
+                        SBTG.ThoiGianDung = TimeSpan.Parse(worksheet.Cells[i, 13].Value.ToString());
+                        SBTG.GhiChu = worksheet.Cells[i, 14].Value.ToString();
+                        if (!bllSBTG.CheckTrungSanBayTrungGian(SBTG.MaChuyenBay, SBTG.MaSanBay))
+                            if (CheckinputExcel_SanBayTrungGian(SBTG))
+                                bllSBTG.InsertSanBayTrungGian(SBTG);
+                    }
+                }
+            }
+            lbNotify.ForeColor = Color.Green;
+            lbNotify.Text = "Đã Thêm Danh Sách Các Chuyến Bay Từ File Excel Thành Công";
+        }
+        bool CheckinputExcel_ChuyenBay(ChuyenBay CB)
+        {
+
+            if (string.IsNullOrEmpty(CB.MaChuyenBay))
+            {
+                lbNotify.ForeColor = Color.Red;
+                lbNotify.Text = "File Excel Nhập sai định dạng Chuyến Bay";
+                return false;
+            }
+            if (string.IsNullOrEmpty(CB.DonGia.ToString()))
+            {
+                lbNotify.ForeColor = Color.Red;
+                lbNotify.Text = "File Excel Nhập sai định dạng Đơn Giá";
+                return false;
+            }
+            if (string.IsNullOrEmpty(CB.MaSanBayDi))
+            {
+                lbNotify.ForeColor = Color.Red;
+                lbNotify.Text = "File Excel Nhập sai định dạng Mã Sân Bay Đi";
+                return false;
+            }
+            if (string.IsNullOrEmpty(CB.MaSanBayDen))
+            {
+                lbNotify.ForeColor = Color.Red;
+                lbNotify.Text = "File Excel Nhập sai định dạng Mã Sân Bay Đến";
+                return false;
+            }
+            if (string.IsNullOrEmpty(CB.NgayGio.ToString()))
+            {
+                lbNotify.ForeColor = Color.Red;
+                lbNotify.Text = "File Excel Nhập sai định dạng Ngày Giờ";
+                return false;
+            }
+            if (string.IsNullOrEmpty(CB.ThoiGianBay.ToString()))
+            {
+                lbNotify.ForeColor = Color.Red;
+                lbNotify.Text = "File Excel Nhập sai định dạng Ngày Giờ";
+                return false;
+            }
+            lbNotify.ForeColor = Color.FromArgb(8, 186, 29);
+            return true;
+        }
+
+        bool CheckinputExcel_DanhSachGhe(DanhSachGhe DSG)
+        {
+
+            if (string.IsNullOrEmpty(DSG.MaChuyenBay))
+            {
+                lbNotify.ForeColor = Color.Red;
+                lbNotify.Text = "File Excel Nhập sai định dạng Mã Chuyến Bay của Danh Sách Ghế";
+                return false;
+            }
+            if (string.IsNullOrEmpty(DSG.HangVe))
+            {
+                lbNotify.ForeColor = Color.Red;
+                lbNotify.Text = "File Excel Nhập sai định dạng Hạng Vé của Danh Sách Ghế";
+                return false;
+            }
+            if (string.IsNullOrEmpty(DSG.TongSoGhe.ToString()))
+            {
+                lbNotify.ForeColor = Color.Red;
+                lbNotify.Text = "File Excel Nhập sai định dạng Tổng Số Ghế của Danh Sách Ghế";
+            }
+            if (string.IsNullOrEmpty(DSG.SoGheTrong.ToString()))
+            {
+                lbNotify.ForeColor = Color.Red;
+                lbNotify.Text = "File Excel Nhập sai định dạng Số Ghế Trống của Danh Sách Ghế";
+                return false;
+            }
+            lbNotify.ForeColor = Color.FromArgb(8, 186, 29);
+            return true;
+        }
+        bool CheckinputExcel_SanBayTrungGian(SanBayTrungGian SBTG)
+        {
+
+            if (string.IsNullOrEmpty(SBTG.MaChuyenBay))
+            {
+                lbNotify.ForeColor = Color.Red;
+                lbNotify.Text = "File Excel Nhập sai định dạng Mã Chuyến Bay của Sân Bay Trung Gian";
+                return false;
+            }
+            if (string.IsNullOrEmpty(SBTG.MaSanBay))
+            {
+                lbNotify.ForeColor = Color.Red;
+                lbNotify.Text = "File Excel Nhập sai định dạng Mã Sân Bay của Sân Bay Trung Gian";
+                return false;
+            }
+            if (string.IsNullOrEmpty(SBTG.ThoiGianDung.ToString()))
+            {
+                lbNotify.ForeColor = Color.Red;
+                lbNotify.Text = "File Excel Nhập sai định dạng Thời Gian Dừng của Sân Bay Trung Gian";
+            }
+            if (string.IsNullOrEmpty(SBTG.GhiChu))
+            {
+                lbNotify.ForeColor = Color.Red;
+                lbNotify.Text = "File Excel Nhập sai định dạng Ghi Chú của Sân Bay Trung Gian";
+                return false;
+            }
+            lbNotify.ForeColor = Color.FromArgb(8, 186, 29);
+            return true;
+        }
         private void btn_Them_Click(object sender, EventArgs e)
         {
             if (CheckInput())
             {
+                if (bllCB.CheckTrungChuyenBay(Tbx_MaChuyenBay.Text))
+                {
+                    lbNotify.ForeColor = Color.Red;
+                    lbNotify.Text = "Mã Chuyến Bay bị trùng";
+                    return;
+                }
                 CB.MaChuyenBay = Tbx_MaChuyenBay.Text;
                 CB.DonGia = Int32.Parse(Tbx_GiaVe.Text);
                 CB.MaSanBayDi = CBox_SanBayDi.SelectedValue.ToString();
@@ -249,18 +397,53 @@ namespace Flight.GUI
 
         private void lbTicket_Click(object sender, EventArgs e)
         {
+            if (lbTiepNhanChuyenBay.ForeColor == Color.Black) return;
+            lbDanhSachChuyenBay.ForeColor = Color.Gray;
+            lbTiepNhanChuyenBay.ForeColor = Color.Black;
             showTiepNhanLich();
         }
         private void lbTicketList_Click(object sender, EventArgs e)
         {
+            if (lbDanhSachChuyenBay.ForeColor == Color.Black) return;
+            lbDanhSachChuyenBay.ForeColor = Color.Black;
+            lbTiepNhanChuyenBay.ForeColor = Color.Gray;
+            DataTable dt = new DataTable();
+            dt = bllCB.getChuyenBay();
+            DataGrid_DanhSachChuyenBay.DataSource = dt;
+            DataGridViewImageColumn img_ChinhSua = new DataGridViewImageColumn();
+            Image image_ChinhSua = btn_ChinhSua.Image;
+            img_ChinhSua.Image = image_ChinhSua;
+            DataGrid_DanhSachChuyenBay.Columns.Add(img_ChinhSua);
+            img_ChinhSua.HeaderText = null;
+            img_ChinhSua.Name = null;
+            DataGridViewImageColumn img_Xoa = new DataGridViewImageColumn();
+            Image image_Xoa = btn_null.Image;
+            img_Xoa.Image = image_Xoa;
+            DataGrid_DanhSachChuyenBay.Columns.Add(img_Xoa);
+            img_Xoa.HeaderText = null;
+            img_Xoa.Name = null;
+            DataGrid_DanhSachChuyenBay.Columns[0].HeaderText = "Mã Chuyến bay";
+            DataGrid_DanhSachChuyenBay.Columns[1].HeaderText = "Đơn giá";
+            DataGrid_DanhSachChuyenBay.Columns[2].HeaderText = "Mã Sân Bay Đi";
+            DataGrid_DanhSachChuyenBay.Columns[3].HeaderText = "Mã Sân Bay Đến";
+            DataGrid_DanhSachChuyenBay.Columns[4].HeaderText = "Ngày-Giờ";
+            DataGrid_DanhSachChuyenBay.Columns[5].HeaderText = "Thời Gian Bay";
+            for (int i = 0; i <= 5; i++)
+            {
+                DataGrid_DanhSachChuyenBay.Columns[i].ReadOnly = true;
+            }
             showDanhSachChuyenBay();
         }
         private void showTiepNhanLich()
         {
+            pnTiepNhanChuyenBay.Visible = true;
+            pnDanhSachChuyenBay.Visible = false;
             bPage.SetPage(tabPage_NhanLichChuyenBay);
         }
         private void showDanhSachChuyenBay()
         {
+            pnTiepNhanChuyenBay.Visible = false;
+            pnDanhSachChuyenBay.Visible = true;
             bPage.SetPage(tabPage_DanhSachChuyenBay);
         }
         private void DataGrid_DanhSachChuyenBay_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -293,26 +476,26 @@ namespace Flight.GUI
             // Click null Icon
             if (e.ColumnIndex == 1)
             {
-                if (DataGrid_DanhSachChuyenBay.Rows[Index].Cells[2].ReadOnly==false)
-             /*   {
-                    DialogResult dlg = MessageBox.Show("Bạn có thật sự muốn xóa thông tin chuyến bay này?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
-                    if (dlg == DialogResult.Yes)
-                    {
-                        if (bllCB.DeleteChuyenBay(DataGrid_DanhSachChuyenBay.Rows[Index].Cells[2].Value.ToString()))
-                        {
-                            DataGrid_DanhSachChuyenBay.Rows.Remove(DataGrid_DanhSachChuyenBay.Rows[Index]);
-                            lblNotify1.ForeColor = Color.Lime;
-                            lblNotify1.Text = "Xóa chuyến bay thành công";
-                        }
-                        else
-                        {
-                            lblNotify1.ForeColor = Color.Red;
-                            lblNotify1.Text = " Đã có lỗi xảy ra, vui lòng thử lại sau";
-                        }
-                    }
-                }                
-                else
-                */
+                if (DataGrid_DanhSachChuyenBay.Rows[Index].Cells[2].ReadOnly == false)
+                /*   {
+                       DialogResult dlg = MessageBox.Show("Bạn có thật sự muốn xóa thông tin chuyến bay này?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+                       if (dlg == DialogResult.Yes)
+                       {
+                           if (bllCB.DeleteChuyenBay(DataGrid_DanhSachChuyenBay.Rows[Index].Cells[2].Value.ToString()))
+                           {
+                               DataGrid_DanhSachChuyenBay.Rows.Remove(DataGrid_DanhSachChuyenBay.Rows[Index]);
+                               lblNotify1.ForeColor = Color.Lime;
+                               lblNotify1.Text = "Xóa chuyến bay thành công";
+                           }
+                           else
+                           {
+                               lblNotify1.ForeColor = Color.Red;
+                               lblNotify1.Text = " Đã có lỗi xảy ra, vui lòng thử lại sau";
+                           }
+                       }
+                   }                
+                   else
+                   */
                 {
                     DataGrid_SanBayTrungGianP2.Columns.Clear();
                     DataGrid_DanhSachGheP2.Columns.Clear();
@@ -343,7 +526,7 @@ namespace Flight.GUI
                             DataGrid_DanhSachChuyenBay.Rows[Index].Cells[i].ReadOnly = true;
                         DataGrid_DanhSachGheP2.ReadOnly = true;
                         DataGrid_SanBayTrungGianP2.ReadOnly = true;
-                        if (bllCB.UpdateChuyenBay(SetInfoFlightFromDataGridView())&&bllDSG.UpdateDanhSachGhe(CapNhatDanhSachGhe())&&bllSBTG.UpdateSanBayTrungGian(CapNhatSanBayTrungGian()))
+                        if (bllCB.UpdateChuyenBay(SetInfoFlightFromDataGridView()) && bllDSG.UpdateDanhSachGhe(CapNhatDanhSachGhe()) && bllSBTG.UpdateSanBayTrungGian(CapNhatSanBayTrungGian()))
                         {
                             lblNotify1.ForeColor = Color.Green;
                             lblNotify1.Text = "Lưu thành công";
@@ -358,7 +541,7 @@ namespace Flight.GUI
                     }
                 }
             }
-            
+
         }
         ChuyenBay SetInfoFlightFromDataGridView()
         {
@@ -381,7 +564,7 @@ namespace Flight.GUI
             dt.Columns.Add("SoGheTrong");
             DanhSachGhe DSG = new DanhSachGhe();
             int n = DataGrid_DanhSachGheP2.RowCount - 1;
-            for(int i=0;i<n;i++)
+            for (int i = 0; i < n; i++)
             {
                 DataRow dtr = dt.NewRow();
                 dtr["MaChuyenBay"] = DataGrid_DanhSachChuyenBay.Rows[Index].Cells[2].Value.ToString();
@@ -454,7 +637,7 @@ namespace Flight.GUI
             }
             int n1 = DataGrid_DanhSachGheP2.RowCount - 1;
             int n2 = DataGrid_SanBayTrungGianP2.RowCount - 1;
-            for(int i=0;i<n1;i++)
+            for (int i = 0; i < n1; i++)
             {
                 if (string.IsNullOrEmpty(DataGrid_DanhSachGheP2.Rows[i].Cells[0].Value.ToString()))
                 {
@@ -469,7 +652,7 @@ namespace Flight.GUI
                     return false;
                 }
             }
-            for(int i=0;i<n2;i++)
+            for (int i = 0; i < n2; i++)
             {
                 if (string.IsNullOrEmpty(DataGrid_SanBayTrungGianP2.Rows[i].Cells[1].Value.ToString()))
                 {
@@ -492,7 +675,6 @@ namespace Flight.GUI
             }
             return true;
         }
-
         private void DataGrid_DanhSachChuyenBay_CurrentCellChanged(object sender, EventArgs e)
         {
             try

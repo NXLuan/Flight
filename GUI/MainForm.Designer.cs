@@ -38,8 +38,8 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnLeft = new System.Windows.Forms.Panel();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.pnFunction = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
             this.pnSelect = new System.Windows.Forms.Panel();
             this.btReservate = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btFlightSearch = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -53,12 +53,11 @@
             this.btLogin = new Bunifu.Framework.UI.BunifuThinButton2();
             this.pnRight = new System.Windows.Forms.Panel();
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.pnTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnLeft.SuspendLayout();
-            this.panel6.SuspendLayout();
+            this.pnFunction.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -173,7 +172,6 @@
             this.pnLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(57)))), ((int)(((byte)(66)))));
             this.pnLeft.Controls.Add(this.richTextBox1);
             this.pnLeft.Controls.Add(this.pnFunction);
-            this.pnLeft.Controls.Add(this.panel6);
             this.pnLeft.Controls.Add(this.panel3);
             this.pnLeft.Controls.Add(this.panel1);
             this.pnLeft.Dock = System.Windows.Forms.DockStyle.Left;
@@ -182,24 +180,30 @@
             this.pnLeft.Size = new System.Drawing.Size(272, 726);
             this.pnLeft.TabIndex = 1;
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(57)))), ((int)(((byte)(66)))));
+            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.richTextBox1.Font = new System.Drawing.Font("Segoe UI", 10.15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox1.ForeColor = System.Drawing.Color.DimGray;
+            this.richTextBox1.Location = new System.Drawing.Point(0, 572);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(272, 154);
+            this.richTextBox1.TabIndex = 10;
+            this.richTextBox1.Text = "      Flight Project\n      \n      Nguyến Xuân Luân\n      Nguyễn Hữu Hiếu\n      Ph" +
+    "an Đức Cường\n      Trương Nhật Tiến";
+            // 
             // pnFunction
             // 
+            this.pnFunction.Controls.Add(this.pnSelect);
+            this.pnFunction.Controls.Add(this.btReservate);
+            this.pnFunction.Controls.Add(this.btFlightSearch);
             this.pnFunction.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnFunction.Location = new System.Drawing.Point(0, 303);
+            this.pnFunction.Location = new System.Drawing.Point(0, 199);
             this.pnFunction.Name = "pnFunction";
-            this.pnFunction.Size = new System.Drawing.Size(272, 156);
-            this.pnFunction.TabIndex = 9;
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.pnSelect);
-            this.panel6.Controls.Add(this.btReservate);
-            this.panel6.Controls.Add(this.btFlightSearch);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel6.Location = new System.Drawing.Point(0, 199);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(272, 104);
-            this.panel6.TabIndex = 8;
+            this.pnFunction.Size = new System.Drawing.Size(272, 265);
+            this.pnFunction.TabIndex = 8;
             // 
             // pnSelect
             // 
@@ -219,6 +223,7 @@
             this.btReservate.ButtonText = "   LẬP PHIẾU ĐẶT CHỖ";
             this.btReservate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btReservate.DisabledColor = System.Drawing.Color.Gray;
+            this.btReservate.Dock = System.Windows.Forms.DockStyle.Top;
             this.btReservate.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btReservate.Iconcolor = System.Drawing.Color.Transparent;
             this.btReservate.Iconimage = ((System.Drawing.Image)(resources.GetObject("btReservate.Iconimage")));
@@ -400,20 +405,6 @@
             this.bunifuDragControl1.TargetControl = this.pnTop;
             this.bunifuDragControl1.Vertical = true;
             // 
-            // richTextBox1
-            // 
-            this.richTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(57)))), ((int)(((byte)(66)))));
-            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.richTextBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox1.ForeColor = System.Drawing.Color.DimGray;
-            this.richTextBox1.Location = new System.Drawing.Point(0, 572);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(272, 154);
-            this.richTextBox1.TabIndex = 10;
-            this.richTextBox1.Text = "      Flight Project\n      \n      Nguyến Xuân Luân\n      Nguyễn Hữu Hiếu\n      Ph" +
-    "an Đức Cường\n      Trương Nhật Tiến";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -432,7 +423,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnLeft.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
+            this.pnFunction.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
@@ -460,7 +451,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label lbFormName;
         private System.Windows.Forms.Panel pnSelect;
         private System.Windows.Forms.Panel pnFunction;

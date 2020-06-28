@@ -28,6 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReservateForm));
+            Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties5 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties6 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties7 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
@@ -41,12 +46,8 @@
             Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties15 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties16 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
             Utilities.BunifuPages.BunifuAnimatorNS.Animation animation1 = new Utilities.BunifuPages.BunifuAnimatorNS.Animation();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReservateForm));
-            Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tbEmail = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
             this.lbGiaTien = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btSelectFlight = new Bunifu.Framework.UI.BunifuThinButton2();
@@ -71,7 +72,6 @@
             this.btSelect = new System.Windows.Forms.Button();
             this.lbNotify1 = new System.Windows.Forms.Label();
             this.btReturn = new Bunifu.Framework.UI.BunifuImageButton();
-            this.tbEmail = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.Page.SuspendLayout();
@@ -104,6 +104,79 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(940, 414);
             this.panel1.TabIndex = 0;
+            // 
+            // tbEmail
+            // 
+            this.tbEmail.AcceptsReturn = false;
+            this.tbEmail.AcceptsTab = false;
+            this.tbEmail.AnimationSpeed = 200;
+            this.tbEmail.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
+            this.tbEmail.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
+            this.tbEmail.BackColor = System.Drawing.Color.Transparent;
+            this.tbEmail.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tbEmail.BackgroundImage")));
+            this.tbEmail.BorderColorActive = System.Drawing.Color.DodgerBlue;
+            this.tbEmail.BorderColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.tbEmail.BorderColorHover = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            this.tbEmail.BorderColorIdle = System.Drawing.Color.Silver;
+            this.tbEmail.BorderRadius = 35;
+            this.tbEmail.BorderThickness = 0;
+            this.tbEmail.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.tbEmail.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbEmail.DefaultFont = new System.Drawing.Font("Segoe UI Semibold", 9.75F);
+            this.tbEmail.DefaultText = "";
+            this.tbEmail.FillColor = System.Drawing.Color.White;
+            this.tbEmail.HideSelection = true;
+            this.tbEmail.IconLeft = null;
+            this.tbEmail.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbEmail.IconPadding = 10;
+            this.tbEmail.IconRight = null;
+            this.tbEmail.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbEmail.Lines = new string[0];
+            this.tbEmail.Location = new System.Drawing.Point(580, 245);
+            this.tbEmail.MaxLength = 32767;
+            this.tbEmail.MinimumSize = new System.Drawing.Size(100, 35);
+            this.tbEmail.Modified = false;
+            this.tbEmail.Multiline = false;
+            this.tbEmail.Name = "tbEmail";
+            stateProperties1.BorderColor = System.Drawing.Color.DodgerBlue;
+            stateProperties1.FillColor = System.Drawing.Color.Empty;
+            stateProperties1.ForeColor = System.Drawing.Color.Empty;
+            stateProperties1.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.tbEmail.OnActiveState = stateProperties1;
+            stateProperties2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            stateProperties2.FillColor = System.Drawing.Color.White;
+            stateProperties2.ForeColor = System.Drawing.Color.Empty;
+            stateProperties2.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.tbEmail.OnDisabledState = stateProperties2;
+            stateProperties3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            stateProperties3.FillColor = System.Drawing.Color.Empty;
+            stateProperties3.ForeColor = System.Drawing.Color.Empty;
+            stateProperties3.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.tbEmail.OnHoverState = stateProperties3;
+            stateProperties4.BorderColor = System.Drawing.Color.Silver;
+            stateProperties4.FillColor = System.Drawing.Color.White;
+            stateProperties4.ForeColor = System.Drawing.Color.Empty;
+            stateProperties4.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.tbEmail.OnIdleState = stateProperties4;
+            this.tbEmail.PasswordChar = '\0';
+            this.tbEmail.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.tbEmail.PlaceholderText = "Email";
+            this.tbEmail.ReadOnly = false;
+            this.tbEmail.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.tbEmail.SelectedText = "";
+            this.tbEmail.SelectionLength = 0;
+            this.tbEmail.SelectionStart = 0;
+            this.tbEmail.ShortcutsEnabled = true;
+            this.tbEmail.Size = new System.Drawing.Size(261, 43);
+            this.tbEmail.Style = Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox._Style.Bunifu;
+            this.tbEmail.TabIndex = 5;
+            this.tbEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.tbEmail.TextMarginBottom = 0;
+            this.tbEmail.TextMarginLeft = 5;
+            this.tbEmail.TextMarginTop = 0;
+            this.tbEmail.TextPlaceholder = "Email";
+            this.tbEmail.UseSystemPasswordChar = false;
+            this.tbEmail.WordWrap = true;
             // 
             // lbGiaTien
             // 
@@ -240,9 +313,9 @@
             this.lbDonVi.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbDonVi.Location = new System.Drawing.Point(237, 245);
             this.lbDonVi.Name = "lbDonVi";
-            this.lbDonVi.Size = new System.Drawing.Size(50, 23);
+            this.lbDonVi.Size = new System.Drawing.Size(46, 23);
             this.lbDonVi.TabIndex = 15;
-            this.lbDonVi.Text = "đồng";
+            this.lbDonVi.Text = "VND";
             // 
             // label3
             // 
@@ -615,79 +688,6 @@
             this.btReturn.TabStop = false;
             this.btReturn.Zoom = 10;
             this.btReturn.Click += new System.EventHandler(this.btReturn_Click);
-            // 
-            // tbEmail
-            // 
-            this.tbEmail.AcceptsReturn = false;
-            this.tbEmail.AcceptsTab = false;
-            this.tbEmail.AnimationSpeed = 200;
-            this.tbEmail.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
-            this.tbEmail.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
-            this.tbEmail.BackColor = System.Drawing.Color.Transparent;
-            this.tbEmail.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tbEmail.BackgroundImage")));
-            this.tbEmail.BorderColorActive = System.Drawing.Color.DodgerBlue;
-            this.tbEmail.BorderColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.tbEmail.BorderColorHover = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            this.tbEmail.BorderColorIdle = System.Drawing.Color.Silver;
-            this.tbEmail.BorderRadius = 35;
-            this.tbEmail.BorderThickness = 0;
-            this.tbEmail.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.tbEmail.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.tbEmail.DefaultFont = new System.Drawing.Font("Segoe UI Semibold", 9.75F);
-            this.tbEmail.DefaultText = "";
-            this.tbEmail.FillColor = System.Drawing.Color.White;
-            this.tbEmail.HideSelection = true;
-            this.tbEmail.IconLeft = null;
-            this.tbEmail.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
-            this.tbEmail.IconPadding = 10;
-            this.tbEmail.IconRight = null;
-            this.tbEmail.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
-            this.tbEmail.Lines = new string[0];
-            this.tbEmail.Location = new System.Drawing.Point(580, 245);
-            this.tbEmail.MaxLength = 32767;
-            this.tbEmail.MinimumSize = new System.Drawing.Size(100, 35);
-            this.tbEmail.Modified = false;
-            this.tbEmail.Multiline = false;
-            this.tbEmail.Name = "tbEmail";
-            stateProperties1.BorderColor = System.Drawing.Color.DodgerBlue;
-            stateProperties1.FillColor = System.Drawing.Color.Empty;
-            stateProperties1.ForeColor = System.Drawing.Color.Empty;
-            stateProperties1.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.tbEmail.OnActiveState = stateProperties1;
-            stateProperties2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            stateProperties2.FillColor = System.Drawing.Color.White;
-            stateProperties2.ForeColor = System.Drawing.Color.Empty;
-            stateProperties2.PlaceholderForeColor = System.Drawing.Color.Silver;
-            this.tbEmail.OnDisabledState = stateProperties2;
-            stateProperties3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            stateProperties3.FillColor = System.Drawing.Color.Empty;
-            stateProperties3.ForeColor = System.Drawing.Color.Empty;
-            stateProperties3.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.tbEmail.OnHoverState = stateProperties3;
-            stateProperties4.BorderColor = System.Drawing.Color.Silver;
-            stateProperties4.FillColor = System.Drawing.Color.White;
-            stateProperties4.ForeColor = System.Drawing.Color.Empty;
-            stateProperties4.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.tbEmail.OnIdleState = stateProperties4;
-            this.tbEmail.PasswordChar = '\0';
-            this.tbEmail.PlaceholderForeColor = System.Drawing.Color.Silver;
-            this.tbEmail.PlaceholderText = "Email";
-            this.tbEmail.ReadOnly = false;
-            this.tbEmail.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.tbEmail.SelectedText = "";
-            this.tbEmail.SelectionLength = 0;
-            this.tbEmail.SelectionStart = 0;
-            this.tbEmail.ShortcutsEnabled = true;
-            this.tbEmail.Size = new System.Drawing.Size(261, 43);
-            this.tbEmail.Style = Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox._Style.Bunifu;
-            this.tbEmail.TabIndex = 5;
-            this.tbEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.tbEmail.TextMarginBottom = 0;
-            this.tbEmail.TextMarginLeft = 5;
-            this.tbEmail.TextMarginTop = 0;
-            this.tbEmail.TextPlaceholder = "Email";
-            this.tbEmail.UseSystemPasswordChar = false;
-            this.tbEmail.WordWrap = true;
             // 
             // ReservateForm
             // 

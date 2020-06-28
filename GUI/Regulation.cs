@@ -21,6 +21,7 @@ namespace Flight.GUI
         string MaSanBay;
         int IndexDSV;
         string HangVe;
+        string[] tempThamSo = new string[6];
         public Regulation()
         {
             InitializeComponent();
@@ -56,17 +57,29 @@ namespace Flight.GUI
 
         private void lbThamSo_Click(object sender, EventArgs e)
         {
+            if (lbThamSo.ForeColor == Color.Black) return;
+            lbThamSo.ForeColor = Color.Black;
+            lbSanBay.ForeColor = Color.Gray;
+            lbHangVe.ForeColor = Color.Gray;
             ShowPageThamSo();
         }
 
         private void lbSanBay_Click(object sender, EventArgs e)
         {
+            if (lbSanBay.ForeColor == Color.Black) return;
+            lbThamSo.ForeColor = Color.Gray;
+            lbSanBay.ForeColor = Color.Black;
+            lbHangVe.ForeColor = Color.Gray;
             ShowPageSanBay();
             GetDataSanBay();
 
         }
         private void lbHangVe_Click(object sender, EventArgs e)
         {
+            if (lbHangVe.ForeColor == Color.Black) return;
+            lbThamSo.ForeColor = Color.Gray;
+            lbSanBay.ForeColor = Color.Gray;
+            lbHangVe.ForeColor = Color.Black;
             ShowPageHangVe();
             GetDataDanhSachVe();
         }
@@ -96,6 +109,26 @@ namespace Flight.GUI
                 }
             }
         }
+        public void SetTempThamSo()
+        {
+            tempThamSo[0] = txtTGBay.Text;
+            tempThamSo[1] = txtSLSanBay.Text;
+            tempThamSo[2] = txtTGDMin.Text;
+            tempThamSo[3] = txtTGDMax.Text;
+            tempThamSo[4] = txtSoNgay.Text;
+            if (checkboxHuy.Checked)
+                tempThamSo[5] = "true";
+            else tempThamSo[5] = "false";
+        }
+        public void SetDataTextBox()
+        {
+            txtTGBay.Text = tempThamSo[0];
+            txtSLSanBay.Text = tempThamSo[1];
+            txtTGDMin.Text = tempThamSo[2];
+            txtTGDMax.Text = tempThamSo[3];
+            txtSoNgay.Text = tempThamSo[4];
+            checkboxHuy.Checked = bool.Parse(tempThamSo[5]);
+        }
         public void SetEnablePageThamSo(bool status)
         {
             txtTGBay.Enabled = status;
@@ -106,6 +139,7 @@ namespace Flight.GUI
             checkboxHuy.Enabled = status;
             btnSuaTS.Enabled = !status;
             btnLuuTS.Enabled = status;
+            btnHuyTS.Enabled = status;
         }
         public bool CheckDataThamSo()
         {
@@ -145,7 +179,7 @@ namespace Flight.GUI
             {
                 txtSoNgay.Focus();
                 lbTBpanelTS.Visible = true;
-                lbTBpanelTS.Text = "Bạn chưa nhập số ngày cho đặt vé chậm nhất";
+                lbTBpanelTS.Text = "Bạn chưa nhập thời gian dừng tối thiểu";
                 lbTBpanelTS.ForeColor = Color.Red;
                 return false;
             }
@@ -186,10 +220,18 @@ namespace Flight.GUI
         }
         private void btnSua_Click(object sender, EventArgs e)
         {
+            btnHuyTS.Visible = true;
             SetEnablePageThamSo(true);
+            SetTempThamSo();
             lbTBpanelTS.Visible = false;
         }
-
+        private void btnHuy_Click(object sender, EventArgs e)
+        {
+            btnHuyTS.Visible = false;
+            SetEnablePageThamSo(false);
+            SetDataTextBox();
+            lbTBpanelTS.Visible = false;
+        }
         private void txt_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!(char.IsNumber(e.KeyChar) || char.IsControl(e.KeyChar)))
@@ -246,6 +288,7 @@ namespace Flight.GUI
                         listViewSB.Items.Add(new ListViewItem(strArray));
                 }
             }
+            lbTBThemSB.Visible = false;
         }
         public bool CheckTrungListViewSB(string MaSB)
         {
@@ -338,6 +381,13 @@ namespace Flight.GUI
         private void btnLuupanel_Click(object sender, EventArgs e)
         {
             int n = listViewSB.Items.Count;
+            if (n == 0)
+            {
+                lbTBThemSB.Visible = true;
+                lbTBThemSB.ForeColor = Color.Red;
+                lbTBThemSB.Text = "Vui lòng thêm ít nhất một sân bay";
+                return;
+            }
             SanBay[] sanbay = new SanBay[n];
             for (int i = 0; i < n; i++)
             {
@@ -504,6 +554,7 @@ namespace Flight.GUI
                         listViewVe.Items.Add(new ListViewItem(strArray));
                 }
             }
+            lbThemDSV.Visible = false;
         }
 
         public bool CheckTrungListViewHangVe(string HangVe)
@@ -597,6 +648,13 @@ namespace Flight.GUI
         private void btnLuupanelVe_Click(object sender, EventArgs e)
         {
             int n = listViewVe.Items.Count;
+            if (n == 0)
+            {
+                lbThemDSV.Visible = true;
+                lbThemDSV.ForeColor = Color.Red;
+                lbThemDSV.Text = "Vui lòng thêm ít nhất một hạng vé";
+                return;
+            }
             DanhSachVe[] dsv = new DanhSachVe[n];
             for (int i = 0; i < n; i++)
             {
@@ -618,7 +676,7 @@ namespace Flight.GUI
         }
         private void txtTiLe_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsDigit(e.KeyChar) &&  !char.IsControl(e.KeyChar) && (e.KeyChar != '.'))
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && (e.KeyChar != '.'))
             {
                 e.Handled = true;
             }
@@ -658,7 +716,7 @@ namespace Flight.GUI
                 lbThemDSV.Text = "Bạn chưa nhập Tỉ lệ";
                 return false;
             }
-            lbThemDSV.ForeColor = Color.FromArgb(8, 186, 29);
+            lbThemDSV.ForeColor = Color.Green;
             return true;
         }
         private void dgvDanhSachVe_CellContentClick(object sender, DataGridViewCellEventArgs e)

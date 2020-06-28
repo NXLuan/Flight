@@ -36,6 +36,9 @@
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties5 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties6 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -45,12 +48,13 @@
             this.Page = new Bunifu.UI.WinForms.BunifuPages();
             this.tabThamSo = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnHuyTS = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.btnSuaTS = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.label12 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.lbTBpanelTS = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnSuaTS = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.btnLuuTS = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.txtSoNgay = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -96,6 +100,10 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.lbTBpanelDSV = new System.Windows.Forms.Label();
             this.dgvDanhSachVe = new Bunifu.Framework.UI.BunifuCustomDataGrid();
+            this.dgvcolHangVe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcolTiLe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEditHV = new System.Windows.Forms.DataGridViewImageColumn();
+            this.colDeleteHV = new System.Windows.Forms.DataGridViewImageColumn();
             this.label19 = new System.Windows.Forms.Label();
             this.pnThemHangVe = new System.Windows.Forms.Panel();
             this.txtTiLe = new System.Windows.Forms.TextBox();
@@ -121,10 +129,6 @@
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn4 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dgvcolHangVe = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcolTiLe = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colEditHV = new System.Windows.Forms.DataGridViewImageColumn();
-            this.colDeleteHV = new System.Windows.Forms.DataGridViewImageColumn();
             this.Page.SuspendLayout();
             this.tabThamSo.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -144,18 +148,20 @@
             // 
             this.Page.Alignment = System.Windows.Forms.TabAlignment.Bottom;
             this.Page.AllowTransitions = false;
+            this.Page.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Page.Controls.Add(this.tabThamSo);
             this.Page.Controls.Add(this.tabSanBay);
             this.Page.Controls.Add(this.tabHangVe);
-            this.Page.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.Page.Location = new System.Drawing.Point(0, 55);
             this.Page.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Page.Multiline = true;
             this.Page.Name = "Page";
-            this.Page.Page = this.tabHangVe;
-            this.Page.PageIndex = 2;
-            this.Page.PageName = "tabHangVe";
-            this.Page.PageTitle = "tabHangVe";
+            this.Page.Page = this.tabSanBay;
+            this.Page.PageIndex = 1;
+            this.Page.PageName = "tabSanBay";
+            this.Page.PageTitle = "tabSanBay";
             this.Page.SelectedIndex = 0;
             this.Page.Size = new System.Drawing.Size(1028, 671);
             this.Page.TabIndex = 0;
@@ -191,15 +197,14 @@
             // 
             // panel2
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.btnHuyTS);
+            this.panel2.Controls.Add(this.btnSuaTS);
             this.panel2.Controls.Add(this.label12);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.lbTBpanelTS);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.btnSuaTS);
             this.panel2.Controls.Add(this.btnLuuTS);
             this.panel2.Controls.Add(this.txtSoNgay);
             this.panel2.Controls.Add(this.label2);
@@ -214,66 +219,78 @@
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.checkboxHuy);
-            this.panel2.Location = new System.Drawing.Point(19, 1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(979, 573);
+            this.panel2.Size = new System.Drawing.Size(1014, 573);
             this.panel2.TabIndex = 48;
             // 
-            // label12
+            // btnHuyTS
             // 
-            this.label12.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(587, 317);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(204, 23);
-            this.label12.TabIndex = 48;
-            this.label12.Text = "ngày trước khi khởi hành";
-            // 
-            // label4
-            // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(243, 109);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(192, 23);
-            this.label4.TabIndex = 24;
-            this.label4.Text = "Thời gian bay tối thiểu: ";
-            // 
-            // label5
-            // 
-            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(131)))), ((int)(((byte)(149)))));
-            this.label5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(0, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(979, 60);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Các tham số";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lbTBpanelTS
-            // 
-            this.lbTBpanelTS.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lbTBpanelTS.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTBpanelTS.Location = new System.Drawing.Point(5, 448);
-            this.lbTBpanelTS.Name = "lbTBpanelTS";
-            this.lbTBpanelTS.Size = new System.Drawing.Size(966, 28);
-            this.lbTBpanelTS.TabIndex = 47;
-            this.lbTBpanelTS.Text = "Thông báo";
-            this.lbTBpanelTS.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lbTBpanelTS.Visible = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(-49, 108);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 23);
-            this.label1.TabIndex = 25;
+            this.btnHuyTS.AllowToggling = false;
+            this.btnHuyTS.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnHuyTS.AnimationSpeed = 200;
+            this.btnHuyTS.AutoGenerateColors = false;
+            this.btnHuyTS.BackColor = System.Drawing.Color.Transparent;
+            this.btnHuyTS.BackColor1 = System.Drawing.Color.DodgerBlue;
+            this.btnHuyTS.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnHuyTS.BackgroundImage")));
+            this.btnHuyTS.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnHuyTS.ButtonText = "Hủy";
+            this.btnHuyTS.ButtonTextMarginLeft = 0;
+            this.btnHuyTS.ColorContrastOnClick = 45;
+            this.btnHuyTS.ColorContrastOnHover = 45;
+            this.btnHuyTS.Cursor = System.Windows.Forms.Cursors.Hand;
+            borderEdges1.BottomLeft = true;
+            borderEdges1.BottomRight = true;
+            borderEdges1.TopLeft = true;
+            borderEdges1.TopRight = true;
+            this.btnHuyTS.CustomizableEdges = borderEdges1;
+            this.btnHuyTS.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnHuyTS.DisabledBorderColor = System.Drawing.Color.Empty;
+            this.btnHuyTS.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnHuyTS.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnHuyTS.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
+            this.btnHuyTS.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F);
+            this.btnHuyTS.ForeColor = System.Drawing.Color.White;
+            this.btnHuyTS.IconLeftCursor = System.Windows.Forms.Cursors.Hand;
+            this.btnHuyTS.IconMarginLeft = 11;
+            this.btnHuyTS.IconPadding = 10;
+            this.btnHuyTS.IconRightCursor = System.Windows.Forms.Cursors.Hand;
+            this.btnHuyTS.IdleBorderColor = System.Drawing.Color.DodgerBlue;
+            this.btnHuyTS.IdleBorderRadius = 3;
+            this.btnHuyTS.IdleBorderThickness = 1;
+            this.btnHuyTS.IdleFillColor = System.Drawing.Color.DodgerBlue;
+            this.btnHuyTS.IdleIconLeftImage = null;
+            this.btnHuyTS.IdleIconRightImage = null;
+            this.btnHuyTS.IndicateFocus = false;
+            this.btnHuyTS.Location = new System.Drawing.Point(300, 500);
+            this.btnHuyTS.Margin = new System.Windows.Forms.Padding(4);
+            this.btnHuyTS.Name = "btnHuyTS";
+            stateProperties1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            stateProperties1.BorderRadius = 3;
+            stateProperties1.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            stateProperties1.BorderThickness = 1;
+            stateProperties1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            stateProperties1.ForeColor = System.Drawing.Color.White;
+            stateProperties1.IconLeftImage = null;
+            stateProperties1.IconRightImage = null;
+            this.btnHuyTS.onHoverState = stateProperties1;
+            stateProperties2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            stateProperties2.BorderRadius = 3;
+            stateProperties2.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            stateProperties2.BorderThickness = 1;
+            stateProperties2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            stateProperties2.ForeColor = System.Drawing.Color.White;
+            stateProperties2.IconLeftImage = null;
+            stateProperties2.IconRightImage = null;
+            this.btnHuyTS.OnPressedState = stateProperties2;
+            this.btnHuyTS.Size = new System.Drawing.Size(124, 39);
+            this.btnHuyTS.TabIndex = 38;
+            this.btnHuyTS.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnHuyTS.TextMarginLeft = 0;
+            this.btnHuyTS.UseDefaultRadiusAndThickness = true;
+            this.btnHuyTS.Visible = false;
+            this.btnHuyTS.Click += new System.EventHandler(this.btnHuy_Click);
             // 
             // btnSuaTS
             // 
@@ -290,11 +307,11 @@
             this.btnSuaTS.ColorContrastOnClick = 45;
             this.btnSuaTS.ColorContrastOnHover = 45;
             this.btnSuaTS.Cursor = System.Windows.Forms.Cursors.Hand;
-            borderEdges1.BottomLeft = true;
-            borderEdges1.BottomRight = true;
-            borderEdges1.TopLeft = true;
-            borderEdges1.TopRight = true;
-            this.btnSuaTS.CustomizableEdges = borderEdges1;
+            borderEdges2.BottomLeft = true;
+            borderEdges2.BottomRight = true;
+            borderEdges2.TopLeft = true;
+            borderEdges2.TopRight = true;
+            this.btnSuaTS.CustomizableEdges = borderEdges2;
             this.btnSuaTS.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnSuaTS.DisabledBorderColor = System.Drawing.Color.Empty;
             this.btnSuaTS.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -313,33 +330,89 @@
             this.btnSuaTS.IdleIconLeftImage = null;
             this.btnSuaTS.IdleIconRightImage = null;
             this.btnSuaTS.IndicateFocus = false;
-            this.btnSuaTS.Location = new System.Drawing.Point(267, 500);
+            this.btnSuaTS.Location = new System.Drawing.Point(300, 500);
             this.btnSuaTS.Margin = new System.Windows.Forms.Padding(4);
             this.btnSuaTS.Name = "btnSuaTS";
-            stateProperties1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            stateProperties1.BorderRadius = 3;
-            stateProperties1.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            stateProperties1.BorderThickness = 1;
-            stateProperties1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            stateProperties1.ForeColor = System.Drawing.Color.White;
-            stateProperties1.IconLeftImage = null;
-            stateProperties1.IconRightImage = null;
-            this.btnSuaTS.onHoverState = stateProperties1;
-            stateProperties2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
-            stateProperties2.BorderRadius = 3;
-            stateProperties2.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            stateProperties2.BorderThickness = 1;
-            stateProperties2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
-            stateProperties2.ForeColor = System.Drawing.Color.White;
-            stateProperties2.IconLeftImage = null;
-            stateProperties2.IconRightImage = null;
-            this.btnSuaTS.OnPressedState = stateProperties2;
+            stateProperties3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            stateProperties3.BorderRadius = 3;
+            stateProperties3.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            stateProperties3.BorderThickness = 1;
+            stateProperties3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            stateProperties3.ForeColor = System.Drawing.Color.White;
+            stateProperties3.IconLeftImage = null;
+            stateProperties3.IconRightImage = null;
+            this.btnSuaTS.onHoverState = stateProperties3;
+            stateProperties4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            stateProperties4.BorderRadius = 3;
+            stateProperties4.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            stateProperties4.BorderThickness = 1;
+            stateProperties4.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            stateProperties4.ForeColor = System.Drawing.Color.White;
+            stateProperties4.IconLeftImage = null;
+            stateProperties4.IconRightImage = null;
+            this.btnSuaTS.OnPressedState = stateProperties4;
             this.btnSuaTS.Size = new System.Drawing.Size(124, 39);
             this.btnSuaTS.TabIndex = 39;
             this.btnSuaTS.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnSuaTS.TextMarginLeft = 0;
             this.btnSuaTS.UseDefaultRadiusAndThickness = true;
             this.btnSuaTS.Click += new System.EventHandler(this.btnSua_Click);
+            // 
+            // label12
+            // 
+            this.label12.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(605, 317);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(204, 23);
+            this.label12.TabIndex = 48;
+            this.label12.Text = "ngày trước khi khởi hành";
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(261, 109);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(192, 23);
+            this.label4.TabIndex = 24;
+            this.label4.Text = "Thời gian bay tối thiểu: ";
+            // 
+            // label5
+            // 
+            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(131)))), ((int)(((byte)(149)))));
+            this.label5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(0, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(1014, 60);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Các tham số";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbTBpanelTS
+            // 
+            this.lbTBpanelTS.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lbTBpanelTS.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTBpanelTS.Location = new System.Drawing.Point(23, 448);
+            this.lbTBpanelTS.Name = "lbTBpanelTS";
+            this.lbTBpanelTS.Size = new System.Drawing.Size(974, 28);
+            this.lbTBpanelTS.TabIndex = 47;
+            this.lbTBpanelTS.Text = "Thông báo";
+            this.lbTBpanelTS.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbTBpanelTS.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(-49, 108);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 23);
+            this.label1.TabIndex = 25;
             // 
             // btnLuuTS
             // 
@@ -356,11 +429,11 @@
             this.btnLuuTS.ColorContrastOnClick = 45;
             this.btnLuuTS.ColorContrastOnHover = 45;
             this.btnLuuTS.Cursor = System.Windows.Forms.Cursors.Hand;
-            borderEdges2.BottomLeft = true;
-            borderEdges2.BottomRight = true;
-            borderEdges2.TopLeft = true;
-            borderEdges2.TopRight = true;
-            this.btnLuuTS.CustomizableEdges = borderEdges2;
+            borderEdges3.BottomLeft = true;
+            borderEdges3.BottomRight = true;
+            borderEdges3.TopLeft = true;
+            borderEdges3.TopRight = true;
+            this.btnLuuTS.CustomizableEdges = borderEdges3;
             this.btnLuuTS.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnLuuTS.DisabledBorderColor = System.Drawing.Color.Empty;
             this.btnLuuTS.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -379,27 +452,27 @@
             this.btnLuuTS.IdleIconLeftImage = null;
             this.btnLuuTS.IdleIconRightImage = null;
             this.btnLuuTS.IndicateFocus = false;
-            this.btnLuuTS.Location = new System.Drawing.Point(591, 500);
+            this.btnLuuTS.Location = new System.Drawing.Point(609, 500);
             this.btnLuuTS.Margin = new System.Windows.Forms.Padding(4);
             this.btnLuuTS.Name = "btnLuuTS";
-            stateProperties3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            stateProperties3.BorderRadius = 3;
-            stateProperties3.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            stateProperties3.BorderThickness = 1;
-            stateProperties3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            stateProperties3.ForeColor = System.Drawing.Color.White;
-            stateProperties3.IconLeftImage = null;
-            stateProperties3.IconRightImage = null;
-            this.btnLuuTS.onHoverState = stateProperties3;
-            stateProperties4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
-            stateProperties4.BorderRadius = 3;
-            stateProperties4.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            stateProperties4.BorderThickness = 1;
-            stateProperties4.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
-            stateProperties4.ForeColor = System.Drawing.Color.White;
-            stateProperties4.IconLeftImage = null;
-            stateProperties4.IconRightImage = null;
-            this.btnLuuTS.OnPressedState = stateProperties4;
+            stateProperties5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            stateProperties5.BorderRadius = 3;
+            stateProperties5.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            stateProperties5.BorderThickness = 1;
+            stateProperties5.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            stateProperties5.ForeColor = System.Drawing.Color.White;
+            stateProperties5.IconLeftImage = null;
+            stateProperties5.IconRightImage = null;
+            this.btnLuuTS.onHoverState = stateProperties5;
+            stateProperties6.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            stateProperties6.BorderRadius = 3;
+            stateProperties6.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            stateProperties6.BorderThickness = 1;
+            stateProperties6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            stateProperties6.ForeColor = System.Drawing.Color.White;
+            stateProperties6.IconLeftImage = null;
+            stateProperties6.IconRightImage = null;
+            this.btnLuuTS.OnPressedState = stateProperties6;
             this.btnLuuTS.Size = new System.Drawing.Size(124, 39);
             this.btnLuuTS.TabIndex = 40;
             this.btnLuuTS.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -411,7 +484,7 @@
             // 
             this.txtSoNgay.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtSoNgay.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSoNgay.Location = new System.Drawing.Point(486, 314);
+            this.txtSoNgay.Location = new System.Drawing.Point(504, 314);
             this.txtSoNgay.Margin = new System.Windows.Forms.Padding(4);
             this.txtSoNgay.MaximumSize = new System.Drawing.Size(132, 122);
             this.txtSoNgay.MinimumSize = new System.Drawing.Size(92, 24);
@@ -428,7 +501,7 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(243, 171);
+            this.label2.Location = new System.Drawing.Point(261, 171);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(281, 23);
             this.label2.TabIndex = 26;
@@ -438,7 +511,7 @@
             // 
             this.txtTGDMax.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtTGDMax.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTGDMax.Location = new System.Drawing.Point(568, 239);
+            this.txtTGDMax.Location = new System.Drawing.Point(586, 239);
             this.txtTGDMax.Margin = new System.Windows.Forms.Padding(4);
             this.txtTGDMax.MaximumSize = new System.Drawing.Size(132, 122);
             this.txtTGDMax.MinimumSize = new System.Drawing.Size(92, 24);
@@ -455,7 +528,7 @@
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(243, 245);
+            this.label3.Location = new System.Drawing.Point(261, 245);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(163, 23);
             this.label3.TabIndex = 27;
@@ -465,7 +538,7 @@
             // 
             this.txtTGDMin.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtTGDMin.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTGDMin.Location = new System.Drawing.Point(423, 239);
+            this.txtTGDMin.Location = new System.Drawing.Point(441, 239);
             this.txtTGDMin.Margin = new System.Windows.Forms.Padding(4);
             this.txtTGDMin.MaximumSize = new System.Drawing.Size(132, 122);
             this.txtTGDMin.MinimumSize = new System.Drawing.Size(92, 24);
@@ -482,7 +555,7 @@
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(243, 317);
+            this.label6.Location = new System.Drawing.Point(261, 317);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(230, 23);
             this.label6.TabIndex = 28;
@@ -492,7 +565,7 @@
             // 
             this.txtSLSanBay.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtSLSanBay.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSLSanBay.Location = new System.Drawing.Point(560, 168);
+            this.txtSLSanBay.Location = new System.Drawing.Point(578, 168);
             this.txtSLSanBay.Margin = new System.Windows.Forms.Padding(4);
             this.txtSLSanBay.MaximumSize = new System.Drawing.Size(132, 122);
             this.txtSLSanBay.MinimumSize = new System.Drawing.Size(92, 24);
@@ -509,7 +582,7 @@
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(243, 396);
+            this.label7.Location = new System.Drawing.Point(261, 396);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(393, 23);
             this.label7.TabIndex = 29;
@@ -519,7 +592,7 @@
             // 
             this.txtTGBay.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtTGBay.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTGBay.Location = new System.Drawing.Point(458, 106);
+            this.txtTGBay.Location = new System.Drawing.Point(476, 106);
             this.txtTGBay.Margin = new System.Windows.Forms.Padding(4);
             this.txtTGBay.MaximumSize = new System.Drawing.Size(132, 122);
             this.txtTGBay.MinimumSize = new System.Drawing.Size(92, 24);
@@ -536,7 +609,7 @@
             this.label8.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(564, 109);
+            this.label8.Location = new System.Drawing.Point(582, 109);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(46, 23);
             this.label8.TabIndex = 30;
@@ -547,7 +620,7 @@
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(522, 242);
+            this.label9.Location = new System.Drawing.Point(540, 242);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(39, 23);
             this.label9.TabIndex = 31;
@@ -558,7 +631,7 @@
             this.label10.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(669, 242);
+            this.label10.Location = new System.Drawing.Point(687, 242);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(46, 23);
             this.label10.TabIndex = 32;
@@ -572,7 +645,7 @@
             this.checkboxHuy.Checked = true;
             this.checkboxHuy.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(205)))), ((int)(((byte)(117)))));
             this.checkboxHuy.ForeColor = System.Drawing.Color.White;
-            this.checkboxHuy.Location = new System.Drawing.Point(704, 396);
+            this.checkboxHuy.Location = new System.Drawing.Point(722, 396);
             this.checkboxHuy.Margin = new System.Windows.Forms.Padding(5);
             this.checkboxHuy.Name = "checkboxHuy";
             this.checkboxHuy.Size = new System.Drawing.Size(20, 20);
@@ -595,7 +668,8 @@
             // 
             // pnThemSB
             // 
-            this.pnThemSB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnThemSB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnThemSB.BackColor = System.Drawing.Color.White;
             this.pnThemSB.Controls.Add(this.lbTBThemSB);
             this.pnThemSB.Controls.Add(this.btnXoaSBpanel);
@@ -608,10 +682,10 @@
             this.pnThemSB.Controls.Add(this.label15);
             this.pnThemSB.Controls.Add(this.label14);
             this.pnThemSB.Controls.Add(this.label13);
-            this.pnThemSB.Location = new System.Drawing.Point(384, 86);
+            this.pnThemSB.Location = new System.Drawing.Point(375, 86);
             this.pnThemSB.Margin = new System.Windows.Forms.Padding(4);
             this.pnThemSB.Name = "pnThemSB";
-            this.pnThemSB.Size = new System.Drawing.Size(629, 511);
+            this.pnThemSB.Size = new System.Drawing.Size(636, 507);
             this.pnThemSB.TabIndex = 31;
             // 
             // lbTBThemSB
@@ -627,7 +701,7 @@
             // 
             // btnXoaSBpanel
             // 
-            this.btnXoaSBpanel.Location = new System.Drawing.Point(513, 324);
+            this.btnXoaSBpanel.Location = new System.Drawing.Point(516, 324);
             this.btnXoaSBpanel.Margin = new System.Windows.Forms.Padding(4);
             this.btnXoaSBpanel.Name = "btnXoaSBpanel";
             this.btnXoaSBpanel.Size = new System.Drawing.Size(100, 28);
@@ -638,7 +712,7 @@
             // 
             // btnThemSBpanel
             // 
-            this.btnThemSBpanel.Location = new System.Drawing.Point(513, 106);
+            this.btnThemSBpanel.Location = new System.Drawing.Point(516, 106);
             this.btnThemSBpanel.Margin = new System.Windows.Forms.Padding(4);
             this.btnThemSBpanel.Name = "btnThemSBpanel";
             this.btnThemSBpanel.Size = new System.Drawing.Size(100, 28);
@@ -678,13 +752,13 @@
             this.btnChonFileSB.ForeColor = System.Drawing.Color.White;
             this.btnChonFileSB.IdleBorderThickness = 1;
             this.btnChonFileSB.IdleCornerRadius = 5;
-            this.btnChonFileSB.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(156)))), ((int)(((byte)(225)))));
-            this.btnChonFileSB.IdleForecolor = System.Drawing.Color.White;
+            this.btnChonFileSB.IdleFillColor = System.Drawing.Color.White;
+            this.btnChonFileSB.IdleForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(156)))), ((int)(((byte)(225)))));
             this.btnChonFileSB.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(156)))), ((int)(((byte)(225)))));
             this.btnChonFileSB.Location = new System.Drawing.Point(8, 427);
             this.btnChonFileSB.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.btnChonFileSB.Name = "btnChonFileSB";
-            this.btnChonFileSB.Size = new System.Drawing.Size(107, 46);
+            this.btnChonFileSB.Size = new System.Drawing.Size(120, 53);
             this.btnChonFileSB.TabIndex = 35;
             this.btnChonFileSB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnChonFileSB.Click += new System.EventHandler(this.btnChonFileSB_Click);
@@ -707,10 +781,10 @@
             this.btnLuupanel.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(156)))), ((int)(((byte)(225)))));
             this.btnLuupanel.IdleForecolor = System.Drawing.Color.White;
             this.btnLuupanel.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(156)))), ((int)(((byte)(225)))));
-            this.btnLuupanel.Location = new System.Drawing.Point(385, 427);
+            this.btnLuupanel.Location = new System.Drawing.Point(374, 427);
             this.btnLuupanel.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.btnLuupanel.Name = "btnLuupanel";
-            this.btnLuupanel.Size = new System.Drawing.Size(107, 46);
+            this.btnLuupanel.Size = new System.Drawing.Size(118, 57);
             this.btnLuupanel.TabIndex = 34;
             this.btnLuupanel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnLuupanel.Click += new System.EventHandler(this.btnLuupanel_Click);
@@ -772,22 +846,23 @@
             this.label13.ForeColor = System.Drawing.Color.White;
             this.label13.Location = new System.Drawing.Point(0, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(629, 58);
+            this.label13.Size = new System.Drawing.Size(636, 60);
             this.label13.TabIndex = 5;
             this.label13.Text = "Thêm sân bay";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel4
             // 
-            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BackColor = System.Drawing.Color.White;
             this.panel4.Controls.Add(this.lbTBpanelSB);
             this.panel4.Controls.Add(this.dgvSanBay);
             this.panel4.Controls.Add(this.label11);
-            this.panel4.Location = new System.Drawing.Point(8, 86);
+            this.panel4.Location = new System.Drawing.Point(3, 86);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(360, 511);
+            this.panel4.Size = new System.Drawing.Size(365, 507);
             this.panel4.TabIndex = 47;
             // 
             // lbTBpanelSB
@@ -797,7 +872,7 @@
             this.lbTBpanelSB.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTBpanelSB.Location = new System.Drawing.Point(0, 69);
             this.lbTBpanelSB.Name = "lbTBpanelSB";
-            this.lbTBpanelSB.Size = new System.Drawing.Size(357, 23);
+            this.lbTBpanelSB.Size = new System.Drawing.Size(362, 23);
             this.lbTBpanelSB.TabIndex = 43;
             this.lbTBpanelSB.Text = "Thông báo";
             this.lbTBpanelSB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -809,6 +884,9 @@
             this.dgvSanBay.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(245)))), ((int)(((byte)(247)))));
             this.dgvSanBay.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvSanBay.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvSanBay.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvSanBay.BackgroundColor = System.Drawing.Color.White;
             this.dgvSanBay.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -837,19 +915,18 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvSanBay.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvSanBay.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvSanBay.DoubleBuffered = true;
             this.dgvSanBay.EnableHeadersVisualStyles = false;
             this.dgvSanBay.HeaderBgColor = System.Drawing.Color.White;
             this.dgvSanBay.HeaderForeColor = System.Drawing.Color.Black;
-            this.dgvSanBay.Location = new System.Drawing.Point(0, 109);
+            this.dgvSanBay.Location = new System.Drawing.Point(0, 105);
             this.dgvSanBay.Name = "dgvSanBay";
             this.dgvSanBay.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvSanBay.RowHeadersVisible = false;
             this.dgvSanBay.RowHeadersWidth = 51;
             this.dgvSanBay.RowTemplate.Height = 35;
             this.dgvSanBay.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvSanBay.Size = new System.Drawing.Size(360, 402);
+            this.dgvSanBay.Size = new System.Drawing.Size(365, 402);
             this.dgvSanBay.TabIndex = 46;
             this.dgvSanBay.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSanBay_CellContentClick);
             this.dgvSanBay.CurrentCellChanged += new System.EventHandler(this.dgvSanBay_CurrentCellChanged);
@@ -900,7 +977,7 @@
             this.label11.ForeColor = System.Drawing.Color.White;
             this.label11.Location = new System.Drawing.Point(0, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(360, 60);
+            this.label11.Size = new System.Drawing.Size(365, 60);
             this.label11.TabIndex = 45;
             this.label11.Text = "Danh sách sân bay";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -912,14 +989,14 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel6.Location = new System.Drawing.Point(3, 2);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1014, 66);
+            this.panel6.Size = new System.Drawing.Size(1014, 77);
             this.panel6.TabIndex = 48;
             // 
             // lbSLSB
             // 
             this.lbSLSB.AutoSize = true;
             this.lbSLSB.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSLSB.Location = new System.Drawing.Point(51, 19);
+            this.lbSLSB.Location = new System.Drawing.Point(43, 27);
             this.lbSLSB.Name = "lbSLSB";
             this.lbSLSB.Size = new System.Drawing.Size(209, 23);
             this.lbSLSB.TabIndex = 22;
@@ -946,14 +1023,14 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1012, 56);
+            this.panel1.Size = new System.Drawing.Size(1012, 69);
             this.panel1.TabIndex = 32;
             // 
             // lbSLVe
             // 
             this.lbSLVe.AutoSize = true;
             this.lbSLVe.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSLVe.Location = new System.Drawing.Point(37, 16);
+            this.lbSLVe.Location = new System.Drawing.Point(37, 23);
             this.lbSLVe.Name = "lbSLVe";
             this.lbSLVe.Size = new System.Drawing.Size(150, 23);
             this.lbSLVe.TabIndex = 22;
@@ -968,10 +1045,10 @@
             this.panel3.Controls.Add(this.lbTBpanelDSV);
             this.panel3.Controls.Add(this.dgvDanhSachVe);
             this.panel3.Controls.Add(this.label19);
-            this.panel3.Location = new System.Drawing.Point(8, 80);
+            this.panel3.Location = new System.Drawing.Point(4, 80);
             this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(368, 494);
+            this.panel3.Size = new System.Drawing.Size(372, 494);
             this.panel3.TabIndex = 8;
             // 
             // lbTBpanelDSV
@@ -982,7 +1059,7 @@
             this.lbTBpanelDSV.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(186)))), ((int)(((byte)(29)))));
             this.lbTBpanelDSV.Location = new System.Drawing.Point(3, 71);
             this.lbTBpanelDSV.Name = "lbTBpanelDSV";
-            this.lbTBpanelDSV.Size = new System.Drawing.Size(365, 23);
+            this.lbTBpanelDSV.Size = new System.Drawing.Size(369, 23);
             this.lbTBpanelDSV.TabIndex = 39;
             this.lbTBpanelDSV.Text = "Thông báo";
             this.lbTBpanelDSV.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1036,12 +1113,50 @@
             this.dgvDanhSachVe.RowHeadersWidth = 51;
             this.dgvDanhSachVe.RowTemplate.Height = 35;
             this.dgvDanhSachVe.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvDanhSachVe.Size = new System.Drawing.Size(368, 392);
+            this.dgvDanhSachVe.Size = new System.Drawing.Size(372, 390);
             this.dgvDanhSachVe.TabIndex = 7;
             this.dgvDanhSachVe.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSachVe_CellContentClick);
             this.dgvDanhSachVe.CurrentCellChanged += new System.EventHandler(this.dgvDanhSachVe_CurrentCellChanged);
             this.dgvDanhSachVe.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvDanhSachVe_EditingControlShowing);
             this.dgvDanhSachVe.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dgvDanhSachVe_KeyPress);
+            // 
+            // dgvcolHangVe
+            // 
+            this.dgvcolHangVe.DataPropertyName = "HangVe";
+            this.dgvcolHangVe.FillWeight = 166.2329F;
+            this.dgvcolHangVe.HeaderText = "Hạng vé";
+            this.dgvcolHangVe.MinimumWidth = 6;
+            this.dgvcolHangVe.Name = "dgvcolHangVe";
+            // 
+            // dgvcolTiLe
+            // 
+            this.dgvcolTiLe.DataPropertyName = "TiLe";
+            this.dgvcolTiLe.FillWeight = 166.2329F;
+            this.dgvcolTiLe.HeaderText = "Tỉ lệ";
+            this.dgvcolTiLe.MinimumWidth = 6;
+            this.dgvcolTiLe.Name = "dgvcolTiLe";
+            // 
+            // colEditHV
+            // 
+            this.colEditHV.FillWeight = 35.44871F;
+            this.colEditHV.HeaderText = "";
+            this.colEditHV.Image = global::Flight.Properties.Resources.edit;
+            this.colEditHV.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.colEditHV.MinimumWidth = 6;
+            this.colEditHV.Name = "colEditHV";
+            this.colEditHV.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colEditHV.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // colDeleteHV
+            // 
+            this.colDeleteHV.FillWeight = 32.08557F;
+            this.colDeleteHV.HeaderText = "";
+            this.colDeleteHV.Image = global::Flight.Properties.Resources.rubbish_bin;
+            this.colDeleteHV.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.colDeleteHV.MinimumWidth = 6;
+            this.colDeleteHV.Name = "colDeleteHV";
+            this.colDeleteHV.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colDeleteHV.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // label19
             // 
@@ -1051,14 +1166,15 @@
             this.label19.ForeColor = System.Drawing.Color.White;
             this.label19.Location = new System.Drawing.Point(0, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(368, 60);
+            this.label19.Size = new System.Drawing.Size(372, 60);
             this.label19.TabIndex = 4;
             this.label19.Text = "Danh sách hạng vé";
             this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pnThemHangVe
             // 
-            this.pnThemHangVe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnThemHangVe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnThemHangVe.BackColor = System.Drawing.Color.White;
             this.pnThemHangVe.Controls.Add(this.txtTiLe);
             this.pnThemHangVe.Controls.Add(this.txtHangVe);
@@ -1103,6 +1219,7 @@
             this.lbThemDSV.TabIndex = 38;
             this.lbThemDSV.Text = "Thông báo";
             this.lbThemDSV.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbThemDSV.Visible = false;
             // 
             // btnXoapanelVe
             // 
@@ -1141,13 +1258,13 @@
             this.btnChonFileDSV.ForeColor = System.Drawing.Color.White;
             this.btnChonFileDSV.IdleBorderThickness = 1;
             this.btnChonFileDSV.IdleCornerRadius = 5;
-            this.btnChonFileDSV.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(156)))), ((int)(((byte)(225)))));
-            this.btnChonFileDSV.IdleForecolor = System.Drawing.Color.White;
+            this.btnChonFileDSV.IdleFillColor = System.Drawing.Color.White;
+            this.btnChonFileDSV.IdleForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(156)))), ((int)(((byte)(225)))));
             this.btnChonFileDSV.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(156)))), ((int)(((byte)(225)))));
             this.btnChonFileDSV.Location = new System.Drawing.Point(8, 418);
             this.btnChonFileDSV.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.btnChonFileDSV.Name = "btnChonFileDSV";
-            this.btnChonFileDSV.Size = new System.Drawing.Size(107, 46);
+            this.btnChonFileDSV.Size = new System.Drawing.Size(119, 53);
             this.btnChonFileDSV.TabIndex = 35;
             this.btnChonFileDSV.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnChonFileDSV.Click += new System.EventHandler(this.btnChonFileDSV_Click);
@@ -1170,10 +1287,10 @@
             this.btnLuupanelVe.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(156)))), ((int)(((byte)(225)))));
             this.btnLuupanelVe.IdleForecolor = System.Drawing.Color.White;
             this.btnLuupanelVe.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(156)))), ((int)(((byte)(225)))));
-            this.btnLuupanelVe.Location = new System.Drawing.Point(385, 418);
+            this.btnLuupanelVe.Location = new System.Drawing.Point(380, 418);
             this.btnLuupanelVe.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.btnLuupanelVe.Name = "btnLuupanelVe";
-            this.btnLuupanelVe.Size = new System.Drawing.Size(107, 46);
+            this.btnLuupanelVe.Size = new System.Drawing.Size(112, 53);
             this.btnLuupanelVe.TabIndex = 34;
             this.btnLuupanelVe.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnLuupanelVe.Click += new System.EventHandler(this.btnLuupanelVe_Click);
@@ -1220,7 +1337,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(3, 75);
+            this.label17.Location = new System.Drawing.Point(8, 75);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(107, 23);
             this.label17.TabIndex = 23;
@@ -1264,6 +1381,7 @@
             // 
             this.lbSanBay.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lbSanBay.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSanBay.ForeColor = System.Drawing.Color.Gray;
             this.lbSanBay.Location = new System.Drawing.Point(127, 1);
             this.lbSanBay.Name = "lbSanBay";
             this.lbSanBay.Size = new System.Drawing.Size(132, 55);
@@ -1285,6 +1403,7 @@
             // 
             this.lbHangVe.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lbHangVe.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbHangVe.ForeColor = System.Drawing.Color.Gray;
             this.lbHangVe.Location = new System.Drawing.Point(251, 1);
             this.lbHangVe.Name = "lbHangVe";
             this.lbHangVe.Size = new System.Drawing.Size(132, 55);
@@ -1305,28 +1424,38 @@
             // dataGridViewImageColumn1
             // 
             this.dataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewImageColumn1.FillWeight = 32.08557F;
             this.dataGridViewImageColumn1.HeaderText = "";
             this.dataGridViewImageColumn1.Image = ((System.Drawing.Image)(resources.GetObject("dataGridViewImageColumn1.Image")));
+            this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.dataGridViewImageColumn1.MinimumWidth = 6;
             this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
             this.dataGridViewImageColumn1.ReadOnly = true;
+            this.dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewImageColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.dataGridViewImageColumn1.Width = 30;
             // 
             // dataGridViewImageColumn2
             // 
             this.dataGridViewImageColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewImageColumn2.FillWeight = 31.14812F;
             this.dataGridViewImageColumn2.HeaderText = "";
             this.dataGridViewImageColumn2.Image = ((System.Drawing.Image)(resources.GetObject("dataGridViewImageColumn2.Image")));
+            this.dataGridViewImageColumn2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.dataGridViewImageColumn2.MinimumWidth = 6;
             this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
             this.dataGridViewImageColumn2.ReadOnly = true;
+            this.dataGridViewImageColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewImageColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.dataGridViewImageColumn2.Width = 30;
             // 
             // dataGridViewImageColumn3
             // 
             this.dataGridViewImageColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewImageColumn3.FillWeight = 35.44871F;
             this.dataGridViewImageColumn3.HeaderText = "";
             this.dataGridViewImageColumn3.Image = ((System.Drawing.Image)(resources.GetObject("dataGridViewImageColumn3.Image")));
+            this.dataGridViewImageColumn3.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.dataGridViewImageColumn3.MinimumWidth = 6;
             this.dataGridViewImageColumn3.Name = "dataGridViewImageColumn3";
             this.dataGridViewImageColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -1336,51 +1465,15 @@
             // dataGridViewImageColumn4
             // 
             this.dataGridViewImageColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewImageColumn4.FillWeight = 32.08557F;
             this.dataGridViewImageColumn4.HeaderText = "";
             this.dataGridViewImageColumn4.Image = ((System.Drawing.Image)(resources.GetObject("dataGridViewImageColumn4.Image")));
+            this.dataGridViewImageColumn4.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.dataGridViewImageColumn4.MinimumWidth = 6;
             this.dataGridViewImageColumn4.Name = "dataGridViewImageColumn4";
             this.dataGridViewImageColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewImageColumn4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.dataGridViewImageColumn4.Width = 30;
-            // 
-            // dgvcolHangVe
-            // 
-            this.dgvcolHangVe.DataPropertyName = "HangVe";
-            this.dgvcolHangVe.FillWeight = 166.2329F;
-            this.dgvcolHangVe.HeaderText = "Hạng vé";
-            this.dgvcolHangVe.MinimumWidth = 6;
-            this.dgvcolHangVe.Name = "dgvcolHangVe";
-            // 
-            // dgvcolTiLe
-            // 
-            this.dgvcolTiLe.DataPropertyName = "TiLe";
-            this.dgvcolTiLe.FillWeight = 166.2329F;
-            this.dgvcolTiLe.HeaderText = "Tỉ lệ";
-            this.dgvcolTiLe.MinimumWidth = 6;
-            this.dgvcolTiLe.Name = "dgvcolTiLe";
-            // 
-            // colEditHV
-            // 
-            this.colEditHV.FillWeight = 35.44871F;
-            this.colEditHV.HeaderText = "";
-            this.colEditHV.Image = global::Flight.Properties.Resources.edit;
-            this.colEditHV.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.colEditHV.MinimumWidth = 6;
-            this.colEditHV.Name = "colEditHV";
-            this.colEditHV.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colEditHV.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // colDeleteHV
-            // 
-            this.colDeleteHV.FillWeight = 32.08557F;
-            this.colDeleteHV.HeaderText = "";
-            this.colDeleteHV.Image = global::Flight.Properties.Resources.rubbish_bin;
-            this.colDeleteHV.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.colDeleteHV.MinimumWidth = 6;
-            this.colDeleteHV.Name = "colDeleteHV";
-            this.colDeleteHV.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colDeleteHV.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // Regulation
             // 
@@ -1502,6 +1595,7 @@
         private System.Windows.Forms.DataGridViewImageColumn Column3;
         private System.Windows.Forms.DataGridViewImageColumn Column4;
         private System.Windows.Forms.Panel panel1;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnHuyTS;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvcolHangVe;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvcolTiLe;
         private System.Windows.Forms.DataGridViewImageColumn colEditHV;

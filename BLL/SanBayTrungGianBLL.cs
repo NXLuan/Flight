@@ -29,5 +29,9 @@ namespace Flight.BLL
         {
             return dalSBTG.UpdateSanBayTrungGian(tbSBTG);
         }
+        public bool CheckTrungSanBayTrungGian(string MaChuyenBay, string MaSanBay)
+        {
+            return dalSBTG.CheckTrungSanBayTrungGian(MaChuyenBay, MaSanBay);
+        }
     }
 }

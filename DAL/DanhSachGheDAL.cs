@@ -200,5 +200,17 @@ namespace Flight.DAL
                 }
             }
         }
+        public bool CheckTrungDanhSachGhe(string MaChuyenBay, string HangVe)
+        {
+            string sql = "select MaChuyenBay, HangVe from DANHSACHGHE where MaChuyenBay = '" + MaChuyenBay + "' and HangVe = '" + HangVe + "'";
+            SqlConnection con = dc.getConnect();
+            da = new SqlDataAdapter(sql, con);
+            con.Open();
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            con.Close();
+            if (dt.Rows.Count == 0) return false;
+            return true;
+        }
     }
 }

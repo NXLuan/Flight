@@ -123,5 +123,17 @@ namespace Flight.DAL
             }
             return true;
         }
+        public bool CheckTrungSanBayTrungGian(string MaChuyenBay, string MaSanBay)
+        {
+            string sql = "select MaChuyenBay, MaSanBay from SANBAYTRUNGGIAN where MaChuyenBay = '" + MaChuyenBay + "' and MaSanBay = '" + MaSanBay + "'";
+            SqlConnection con = dc.getConnect();
+            da = new SqlDataAdapter(sql, con);
+            con.Open();
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            con.Close();
+            if (dt.Rows.Count == 0) return false;
+            return true;
+        }
     }
 }
