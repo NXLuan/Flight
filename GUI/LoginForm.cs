@@ -14,6 +14,7 @@ namespace Flight.GUI
     public partial class LoginForm : Form
     {
         LoginBLL bllLogin;
+        public bool close;
         public LoginForm()
         {
             InitializeComponent();
@@ -24,6 +25,7 @@ namespace Flight.GUI
 
         private void btClose_Click(object sender, EventArgs e)
         {
+            close = true;
             this.Close();
         }
 
@@ -42,6 +44,11 @@ namespace Flight.GUI
             {
                 lbNotify.Visible = true;
             }
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+            close = false;
         }
     }
 }

@@ -43,5 +43,13 @@ namespace Flight.BLL
         {
             return dalPDC.getTrangThai(MaPhieuDatCho);
         }
+        public void HuyPhieuDatCho(string MaPhieuDatCho)
+        {
+            dalPDC.HuyPhieuDatCho(MaPhieuDatCho);
+        }
+        public DataTable getThongTinPhieuHuy()
+        {
+            return dalPDC.getThongTinPhieuHuy();
+        }
     }
 }

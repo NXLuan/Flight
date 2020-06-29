@@ -27,6 +27,8 @@ namespace Flight.GUI
             cbSanBayDen.DisplayMember = "TenSanBay";
             cbSanBayDi.DataSource = bllSB.getSanBay();
             cbSanBayDi.DisplayMember = "TenSanBay";
+
+            dpNgayGio.Value = DateTime.Now;
         }
 
         private void dpNgayGio_onValueChanged(object sender, EventArgs e)

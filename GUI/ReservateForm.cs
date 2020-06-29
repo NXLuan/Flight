@@ -69,6 +69,7 @@ namespace Flight.GUI
                 PDC.CMND = tbCMND.Text;
                 PDC.SDT = tbSDT.Text;
                 PDC.Email = tbEmail.Text;
+                PDC.NgayHuy = bllCB.getNgayKhoiHanh(tbMaChuyenBay.Text);
                 PDC.MaPhieuDatCho = bllPDC.getMaPhieuDatCho();
 
                 if (bllPDC.insertPhieuDatCho(PDC))
@@ -79,7 +80,7 @@ namespace Flight.GUI
                     DanhSachGhe DSG = new DanhSachGhe();
                     DSG.MaChuyenBay = PDC.MaChuyenBay;
                     DSG.HangVe = PDC.HangVe;
-                    DSG.SoGheTrong = bllDSG.getSoGheTrong(tbMaChuyenBay.Text, cbHangVe.Text);
+                    DSG.SoGheTrong = bllDSG.getSoGheTrong(tbMaChuyenBay.Text, cbHangVe.Text) - 1;
 
                     bllDSG.UpdateSoGheTrong(DSG);
                 }

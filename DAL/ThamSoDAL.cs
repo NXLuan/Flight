@@ -86,5 +86,13 @@ namespace Flight.DAL
                 }
             }
         }
+
+        public int getQuyDinhHuy()
+        {
+            string sql = "select GiaTri from THAMSO where TenThamSo = 'ChoPhepHuyPhieu'";
+            DataTable dt = GetData(sql);
+            if (dt == null) return -1;
+            return int.Parse(dt.Rows[0][0].ToString());
+        }
     }
 }

@@ -32,5 +32,9 @@ namespace Flight.BLL
         {
             return dalTS.setThamSo(thamso, n);
         }
+        public int getQuyDinhHuy()
+        {
+            return dalTS.getQuyDinhHuy();
+        }
     }
 }

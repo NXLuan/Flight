@@ -17,5 +17,6 @@ namespace Flight.DTO
         public string CMND;
         public string SDT;
         public string Email;
+        public DateTime NgayHuy;
     }
 }

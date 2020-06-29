@@ -46,8 +46,8 @@ namespace Flight.DAL
 
         public bool insertPhieuDatCho(PhieuDatCho PDC)
         {
-            string sql = "insert into PHIEUDATCHO(MaChuyenBay, HangVe, GiaTien, TrangThai, HoTen, CMND, SDT, Email)" +
-               " VALUES(@MaChuyenBay, @HangVe, @GiaTien, @TrangThai, @HoTen, @CMND, @SDT, @Email)";
+            string sql = "insert into PHIEUDATCHO(MaChuyenBay, HangVe, GiaTien, TrangThai, HoTen, CMND, SDT, Email, NgayHuy)" +
+               " VALUES(@MaChuyenBay, @HangVe, @GiaTien, @TrangThai, @HoTen, @CMND, @SDT, @Email, @NgayHuy)";
 
             using (SqlConnection con = dc.getConnect())
             {
@@ -63,6 +63,7 @@ namespace Flight.DAL
                     cmd.Parameters.Add("@CMND", SqlDbType.VarChar).Value = PDC.CMND;
                     cmd.Parameters.Add("@SDT", SqlDbType.VarChar).Value = PDC.SDT;
                     cmd.Parameters.Add("@Email", SqlDbType.VarChar).Value = PDC.Email;
+                    cmd.Parameters.Add("@NgayHuy", SqlDbType.Date).Value = PDC.NgayHuy;
                     cmd.ExecuteNonQuery();
                     con.Close();
 
@@ -87,7 +88,8 @@ namespace Flight.DAL
         }
         public DataTable getInforPhieuDatCho(string s)
         {
-            string sql = "select * from PHIEUDATCHO where MaPhieuDatCho like '" + s + "%' or " +
+            string sql = "select MaPhieuDatCho, MaChuyenBay, HangVe, GiaTien, TrangThai, HoTen, CMND, SDT, Email " +
+                "from PHIEUDATCHO where MaPhieuDatCho like '" + s + "%' or " +
                 "MaChuyenBay like '" + s + "%' or HoTen like '" + s + "%' or CMND like '" + s + "%' or " +
                 "SDT like '" + s + "%' or Email like '" + s + "%' or TrangThai = N'" + s + "'";
             return GetData(sql);
@@ -153,6 +155,31 @@ namespace Flight.DAL
             DataTable dt = GetData(sql);
             if (dt == null) return null;
             return dt.Rows[0][0].ToString();
+        }
+        public void HuyPhieuDatCho(string MaPhieuDatCho)
+        {
+            string sql = "update PHIEUDATCHO set TrangThai = N'Đã hủy' where MaPhieuDatCho = '" + MaPhieuDatCho + "'";
+
+            using (SqlConnection con = dc.getConnect())
+            {
+                try
+                {
+                    cmd = new SqlCommand(sql, con);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message, "Thông báo lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+        public DataTable getThongTinPhieuHuy()
+        {
+            string sql = "select MaPhieuDatCho, MaChuyenBay, HangVe from PHIEUDATCHO where TrangThai = N'Chưa xuất vé' and NgayHuy = '" + DateTime.Now.Date + "'";
+
+            return GetData(sql);
         }
     }
 }

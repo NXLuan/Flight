@@ -1,4 +1,6 @@
-﻿using Flight.GUI;
+﻿using Flight.BLL;
+using Flight.DTO;
+using Flight.GUI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -18,9 +21,20 @@ namespace Flight
         ManagerCotrol managerCotrol;
         StaffControl staffControl;
 
+        ThamSoBLL bllTS;
+        PhieuDatChoBLL bllPDC;
+        DanhSachGheBLL bllDSG;
+
+        Thread thread;
+        bool isRunning;
+
         public MainForm()
         {
             InitializeComponent();
+            bllTS = new ThamSoBLL();
+            bllPDC = new PhieuDatChoBLL();
+            bllDSG = new DanhSachGheBLL();
+
             pnSelect.Location = new Point(-1, -1);
             pnSelect.Visible = false;
         }
@@ -62,6 +76,7 @@ namespace Flight
             {
                 LoginForm loginForm = new LoginForm();
                 loginForm.ShowDialog();
+                if (loginForm.close) return;
                 if (nguoiDung == "AD")
                 {
                     adminControl = new AdminControl(pnSelect, pnRight, lbFormName);
@@ -119,6 +134,37 @@ namespace Flight
             pnRight.Controls.Add(Name);
             Name.Dock = DockStyle.Fill;
             Name.Show();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            if (thread == null)
+            {
+                isRunning = true;
+                thread = new Thread(procedure_UpdatePhieuDat);
+                thread.IsBackground = true;
+                thread.Start();
+            }
+        }
+        public void procedure_UpdatePhieuDat()
+        {
+            while (isRunning)
+            {
+                if (bllTS.getQuyDinhHuy() <= 0) return;
+                DataTable dt = bllPDC.getThongTinPhieuHuy();
+                if (dt == null) return;
+                for (int i =0; i< dt.Rows.Count; i++)
+                {
+                    DanhSachGhe DSG = new DanhSachGhe();
+                    DSG.MaChuyenBay = dt.Rows[i][1].ToString();
+                    DSG.HangVe = dt.Rows[i][2].ToString();
+                    DSG.SoGheTrong = bllDSG.getSoGheTrong(DSG.MaChuyenBay, DSG.HangVe) + 1;
+
+                    bllDSG.UpdateSoGheTrong(DSG);
+                    bllPDC.HuyPhieuDatCho(dt.Rows[i][0].ToString());
+                }
+                dt.Dispose();
+            }
         }
     }
 }

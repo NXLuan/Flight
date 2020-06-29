@@ -23,7 +23,6 @@ namespace Flight.BLL
         }
         public void UpdateSoGheTrong(DanhSachGhe DSG)
         {
-            DSG.SoGheTrong -= 1;
             dalDSG.UpdateSoGheTrong(DSG);
         }
         public DataTable getDanhSachGheChuyenBay(string MaChuyenBay)

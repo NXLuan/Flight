@@ -275,7 +275,7 @@ namespace Flight.GUI
                         DanhSachGhe DSG = new DanhSachGhe();
                         DSG.MaChuyenBay = VCB.MaChuyenBay;
                         DSG.HangVe = VCB.HangVe;
-                        DSG.SoGheTrong = bllDSG.getSoGheTrong(tbMaChuyenBay.Text, cbHangVe.Text);
+                        DSG.SoGheTrong = bllDSG.getSoGheTrong(tbMaChuyenBay.Text, cbHangVe.Text) - 1;
 
                         bllDSG.UpdateSoGheTrong(DSG);
                         tbMaChuyenBay.Text = "";
