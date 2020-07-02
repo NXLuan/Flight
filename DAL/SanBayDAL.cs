@@ -73,7 +73,7 @@ namespace Flight.DAL
                     {
                         MaSanBay = sanbay[i].MaSanBay;
                         TenSanBay = sanbay[i].TenSanBay;
-                        string sql = "insert into SANBAY values('" + MaSanBay + "','" + TenSanBay + "')";
+                        string sql = "insert into SANBAY values('" + MaSanBay + "', N'" + TenSanBay + "')";
                         cmd = new SqlCommand(sql, con);
                         cmd.ExecuteNonQuery();
                     }
@@ -133,7 +133,7 @@ namespace Flight.DAL
         }
         public bool UpdateSanBay(string MaSB, string TenSB)
         {
-            string sql = "update SANBAY set TenSanBay = '" + TenSB + "' where MaSanBay ='" + MaSB + "'";
+            string sql = "update SANBAY set TenSanBay = N'" + TenSB + "' where MaSanBay ='" + MaSB + "'";
             using (SqlConnection con = dc.getConnect())
             {
                 try

@@ -172,7 +172,7 @@ namespace Flight.GUI
         private void cbHangVe_SelectedValueChanged(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(tbMaChuyenBay.Text)) return;
-            lbGiaTien.Text = (bllCB.getDonGia(tbMaChuyenBay.Text) * float.Parse(cbHangVe.SelectedValue.ToString())).ToString();
+            lbGiaTien.Text = (bllCB.getDonGia(tbMaChuyenBay.Text) * decimal.Parse(cbHangVe.SelectedValue.ToString())).ToString();
         }
 
         private void tbMaChuyenBay_TextChanged(object sender, EventArgs e)
@@ -228,7 +228,7 @@ namespace Flight.GUI
                             PDC.MaPhieuDatCho = dataGridPhieuDat.Rows[Id].Cells["colMaPhieuDat"].Value.ToString();
                             PDC.MaChuyenBay = tbMaChuyenBay.Text;
                             PDC.HangVe = cbHangVe.Text;
-                            PDC.GiaTien = int.Parse(lbGiaTien.Text);
+                            PDC.GiaTien = decimal.Parse(lbGiaTien.Text);
                             PDC.TrangThai = "Đã xuất vé";
                             PDC.HoTen = tbHoTen.Text;
                             PDC.CMND = tbCMND.Text;
@@ -260,7 +260,7 @@ namespace Flight.GUI
 
                     VCB.MaChuyenBay = tbMaChuyenBay.Text;
                     VCB.HangVe = cbHangVe.Text;
-                    VCB.GiaTien = int.Parse(lbGiaTien.Text);
+                    VCB.GiaTien = decimal.Parse(lbGiaTien.Text);
                     VCB.HoTen = tbHoTen.Text;
                     VCB.CMND = tbCMND.Text;
                     VCB.SDT = tbSDT.Text;
@@ -298,6 +298,7 @@ namespace Flight.GUI
         {
             if (dataGridPhieuDat.CurrentCell == null)
             {
+                btHuyPhieu.Enabled = false;
                 btEdit.Enabled = false;
                 tbMaChuyenBay.Text = "";
                 tbHoTen.Text = "";
@@ -309,6 +310,7 @@ namespace Flight.GUI
             }
             Id = dataGridPhieuDat.CurrentCell.RowIndex;
             btEdit.Enabled = true;
+            btHuyPhieu.Enabled = true;
 
             tbMaChuyenBay.Text = dataGridPhieuDat.Rows[Id].Cells["colMaChuyenBay"].Value.ToString();
             cbHangVe.Text = dataGridPhieuDat.Rows[Id].Cells["colHangVe"].Value.ToString();
@@ -345,6 +347,7 @@ namespace Flight.GUI
                 LockCotrol();
                 btSell.Text = "Bán vé";
                 btEdit.Enabled = true;
+                btHuyPhieu.Enabled = true;
 
                 tbMaChuyenBay.Text = "";
                 tbHoTen.Text = "";
@@ -356,6 +359,7 @@ namespace Flight.GUI
             }
             btSell.Text = "Hủy";
             btEdit.Enabled = false;
+            btHuyPhieu.Enabled = false;
             UnLockCotrol();
             tbMaChuyenBay.Text = "";
             tbHoTen.Text = "";
@@ -386,6 +390,7 @@ namespace Flight.GUI
                 LockCotrol();
                 btEdit.Text = "Chỉnh sửa";
                 btSell.Enabled = true;
+                btHuyPhieu.Enabled = true;
                 tbMaChuyenBay.Text = dataGridPhieuDat.Rows[Id].Cells["colMaChuyenBay"].Value.ToString();
                 cbHangVe.Text = dataGridPhieuDat.Rows[Id].Cells["colHangVe"].Value.ToString();
                 tbHoTen.Text = dataGridPhieuDat.Rows[Id].Cells["colHoTen"].Value.ToString();
@@ -396,6 +401,7 @@ namespace Flight.GUI
             }
             btEdit.Text = "Hủy";
             btSell.Enabled = false;
+            btHuyPhieu.Enabled = false;
             UnLockCotrol();
         }
 
@@ -443,6 +449,7 @@ namespace Flight.GUI
         {
             if (dataGridPhieuDat.CurrentCell == null)
             {
+                btHuyPhieu.Enabled = false;
                 btEdit.Enabled = false;
                 tbMaChuyenBay.Text = "";
                 tbHoTen.Text = "";
@@ -468,6 +475,35 @@ namespace Flight.GUI
         private void tbSearchVe_Enter(object sender, EventArgs e)
         {
             tbSearchVe.Text = "";
+        }
+
+        private void btHuyPhieu_Click(object sender, EventArgs e)
+        {
+            if (dataGridPhieuDat.Rows[Id].Cells["colTrangThai"].Value.ToString() == "Đã hủy")
+            {
+                lbNotify.Visible = true;
+                lbNotify.Text = "Phiếu đã hủy";
+                lbNotify.ForeColor = Color.Red;
+                return;
+            }
+            if (dataGridPhieuDat.Rows[Id].Cells["colTrangThai"].Value.ToString() == "Đã xuất vé")
+            {
+                lbNotify.Visible = true;
+                lbNotify.Text = "Phiếu đã xuất không thể hủy";
+                lbNotify.ForeColor = Color.Red;
+                return;
+            }
+            DanhSachGhe DSG = new DanhSachGhe();
+            DSG.MaChuyenBay = dataGridPhieuDat.Rows[Id].Cells["colMaChuyenBay"].Value.ToString();
+            DSG.HangVe = dataGridPhieuDat.Rows[Id].Cells["colHangVe"].Value.ToString();
+            DSG.SoGheTrong = bllDSG.getSoGheTrong(DSG.MaChuyenBay, DSG.HangVe) + 1;
+
+            bllDSG.UpdateSoGheTrong(DSG);
+            bllPDC.HuyPhieuDatCho(dataGridPhieuDat.Rows[Id].Cells["colMaPhieuDat"].Value.ToString());
+
+            lbNotify.Visible = true;
+            lbNotify.Text = "Hủy thành công";
+            lbNotify.ForeColor = Color.FromArgb(8, 186, 29);
         }
     }
 }

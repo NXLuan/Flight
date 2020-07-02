@@ -21,7 +21,7 @@ namespace Flight.BLL
         {
             return dalCB.getNgayKhoiHanh(MaChuyenBay);
         }
-        public int getDonGia(string MaChuyenBay)
+        public decimal getDonGia(string MaChuyenBay)
         {
             return dalCB.getDonGia(MaChuyenBay);
         }

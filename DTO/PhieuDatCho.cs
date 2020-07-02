@@ -11,7 +11,7 @@ namespace Flight.DTO
         public string MaPhieuDatCho;
         public string MaChuyenBay;
         public string HangVe;
-        public int GiaTien;
+        public decimal GiaTien;
         public string TrangThai;
         public string HoTen;
         public string CMND;

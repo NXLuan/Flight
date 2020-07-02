@@ -94,5 +94,36 @@ namespace Flight.DAL
             if (dt == null) return -1;
             return int.Parse(dt.Rows[0][0].ToString());
         }
+        public int getSoSanBayTrungGianToiDa()
+        {
+            string sql = "select GiaTri from THAMSO where TenThamSo = 'SoSanBayTrungGianToiDa'";
+            DataTable dt = GetData(sql);
+            if (dt != null) return int.Parse(dt.Rows[0][0].ToString());
+            return -1;
+        }
+        public int getThoiGianBayToiThieu()
+        {
+            string sql = "select GiaTri from THAMSO where TenThamSo = 'ThoiGianBayToiThieu'";
+
+            DataTable dt = GetData(sql);
+            if (dt != null) return int.Parse(dt.Rows[0][0].ToString());
+            return -1;
+        }
+        public int getThoiGianDungToiDa()
+        {
+            string sql = "select GiaTri from THAMSO where TenThamSo = 'ThoiGianDungToiDa'";
+
+            DataTable dt = GetData(sql);
+            if (dt != null) return int.Parse(dt.Rows[0][0].ToString());
+            return -1;
+        }
+        public int getThoiGianDungToiThieu()
+        {
+            string sql = "select GiaTri from THAMSO where TenThamSo = 'ThoiGianDungToiThieu'";
+
+            DataTable dt = GetData(sql);
+            if (dt != null) return int.Parse(dt.Rows[0][0].ToString());
+            return -1;
+        }
     }
 }

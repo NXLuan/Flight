@@ -36,5 +36,21 @@ namespace Flight.BLL
         {
             return dalTS.getQuyDinhHuy();
         }
+        public int getThoiGianBayToiThieu()
+        {
+            return dalTS.getThoiGianBayToiThieu();
+        }
+        public int getThoiGianDungToiThieu()
+        {
+            return dalTS.getThoiGianDungToiThieu();
+        }
+        public int getThoiGianDungToiDa()
+        {
+            return dalTS.getThoiGianDungToiDa();
+        }
+        public int getSoSanBayTrungGianToiDa()
+        {
+            return dalTS.getSoSanBayTrungGianToiDa();
+        }
     }
 }

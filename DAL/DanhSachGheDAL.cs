@@ -43,7 +43,7 @@ namespace Flight.DAL
 
         public int getSoGheTrong(string MaChuyenBay, string HangVe)
         {
-            string sql = "select SoGheTrong from DANHSACHGHE where MaChuyenBay = '" + MaChuyenBay + "' and HangVe = '" + HangVe + "'";
+            string sql = "select SoGheTrong from DANHSACHGHE where MaChuyenBay = '" + MaChuyenBay + "' and HangVe = N'" + HangVe + "'";
 
             using (SqlConnection con = dc.getConnect())
             {
@@ -94,7 +94,7 @@ namespace Flight.DAL
         public void UpdateSoGheTrong(DanhSachGhe DSG)
         {
             string sql = "update DANHSACHGHE set SoGheTrong = " + DSG.SoGheTrong +
-                " where MaChuyenBay = '" + DSG.MaChuyenBay + "' and HangVe = '" + DSG.HangVe + "'";
+                " where MaChuyenBay = '" + DSG.MaChuyenBay + "' and HangVe = N'" + DSG.HangVe + "'";
 
             ExcuteNonQuery(sql);
         }
@@ -109,7 +109,7 @@ namespace Flight.DAL
                     cmd = new SqlCommand(sql, con);
                     con.Open();
                     cmd.Parameters.Add("@MaChuyenBay", SqlDbType.VarChar).Value = DSG.MaChuyenBay;
-                    cmd.Parameters.Add("@HangVe", SqlDbType.VarChar).Value = DSG.HangVe;
+                    cmd.Parameters.Add("@HangVe", SqlDbType.NVarChar).Value = DSG.HangVe;
                     cmd.Parameters.Add("@TongSoGhe", SqlDbType.Int).Value = DSG.TongSoGhe;
                     cmd.Parameters.Add("@SoGheTrong", SqlDbType.Int).Value = DSG.SoGheTrong;
                     cmd.ExecuteNonQuery();
@@ -162,7 +162,7 @@ namespace Flight.DAL
                         DSG.TongSoGhe = Int32.Parse(tbDSG.Rows[i][2].ToString());
                         DSG.SoGheTrong = DSG.TongSoGhe;
                         cmd.Parameters.Add("@MaChuyenBay", SqlDbType.VarChar).Value = DSG.MaChuyenBay;
-                        cmd.Parameters.Add("@HangVe", SqlDbType.VarChar).Value = DSG.HangVe;
+                        cmd.Parameters.Add("@HangVe", SqlDbType.NVarChar).Value = DSG.HangVe;
                         cmd.Parameters.Add("@TongSoGhe", SqlDbType.Int).Value = DSG.TongSoGhe;
                         cmd.Parameters.Add("@SoGheTrong", SqlDbType.Int).Value = DSG.SoGheTrong;
                         cmd.ExecuteNonQuery();
@@ -202,7 +202,7 @@ namespace Flight.DAL
         }
         public bool CheckTrungDanhSachGhe(string MaChuyenBay, string HangVe)
         {
-            string sql = "select MaChuyenBay, HangVe from DANHSACHGHE where MaChuyenBay = '" + MaChuyenBay + "' and HangVe = '" + HangVe + "'";
+            string sql = "select MaChuyenBay, HangVe from DANHSACHGHE where MaChuyenBay = '" + MaChuyenBay + "' and HangVe = N'" + HangVe + "'";
             SqlConnection con = dc.getConnect();
             da = new SqlDataAdapter(sql, con);
             con.Open();

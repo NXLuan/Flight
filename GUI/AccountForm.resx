@@ -174,34 +174,7 @@
   <metadata name="colEdit.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="colEdit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAB3RJTUUH4wwXCTEl1rKp0QAAAWJJREFU
-        OE+l1b0uREEYh/HtUQjiq0BHokNHxEckrmB93IE70Is70LgDjYQC0SCipVELopIgQo3nmezInmPP7MGb
-        /JI9Z3f+886ck9lKrToxhVnMFJjHIOqrF+NoD1e16sAOXhPecYYRxOrCPp5wimmEsrNnfCZcYQyxWmHg
-        JpzM35wgdOpy7MKbW1jCSs4wYrnsXWxjAGsw9BFh0vpAB6fKgEPEzo/hBBvYQw9KB+bDIjt1+QpVJrAo
-        TC7fPf2uZoGpsAP4faZSgb8JG8WQH4oC/fII+SDlw3y5zzHnRVHgAh7QLMxX6hJvMCsTuIwWrMNZfemv
-        URRm2cQHzPgR6EvdhzvcYhGTuIfLz4dZq3BsMtAwr28wAQ+NsOENKhnokrtxAbtyD11+qpKB8aEY2l/T
-        5o1EOaYw0MOhCjuNHGAXjbhFjskE+iRf4M3/8Aj0AZY6YMsww6xQ8S/Alv/CsWRUKl9aHL5NRnrSaAAA
-        AABJRU5ErkJggg==
-</value>
-  </data>
   <metadata name="colExit.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="colExit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAB3RJ
-        TUUH4wwaAjccIdKxYwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAF7SURBVFhH
-        1dYxL0RREMXxV0koaVR0CnQKOgWFUqNCjU5BL1HSkfAB6OnpSVRChYRCIzQ6IuF/dm0yxaz35s2KOMkv
-        2fvuvWcn2Sxb1MgrPtvQXjpDmPvBB7w3F+15d1rUXZo7eOWdoO7SPMO73AnqLs2fD3CKi1+i7v+RHox1
-        mDorZwTeZ5gxjMoZhFeSMYDK6YNXktGLyumCV5KhzlDeYAueoK+S/V9w9a211p7O6GzrmagrnBfYkhko
-        q9D6prFq5hZ6pj1FZ+1ddYXzAFsyCWUJWl82Vs3otZ5pT9FZe/ce4VzDlmQG0McUzjlsSWaAM4Sjv9u2
-        JDPACcI5hi3JDHCEcA5hSzIDHCCcfdiSzAB7CGcbtiQzwBbC2YAtyQygrnDWYUsyA6whnBXYkswAywhn
-        EbYkM8ACwpmFLZmHsgmtH9EN/dTSaz3TnqKz9q66wpmGLcmYQjgT8MrqGEc4o/DK6tCP3HD64ZXVoa5a
-        2cU7vNIqdHcHbVIUX2dT24LgrSiHAAAAAElFTkSuQmCC
-</value>
-  </data>
 </root>

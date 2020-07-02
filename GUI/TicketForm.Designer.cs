@@ -112,6 +112,7 @@
             this.lbTicketList = new System.Windows.Forms.Label();
             this.pnTicket = new System.Windows.Forms.Panel();
             this.pnReservateList = new System.Windows.Forms.Panel();
+            this.btHuyPhieu = new System.Windows.Forms.Button();
             this.Page.SuspendLayout();
             this.Ticket.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -140,10 +141,10 @@
             this.Page.Location = new System.Drawing.Point(0, 63);
             this.Page.Multiline = true;
             this.Page.Name = "Page";
-            this.Page.Page = this.TicketList;
-            this.Page.PageIndex = 1;
-            this.Page.PageName = "TicketList";
-            this.Page.PageTitle = "TicketList";
+            this.Page.Page = this.Ticket;
+            this.Page.PageIndex = 0;
+            this.Page.PageName = "Ticket";
+            this.Page.PageTitle = "Ticket";
             this.Page.SelectedIndex = 0;
             this.Page.Size = new System.Drawing.Size(1028, 663);
             this.Page.TabIndex = 0;
@@ -414,6 +415,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.btHuyPhieu);
             this.panel1.Controls.Add(this.btSelectFlight);
             this.panel1.Controls.Add(this.btPrintTicket);
             this.panel1.Controls.Add(this.btEdit);
@@ -474,7 +476,7 @@
             this.btEdit.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btEdit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btEdit.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btEdit.Location = new System.Drawing.Point(802, 203);
+            this.btEdit.Location = new System.Drawing.Point(802, 180);
             this.btEdit.Name = "btEdit";
             this.btEdit.Size = new System.Drawing.Size(121, 37);
             this.btEdit.TabIndex = 45;
@@ -487,7 +489,7 @@
             this.btSell.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btSell.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btSell.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btSell.Location = new System.Drawing.Point(802, 148);
+            this.btSell.Location = new System.Drawing.Point(802, 125);
             this.btSell.Name = "btSell";
             this.btSell.Size = new System.Drawing.Size(121, 37);
             this.btSell.TabIndex = 44;
@@ -646,9 +648,9 @@
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(110, 108);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(103, 23);
+            this.label2.Size = new System.Drawing.Size(106, 23);
             this.label2.TabIndex = 33;
-            this.label2.Text = "chuyến bay:";
+            this.label2.Text = "Chuyến bay:";
             // 
             // tbMaChuyenBay
             // 
@@ -1203,6 +1205,19 @@
             this.pnReservateList.Size = new System.Drawing.Size(91, 5);
             this.pnReservateList.TabIndex = 4;
             // 
+            // btHuyPhieu
+            // 
+            this.btHuyPhieu.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btHuyPhieu.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btHuyPhieu.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btHuyPhieu.Location = new System.Drawing.Point(802, 232);
+            this.btHuyPhieu.Name = "btHuyPhieu";
+            this.btHuyPhieu.Size = new System.Drawing.Size(121, 37);
+            this.btHuyPhieu.TabIndex = 48;
+            this.btHuyPhieu.Text = "Hủy phiếu";
+            this.btHuyPhieu.UseVisualStyleBackColor = true;
+            this.btHuyPhieu.Click += new System.EventHandler(this.btHuyPhieu_Click);
+            // 
             // TicketForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1298,5 +1313,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colCMND1;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSDT1;
         private System.Windows.Forms.DataGridViewTextBoxColumn colEmail1;
+        private System.Windows.Forms.Button btHuyPhieu;
     }
 }

@@ -56,7 +56,7 @@ namespace Flight.DAL
                     cmd.Parameters.Add("@Thang", SqlDbType.Int).Value = baocao.Thang;
                     cmd.Parameters.Add("@Nam", SqlDbType.Int).Value = baocao.Nam;
                     cmd.Parameters.Add("@SoChuyenBay", SqlDbType.Int).Value = baocao.SoChuyenBay;
-                    cmd.Parameters.Add("@DoanhThu", SqlDbType.Int).Value = baocao.DoanhThu;
+                    cmd.Parameters.Add("@DoanhThu", SqlDbType.Money).Value = baocao.DoanhThu;
                     cmd.ExecuteNonQuery();
                     con.Close();
                     return true;

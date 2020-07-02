@@ -9,7 +9,7 @@ namespace Flight.DTO
     class ChuyenBay
     {
         public string MaChuyenBay;
-        public int DonGia;
+        public decimal DonGia;
         public string MaSanBayDen;
         public string MaSanBayDi;
         public DateTime NgayGio;

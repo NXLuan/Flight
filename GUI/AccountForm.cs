@@ -314,7 +314,7 @@ namespace Flight.GUI
         private void dgvTaiKhoan_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             TenDN = dgvTaiKhoan.Rows[Index].Cells["dgvcolTenDangNhap"].Value.ToString();
-            if (Index == dgvTaiKhoan.RowCount - 1)
+            if (Index == dgvTaiKhoan.RowCount)
                 return;
             // Click Delete Icon
             if (e.ColumnIndex == 1)
@@ -407,7 +407,7 @@ namespace Flight.GUI
             {
                 return;
             }
-            if (Index == dgvTaiKhoan.RowCount - 1)
+            if (Index == dgvTaiKhoan.RowCount)
                 return;
         }
     }

@@ -34,7 +34,7 @@ namespace Flight.DAL
                     cmd.Parameters.Add("@MaChuyenBay", SqlDbType.VarChar).Value = SBTG.MaChuyenBay;
                     cmd.Parameters.Add("@MaSanBay", SqlDbType.VarChar).Value = SBTG.MaSanBay;
                     cmd.Parameters.Add("@ThoiGianDung", SqlDbType.VarChar).Value = (SBTG.ThoiGianDung).ToString();
-                    cmd.Parameters.Add("@GhiChu", SqlDbType.VarChar).Value = SBTG.GhiChu;
+                    cmd.Parameters.Add("@GhiChu", SqlDbType.NVarChar).Value = SBTG.GhiChu;
                     cmd.ExecuteNonQuery();
                     con.Close();
                 }
@@ -111,7 +111,7 @@ namespace Flight.DAL
                         cmd.Parameters.Add("@MaChuyenBay", SqlDbType.VarChar).Value = SBTG.MaChuyenBay;
                         cmd.Parameters.Add("@MaSanBay", SqlDbType.VarChar).Value = SBTG.MaSanBay;
                         cmd.Parameters.Add("@ThoiGianDung", SqlDbType.VarChar).Value = (SBTG.ThoiGianDung).ToString();
-                        cmd.Parameters.Add("@GhiChu", SqlDbType.VarChar).Value = SBTG.GhiChu;
+                        cmd.Parameters.Add("@GhiChu", SqlDbType.NVarChar).Value = SBTG.GhiChu;
                         cmd.ExecuteNonQuery();
                         con.Close();
                     }

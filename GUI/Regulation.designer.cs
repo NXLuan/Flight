@@ -87,10 +87,6 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.lbTBpanelSB = new System.Windows.Forms.Label();
             this.dgvSanBay = new Bunifu.Framework.UI.BunifuCustomDataGrid();
-            this.dgvcolMaSanBay = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcolTenSanBay = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewImageColumn();
             this.label11 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.lbSLSB = new System.Windows.Forms.Label();
@@ -100,10 +96,6 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.lbTBpanelDSV = new System.Windows.Forms.Label();
             this.dgvDanhSachVe = new Bunifu.Framework.UI.BunifuCustomDataGrid();
-            this.dgvcolHangVe = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcolTiLe = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colEditHV = new System.Windows.Forms.DataGridViewImageColumn();
-            this.colDeleteHV = new System.Windows.Forms.DataGridViewImageColumn();
             this.label19 = new System.Windows.Forms.Label();
             this.pnThemHangVe = new System.Windows.Forms.Panel();
             this.txtTiLe = new System.Windows.Forms.TextBox();
@@ -129,6 +121,14 @@
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn4 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dgvcolMaSanBay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcolTenSanBay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dgvcolHangVe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcolTiLe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEditHV = new System.Windows.Forms.DataGridViewImageColumn();
+            this.colDeleteHV = new System.Windows.Forms.DataGridViewImageColumn();
             this.Page.SuspendLayout();
             this.tabThamSo.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -931,44 +931,6 @@
             this.dgvSanBay.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSanBay_CellContentClick);
             this.dgvSanBay.CurrentCellChanged += new System.EventHandler(this.dgvSanBay_CurrentCellChanged);
             // 
-            // dgvcolMaSanBay
-            // 
-            this.dgvcolMaSanBay.DataPropertyName = "MaSanBay";
-            this.dgvcolMaSanBay.FillWeight = 168.3832F;
-            this.dgvcolMaSanBay.HeaderText = "Mã sân bay";
-            this.dgvcolMaSanBay.MinimumWidth = 6;
-            this.dgvcolMaSanBay.Name = "dgvcolMaSanBay";
-            // 
-            // dgvcolTenSanBay
-            // 
-            this.dgvcolTenSanBay.DataPropertyName = "TenSanBay";
-            this.dgvcolTenSanBay.FillWeight = 168.3832F;
-            this.dgvcolTenSanBay.HeaderText = "Tên sân bay";
-            this.dgvcolTenSanBay.MinimumWidth = 6;
-            this.dgvcolTenSanBay.Name = "dgvcolTenSanBay";
-            // 
-            // Column3
-            // 
-            this.Column3.FillWeight = 32.08557F;
-            this.Column3.HeaderText = "";
-            this.Column3.Image = global::Flight.Properties.Resources.edit;
-            this.Column3.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            this.Column3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Column4
-            // 
-            this.Column4.FillWeight = 31.14812F;
-            this.Column4.HeaderText = "";
-            this.Column4.Image = global::Flight.Properties.Resources.rubbish_bin;
-            this.Column4.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Column4.MinimumWidth = 6;
-            this.Column4.Name = "Column4";
-            this.Column4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
             // label11
             // 
             this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(131)))), ((int)(((byte)(149)))));
@@ -1119,44 +1081,6 @@
             this.dgvDanhSachVe.CurrentCellChanged += new System.EventHandler(this.dgvDanhSachVe_CurrentCellChanged);
             this.dgvDanhSachVe.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvDanhSachVe_EditingControlShowing);
             this.dgvDanhSachVe.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dgvDanhSachVe_KeyPress);
-            // 
-            // dgvcolHangVe
-            // 
-            this.dgvcolHangVe.DataPropertyName = "HangVe";
-            this.dgvcolHangVe.FillWeight = 166.2329F;
-            this.dgvcolHangVe.HeaderText = "Hạng vé";
-            this.dgvcolHangVe.MinimumWidth = 6;
-            this.dgvcolHangVe.Name = "dgvcolHangVe";
-            // 
-            // dgvcolTiLe
-            // 
-            this.dgvcolTiLe.DataPropertyName = "TiLe";
-            this.dgvcolTiLe.FillWeight = 166.2329F;
-            this.dgvcolTiLe.HeaderText = "Tỉ lệ";
-            this.dgvcolTiLe.MinimumWidth = 6;
-            this.dgvcolTiLe.Name = "dgvcolTiLe";
-            // 
-            // colEditHV
-            // 
-            this.colEditHV.FillWeight = 35.44871F;
-            this.colEditHV.HeaderText = "";
-            this.colEditHV.Image = global::Flight.Properties.Resources.edit;
-            this.colEditHV.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.colEditHV.MinimumWidth = 6;
-            this.colEditHV.Name = "colEditHV";
-            this.colEditHV.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colEditHV.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // colDeleteHV
-            // 
-            this.colDeleteHV.FillWeight = 32.08557F;
-            this.colDeleteHV.HeaderText = "";
-            this.colDeleteHV.Image = global::Flight.Properties.Resources.rubbish_bin;
-            this.colDeleteHV.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.colDeleteHV.MinimumWidth = 6;
-            this.colDeleteHV.Name = "colDeleteHV";
-            this.colDeleteHV.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colDeleteHV.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // label19
             // 
@@ -1475,6 +1399,86 @@
             this.dataGridViewImageColumn4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.dataGridViewImageColumn4.Width = 30;
             // 
+            // dgvcolMaSanBay
+            // 
+            this.dgvcolMaSanBay.DataPropertyName = "MaSanBay";
+            this.dgvcolMaSanBay.FillWeight = 168.3832F;
+            this.dgvcolMaSanBay.HeaderText = "Mã sân bay";
+            this.dgvcolMaSanBay.MinimumWidth = 6;
+            this.dgvcolMaSanBay.Name = "dgvcolMaSanBay";
+            // 
+            // dgvcolTenSanBay
+            // 
+            this.dgvcolTenSanBay.DataPropertyName = "TenSanBay";
+            this.dgvcolTenSanBay.FillWeight = 168.3832F;
+            this.dgvcolTenSanBay.HeaderText = "Tên sân bay";
+            this.dgvcolTenSanBay.MinimumWidth = 6;
+            this.dgvcolTenSanBay.Name = "dgvcolTenSanBay";
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Column3.FillWeight = 32.08557F;
+            this.Column3.HeaderText = "";
+            this.Column3.Image = global::Flight.Properties.Resources.edit;
+            this.Column3.MinimumWidth = 6;
+            this.Column3.Name = "Column3";
+            this.Column3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Column3.Width = 30;
+            // 
+            // Column4
+            // 
+            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Column4.FillWeight = 31.14812F;
+            this.Column4.HeaderText = "";
+            this.Column4.Image = global::Flight.Properties.Resources.rubbish_bin;
+            this.Column4.MinimumWidth = 6;
+            this.Column4.Name = "Column4";
+            this.Column4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Column4.Width = 30;
+            // 
+            // dgvcolHangVe
+            // 
+            this.dgvcolHangVe.DataPropertyName = "HangVe";
+            this.dgvcolHangVe.FillWeight = 153.1357F;
+            this.dgvcolHangVe.HeaderText = "Hạng vé";
+            this.dgvcolHangVe.MinimumWidth = 6;
+            this.dgvcolHangVe.Name = "dgvcolHangVe";
+            // 
+            // dgvcolTiLe
+            // 
+            this.dgvcolTiLe.DataPropertyName = "TiLe";
+            this.dgvcolTiLe.FillWeight = 153.1357F;
+            this.dgvcolTiLe.HeaderText = "Tỉ lệ";
+            this.dgvcolTiLe.MinimumWidth = 6;
+            this.dgvcolTiLe.Name = "dgvcolTiLe";
+            // 
+            // colEditHV
+            // 
+            this.colEditHV.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colEditHV.FillWeight = 64.17113F;
+            this.colEditHV.HeaderText = "";
+            this.colEditHV.Image = global::Flight.Properties.Resources.edit;
+            this.colEditHV.MinimumWidth = 6;
+            this.colEditHV.Name = "colEditHV";
+            this.colEditHV.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colEditHV.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.colEditHV.Width = 30;
+            // 
+            // colDeleteHV
+            // 
+            this.colDeleteHV.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colDeleteHV.FillWeight = 29.5576F;
+            this.colDeleteHV.HeaderText = "";
+            this.colDeleteHV.Image = global::Flight.Properties.Resources.rubbish_bin;
+            this.colDeleteHV.MinimumWidth = 6;
+            this.colDeleteHV.Name = "colDeleteHV";
+            this.colDeleteHV.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colDeleteHV.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.colDeleteHV.Width = 30;
+            // 
             // Regulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1590,12 +1594,12 @@
         private Bunifu.Framework.UI.BunifuCustomDataGrid dgvSanBay;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel1;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnHuyTS;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvcolMaSanBay;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvcolTenSanBay;
         private System.Windows.Forms.DataGridViewImageColumn Column3;
         private System.Windows.Forms.DataGridViewImageColumn Column4;
-        private System.Windows.Forms.Panel panel1;
-        private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnHuyTS;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvcolHangVe;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvcolTiLe;
         private System.Windows.Forms.DataGridViewImageColumn colEditHV;

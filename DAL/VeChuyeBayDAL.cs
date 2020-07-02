@@ -55,8 +55,8 @@ namespace Flight.DAL
                     cmd = new SqlCommand(sql, con);
                     con.Open();
                     cmd.Parameters.Add("@MaChuyenBay", SqlDbType.VarChar).Value = VCB.MaChuyenBay;
-                    cmd.Parameters.Add("@HangVe", SqlDbType.VarChar).Value = VCB.HangVe;
-                    cmd.Parameters.Add("@GiaTien", SqlDbType.Int).Value = VCB.GiaTien;
+                    cmd.Parameters.Add("@HangVe", SqlDbType.NVarChar).Value = VCB.HangVe;
+                    cmd.Parameters.Add("@GiaTien", SqlDbType.Money).Value = VCB.GiaTien;
                     cmd.Parameters.Add("@HoTen", SqlDbType.NVarChar).Value = VCB.HoTen;
                     cmd.Parameters.Add("@CMND", SqlDbType.VarChar).Value = VCB.CMND;
                     cmd.Parameters.Add("@SDT", SqlDbType.VarChar).Value = VCB.SDT;
@@ -76,7 +76,7 @@ namespace Flight.DAL
         public DataTable getInforVeChuyenBay(string s)
         {
             string sql = "select * from VECHUYENBAY where MaVeChuyenBay like '" + s + "%' or " +
-                "MaChuyenBay like '" + s + "%' or HoTen like '" + s + "%' or CMND like '" + s + "%' or " +
+                "MaChuyenBay like '" + s + "%' or HoTen like N'" + s + "%' or CMND like '" + s + "%' or " +
                 "SDT like '" + s + "%' or Email like '" + s + "%'";
             return GetData(sql);
         }

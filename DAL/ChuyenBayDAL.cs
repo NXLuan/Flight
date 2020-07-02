@@ -53,12 +53,12 @@ namespace Flight.DAL
             if (dt != null) return DateTime.Parse(dt.Rows[0][0].ToString());
             return DateTime.MinValue;
         }
-        public int getDonGia(string MaChuyenBay)
+        public decimal getDonGia(string MaChuyenBay)
         {
             string sql = "select DonGia from CHUYENBAY where MaChuyenBay = '" + MaChuyenBay + "'";
 
             DataTable dt = GetData(sql);
-            if (dt != null) return int.Parse(dt.Rows[0][0].ToString());
+            if (dt != null) return decimal.Parse(dt.Rows[0][0].ToString());
             return -1;
         }
 
@@ -106,7 +106,7 @@ namespace Flight.DAL
                     cmd = new SqlCommand(sql, con);
                     con.Open();
                     cmd.Parameters.Add("@MaChuyenBay", SqlDbType.VarChar).Value = CB.MaChuyenBay;
-                    cmd.Parameters.Add("@DonGia", SqlDbType.Int).Value = CB.DonGia;
+                    cmd.Parameters.Add("@DonGia", SqlDbType.Money).Value = CB.DonGia;
                     cmd.Parameters.Add("@MaSanBayDen", SqlDbType.VarChar).Value = CB.MaSanBayDen;
                     cmd.Parameters.Add("@MaSanBayDi", SqlDbType.VarChar).Value = CB.MaSanBayDi;
                     cmd.Parameters.Add("@NgayGio", SqlDbType.DateTime).Value = CB.NgayGio;
@@ -151,7 +151,7 @@ namespace Flight.DAL
                 cmd = new SqlCommand(sql, con);
                 con.Open();
                 cmd.Parameters.Add("@MaChuyenBay", SqlDbType.VarChar).Value = CB.MaChuyenBay;
-                cmd.Parameters.Add("@DonGia", SqlDbType.Int).Value = CB.DonGia;
+                cmd.Parameters.Add("@DonGia", SqlDbType.Money).Value = CB.DonGia;
                 cmd.Parameters.Add("@MaSanBayDen", SqlDbType.VarChar).Value = CB.MaSanBayDen;
                 cmd.Parameters.Add("@MaSanBayDi", SqlDbType.VarChar).Value = CB.MaSanBayDi;
                 cmd.Parameters.Add("@NgayGio", SqlDbType.DateTime).Value = CB.NgayGio;

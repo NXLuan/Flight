@@ -10,6 +10,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net.Mail;
+using System.Net;
 
 namespace Flight.GUI
 {
@@ -63,7 +65,7 @@ namespace Flight.GUI
 
                 PDC.MaChuyenBay = tbMaChuyenBay.Text;
                 PDC.HangVe = cbHangVe.Text;
-                PDC.GiaTien = int.Parse(lbGiaTien.Text);
+                PDC.GiaTien = decimal.Parse(lbGiaTien.Text);
                 PDC.TrangThai = "Chưa xuất vé";
                 PDC.HoTen = tbHoTen.Text;
                 PDC.CMND = tbCMND.Text;
@@ -74,7 +76,7 @@ namespace Flight.GUI
 
                 if (bllPDC.insertPhieuDatCho(PDC))
                 {
-                    lbNotify.Text = "Thành công";
+                    lbNotify.Text = "Thành công, vui lòng kiểm tra mail để xác nhận thông tin";
                     lbNotify.ForeColor = Color.FromArgb(8, 186, 29);
 
                     DanhSachGhe DSG = new DanhSachGhe();
@@ -83,6 +85,8 @@ namespace Flight.GUI
                     DSG.SoGheTrong = bllDSG.getSoGheTrong(tbMaChuyenBay.Text, cbHangVe.Text) - 1;
 
                     bllDSG.UpdateSoGheTrong(DSG);
+
+                    SendMail(PDC);
                 }
                 else
                 {
@@ -202,6 +206,35 @@ namespace Flight.GUI
             return MyRegex.IsMatch(s);
         }
 
+        void SendMail(PhieuDatCho PDC)
+        {
+            string message = "Vui lòng xác nhận thông tin và thanh toán trước ngày " + PDC.NgayHuy.Date + " để tránh bị hủy phiếu đặt " +
+                "\n\nThông tin phiếu đặt chỗ" +
+                "\nMã phiếu đặt: " + PDC.MaPhieuDatCho +
+                "\nMã chuyến bay: " + PDC.MaChuyenBay +
+                "\nHạng vé: " + PDC.HangVe +
+                "\nTổng tiền: " + PDC.GiaTien +
+                "\n\nThông tin hành khách" +
+                "\nHọ và tên: " + PDC.HoTen +
+                "\nCMND: " + PDC.CMND +
+                "\nSDT: " + PDC.SDT;
+
+            try
+            {
+                MailMessage mess = new MailMessage("vemaybaydaily1@gmail.com", tbEmail.Text, "Phiếu đặt chỗ chuyến bay", message);
+                SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
+                client.EnableSsl = true;
+
+                client.Credentials = new NetworkCredential("vemaybaydaily1@gmail.com", "Admin1412");
+
+                client.Send(mess);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Thống báo lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void tbCMND_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
@@ -221,7 +254,7 @@ namespace Flight.GUI
         private void cbHangVe_SelectedValueChanged(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(tbMaChuyenBay.Text)) return;
-            lbGiaTien.Text = (bllCB.getDonGia(tbMaChuyenBay.Text) * float.Parse(cbHangVe.SelectedValue.ToString())).ToString();
+            lbGiaTien.Text = (bllCB.getDonGia(tbMaChuyenBay.Text) * decimal.Parse(cbHangVe.SelectedValue.ToString())).ToString();
         }
 
         private void tbMaChuyenBay_TextChanged(object sender, EventArgs e)

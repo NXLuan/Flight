@@ -79,7 +79,7 @@ namespace Flight.DAL
                     {
                         HangVe = dsv[i].HangVe;
                         TiLe = dsv[i].TiLe.ToString();
-                        string sql = "insert into DANHSACHVE values('" + HangVe + "', " + TiLe + ")";
+                        string sql = "insert into DANHSACHVE values(N'" + HangVe + "', " + TiLe + ")";
                         cmd = new SqlCommand(sql, con);
                         cmd.ExecuteNonQuery();
                     }
@@ -95,7 +95,7 @@ namespace Flight.DAL
         }
         public bool DeleteHangVe(string HangVe)
         {
-            string sql = "delete from DANHSACHVE where HangVe ='" + HangVe + "'";
+            string sql = "delete from DANHSACHVE where HangVe = N'" + HangVe + "'";
             using (SqlConnection con = dc.getConnect())
             {
                 try
@@ -117,7 +117,7 @@ namespace Flight.DAL
         }
         public DanhSachVe GetInfo1HangVe(string HV)
         {
-            string sql = "select * from DANHSACHVE where HangVe ='" + HV + "'";
+            string sql = "select * from DANHSACHVE where HangVe = N'" + HV + "'";
             using (SqlConnection con = dc.getConnect())
             {
                 DataTable dt = new DataTable();
@@ -143,7 +143,7 @@ namespace Flight.DAL
         }
         public bool CheckTrungHangVe(string s)
         {
-            string sql = "select HangVe from DANHSACHVE where HangVe = '" + s + "'";
+            string sql = "select HangVe from DANHSACHVE where HangVe = N'" + s + "'";
             SqlConnection con = dc.getConnect();
             da = new SqlDataAdapter(sql, con);
             con.Open();
@@ -155,7 +155,7 @@ namespace Flight.DAL
         }
         public bool UpdateDanhSachVe(string HV, string TiLe)
         {
-            string sql = "update DANHSACHVE set TiLe = '" + TiLe + "' where HangVe ='" + HV + "'";
+            string sql = "update DANHSACHVE set TiLe = '" + TiLe + "' where HangVe = N'" + HV + "'";
             using (SqlConnection con = dc.getConnect())
             {
                 try

@@ -56,8 +56,8 @@ namespace Flight.DAL
                     cmd = new SqlCommand(sql, con);
                     con.Open();
                     cmd.Parameters.Add("@MaChuyenBay", SqlDbType.VarChar).Value = PDC.MaChuyenBay;
-                    cmd.Parameters.Add("@HangVe", SqlDbType.VarChar).Value = PDC.HangVe;
-                    cmd.Parameters.Add("@GiaTien", SqlDbType.Int).Value = PDC.GiaTien;
+                    cmd.Parameters.Add("@HangVe", SqlDbType.NVarChar).Value = PDC.HangVe;
+                    cmd.Parameters.Add("@GiaTien", SqlDbType.Money).Value = PDC.GiaTien;
                     cmd.Parameters.Add("@TrangThai", SqlDbType.NVarChar).Value = PDC.TrangThai;
                     cmd.Parameters.Add("@HoTen", SqlDbType.NVarChar).Value = PDC.HoTen;
                     cmd.Parameters.Add("@CMND", SqlDbType.VarChar).Value = PDC.CMND;
@@ -90,7 +90,7 @@ namespace Flight.DAL
         {
             string sql = "select MaPhieuDatCho, MaChuyenBay, HangVe, GiaTien, TrangThai, HoTen, CMND, SDT, Email " +
                 "from PHIEUDATCHO where MaPhieuDatCho like '" + s + "%' or " +
-                "MaChuyenBay like '" + s + "%' or HoTen like '" + s + "%' or CMND like '" + s + "%' or " +
+                "MaChuyenBay like '" + s + "%' or HoTen like N'" + s + "%' or CMND like '" + s + "%' or " +
                 "SDT like '" + s + "%' or Email like '" + s + "%' or TrangThai = N'" + s + "'";
             return GetData(sql);
         }
@@ -109,8 +109,8 @@ namespace Flight.DAL
                     con.Open();
                     cmd.Parameters.Add("@MaPhieuDatCho", SqlDbType.VarChar).Value = PDC.MaPhieuDatCho;
                     cmd.Parameters.Add("@MaChuyenBay", SqlDbType.VarChar).Value = PDC.MaChuyenBay;
-                    cmd.Parameters.Add("@HangVe", SqlDbType.VarChar).Value = PDC.HangVe;
-                    cmd.Parameters.Add("@GiaTien", SqlDbType.Int).Value = PDC.GiaTien;
+                    cmd.Parameters.Add("@HangVe", SqlDbType.NVarChar).Value = PDC.HangVe;
+                    cmd.Parameters.Add("@GiaTien", SqlDbType.Money).Value = PDC.GiaTien;
                     cmd.Parameters.Add("@TrangThai", SqlDbType.NVarChar).Value = PDC.TrangThai;
                     cmd.Parameters.Add("@HoTen", SqlDbType.NVarChar).Value = PDC.HoTen;
                     cmd.Parameters.Add("@CMND", SqlDbType.VarChar).Value = PDC.CMND;

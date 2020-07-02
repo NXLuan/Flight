@@ -65,7 +65,7 @@ namespace Flight.GUI
         {
             for (int i = 1; i <= 12; i++)
                 cbThang.Items.Add(i.ToString());
-            for (int i = 2010; i <= 2020; i++)
+            for (int i = 2010; i <= DateTime.Now.Year; i++)
             {
                 cbNam.Items.Add(i.ToString());
                 cbNampanelYear.Items.Add(i.ToString());
@@ -122,16 +122,16 @@ namespace Flight.GUI
             int n = dgvThang.Rows.Count;
             lbTongChuyenBay.Text = (n-1).ToString();
             int TongSoVe = 0;
-            int TongDoanhThu = 0;
+            decimal TongDoanhThu = 0;
             string MaCBMax = "", MaCBMin = "";
-            int DoanhThuMax = 0, DoanhThuMin = 0;
+            decimal DoanhThuMax = 0, DoanhThuMin = 0;
             if (n > 1)
             {
-                DoanhThuMin = int.MaxValue;
+                DoanhThuMin = decimal.MaxValue;
                 for (int i = 0; i < n - 1; i++)
                 {
                     TongSoVe += int.Parse(dgvThang.Rows[i].Cells["colSoVe"].Value.ToString());
-                    int DoanhThu = int.Parse(dgvThang.Rows[i].Cells["colDoanhThu"].Value.ToString());
+                    decimal DoanhThu = decimal.Parse(dgvThang.Rows[i].Cells["colDoanhThu"].Value.ToString());
                     TongDoanhThu += DoanhThu;
                     if (DoanhThu >= DoanhThuMax)
                     {
@@ -171,7 +171,9 @@ namespace Flight.GUI
             if (CheckDataComboBoxpnMonth())
             {
                 btnExcel.Visible = true;
-                string MaBaoCao = "BC" + cbThang.Text + cbNam.Text;
+                string MaBaoCao;
+                string[] arr = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L" };
+                MaBaoCao = "BC" + arr[int.Parse(cbThang.Text) - 1] + cbNam.Text;
                 if (!bllBaoCao.CheckTrungMaBaoCao(MaBaoCao))
                     bllBaoCao.LuuDoanhThuThang(cbThang.Text, cbNam.Text);
                 DataTable dt = bllBaoCao.GetDoanhThuThangCoTiLe(cbThang.Text, cbNam.Text);
@@ -281,16 +283,16 @@ namespace Flight.GUI
             lbNam.Text = cbNampanelYear.Text;
             int n = dgvNam.Rows.Count;
             int TongChuyenBay = 0;
-            int TongDoanhThu = 0;
+            decimal TongDoanhThu = 0;
             string ThangMax = "", ThangMin = "";
-            int DoanhThuMax = 0, DoanhThuMin = 0;
+            decimal DoanhThuMax = 0, DoanhThuMin = 0;
             if (n > 1)
             {
-                DoanhThuMin = int.MaxValue;
+                DoanhThuMin = decimal.MaxValue;
                 for (int i = 0; i < n - 1; i++)
                 {
                     TongChuyenBay += int.Parse(dgvNam.Rows[i].Cells["colSoChuyenBay"].Value.ToString());
-                    int DoanhThu = int.Parse(dgvNam.Rows[i].Cells["colDoanhThuThang"].Value.ToString());
+                    decimal DoanhThu = decimal.Parse(dgvNam.Rows[i].Cells["colDoanhThuThang"].Value.ToString());
                     TongDoanhThu += DoanhThu;
                     if (DoanhThu >= DoanhThuMax)
                     {

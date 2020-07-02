@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Flight.DAL;
 using Flight.DTO;
 namespace Flight.BLL
@@ -25,17 +26,18 @@ namespace Flight.BLL
         }
         public bool LuuDoanhThuThang(string Thang, string Nam)
         {
+            string[] arr = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L" };
             BaoCao bc = new BaoCao
             {
-                MaBaoCao = "BC" + Thang.ToString() + Nam.ToString(),
+                MaBaoCao = "BC" + arr[int.Parse(Thang) - 1] + Nam,
                 Thang = int.Parse(Thang),
                 Nam = int.Parse(Nam)
             };
             DataTable dt = GetDoanhThuThang(Thang, Nam);
             bc.SoChuyenBay = dt.Rows.Count;
-            int TongDoanhThuThang = 0;
+            decimal TongDoanhThuThang = 0;
             for (int i = 0; i < dt.Rows.Count; i++)
-                TongDoanhThuThang += int.Parse(dt.Rows[i]["DoanhThu"].ToString());
+                TongDoanhThuThang += decimal.Parse(dt.Rows[i]["DoanhThu"].ToString());
             bc.DoanhThu = TongDoanhThuThang;
             return InsertBaoCao(bc);
         }
@@ -43,13 +45,21 @@ namespace Flight.BLL
         {
             DataTable dt = GetDoanhThuThang(Thang, Nam);
             dt.Columns.Add("TiLe");
-            float TongDoanhThuThang = 0;
+            decimal TongDoanhThuThang = 0;
             for (int i = 0; i < dt.Rows.Count; i++)
-                TongDoanhThuThang += int.Parse(dt.Rows[i]["DoanhThu"].ToString());
+                TongDoanhThuThang += decimal.Parse(dt.Rows[i]["DoanhThu"].ToString());
             foreach (DataRow row in dt.Rows)
             {
-                int DoanhThu = int.Parse(row["DoanhThu"].ToString());
-                row["TiLe"] = (DoanhThu * 100 / TongDoanhThuThang).ToString();
+                decimal DoanhThu = decimal.Parse(row["DoanhThu"].ToString());
+                try
+                {
+                    row["TiLe"] = (Math.Round((DoanhThu * 100 / TongDoanhThuThang), 2)).ToString();
+                }
+                catch
+                {
+                    row["TiLe"] = "";
+                }
+
             }
             return dt;
         }
@@ -65,13 +75,21 @@ namespace Flight.BLL
         {
             DataTable dt = GetBaoCaoNam(Nam);
             dt.Columns.Add("TiLe");
-            float TongDoanhThuNam = 0;
+            decimal TongDoanhThuNam = 0;
             for (int i = 0; i < dt.Rows.Count; i++)
-                TongDoanhThuNam += int.Parse(dt.Rows[i]["DoanhThu"].ToString());
+                TongDoanhThuNam += decimal.Parse(dt.Rows[i]["DoanhThu"].ToString());
             foreach (DataRow row in dt.Rows)
             {
-                int DoanhThu = int.Parse(row["DoanhThu"].ToString());
-                row["TiLe"] = (DoanhThu * 100 / TongDoanhThuNam).ToString();
+                decimal DoanhThu = decimal.Parse(row["DoanhThu"].ToString());
+                try
+                {
+                    row["TiLe"] = (Math.Round((DoanhThu * 100 / TongDoanhThuNam), 2)).ToString();
+                }
+                catch
+                {
+                    row["TiLe"] = "";
+                }
+
             }
             return dt;
         }

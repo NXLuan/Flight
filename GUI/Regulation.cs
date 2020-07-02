@@ -448,7 +448,7 @@ namespace Flight.GUI
         private void dgvSanBay_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             MaSanBay = dgvSanBay.Rows[IndexSB].Cells["dgvcolMaSanBay"].Value.ToString();
-            if (IndexSB == dgvSanBay.RowCount - 1)
+            if (IndexSB == dgvSanBay.RowCount)
                 return;
             // Click Delete Icon
             if (e.ColumnIndex == 1)
@@ -527,7 +527,7 @@ namespace Flight.GUI
             {
                 return;
             }
-            if (IndexSB == dgvSanBay.RowCount - 1)
+            if (IndexSB == dgvSanBay.RowCount)
                 return;
         }
         #endregion
@@ -722,7 +722,7 @@ namespace Flight.GUI
         private void dgvDanhSachVe_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             HangVe = dgvDanhSachVe.Rows[IndexDSV].Cells["dgvcolHangVe"].Value.ToString();
-            if (IndexDSV == dgvDanhSachVe.RowCount - 1)
+            if (IndexDSV == dgvDanhSachVe.RowCount)
                 return;
             // Click Delete Icon
             if (e.ColumnIndex == 1)
@@ -801,7 +801,7 @@ namespace Flight.GUI
             {
                 return;
             }
-            if (IndexDSV == dgvSanBay.RowCount - 1)
+            if (IndexDSV == dgvSanBay.RowCount)
                 return;
         }
         private void dgvDanhSachVe_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)

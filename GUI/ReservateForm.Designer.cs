@@ -47,6 +47,9 @@
             Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties16 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
             Utilities.BunifuPages.BunifuAnimatorNS.Animation animation1 = new Utilities.BunifuPages.BunifuAnimatorNS.Animation();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.rbTheTinDung = new System.Windows.Forms.RadioButton();
+            this.rbTienMat = new System.Windows.Forms.RadioButton();
+            this.label6 = new System.Windows.Forms.Label();
             this.tbEmail = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
             this.lbGiaTien = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -85,6 +88,9 @@
             // 
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.rbTheTinDung);
+            this.panel1.Controls.Add(this.rbTienMat);
+            this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.tbEmail);
             this.panel1.Controls.Add(this.lbGiaTien);
             this.panel1.Controls.Add(this.label1);
@@ -102,8 +108,42 @@
             this.panel1.Controls.Add(this.tbHoTen);
             this.panel1.Location = new System.Drawing.Point(35, 52);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(940, 414);
+            this.panel1.Size = new System.Drawing.Size(940, 477);
             this.panel1.TabIndex = 0;
+            // 
+            // rbTheTinDung
+            // 
+            this.rbTheTinDung.AutoSize = true;
+            this.rbTheTinDung.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbTheTinDung.Location = new System.Drawing.Point(164, 321);
+            this.rbTheTinDung.Name = "rbTheTinDung";
+            this.rbTheTinDung.Size = new System.Drawing.Size(129, 27);
+            this.rbTheTinDung.TabIndex = 27;
+            this.rbTheTinDung.Text = "Thẻ tín dụng";
+            this.rbTheTinDung.UseVisualStyleBackColor = true;
+            // 
+            // rbTienMat
+            // 
+            this.rbTienMat.AutoSize = true;
+            this.rbTienMat.Checked = true;
+            this.rbTienMat.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbTienMat.Location = new System.Drawing.Point(45, 321);
+            this.rbTienMat.Name = "rbTienMat";
+            this.rbTienMat.Size = new System.Drawing.Size(98, 27);
+            this.rbTienMat.TabIndex = 26;
+            this.rbTienMat.TabStop = true;
+            this.rbTienMat.Text = "Tiền mặt";
+            this.rbTienMat.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(41, 284);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(201, 23);
+            this.label6.TabIndex = 23;
+            this.label6.Text = "Phương thức thanh toán";
             // 
             // tbEmail
             // 
@@ -132,7 +172,7 @@
             this.tbEmail.IconRight = null;
             this.tbEmail.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.tbEmail.Lines = new string[0];
-            this.tbEmail.Location = new System.Drawing.Point(580, 245);
+            this.tbEmail.Location = new System.Drawing.Point(580, 294);
             this.tbEmail.MaxLength = 32767;
             this.tbEmail.MinimumSize = new System.Drawing.Size(100, 35);
             this.tbEmail.Modified = false;
@@ -238,7 +278,7 @@
             // 
             this.lbNotify.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbNotify.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(186)))), ((int)(((byte)(29)))));
-            this.lbNotify.Location = new System.Drawing.Point(0, 295);
+            this.lbNotify.Location = new System.Drawing.Point(0, 367);
             this.lbNotify.Name = "lbNotify";
             this.lbNotify.Size = new System.Drawing.Size(940, 23);
             this.lbNotify.TabIndex = 18;
@@ -299,7 +339,7 @@
             this.btReservate.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(156)))), ((int)(((byte)(225)))));
             this.btReservate.IdleForecolor = System.Drawing.Color.White;
             this.btReservate.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(156)))), ((int)(((byte)(225)))));
-            this.btReservate.Location = new System.Drawing.Point(391, 333);
+            this.btReservate.Location = new System.Drawing.Point(393, 395);
             this.btReservate.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.btReservate.Name = "btReservate";
             this.btReservate.Size = new System.Drawing.Size(159, 54);
@@ -354,7 +394,7 @@
             this.tbSDT.IconRight = null;
             this.tbSDT.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.tbSDT.Lines = new string[0];
-            this.tbSDT.Location = new System.Drawing.Point(580, 197);
+            this.tbSDT.Location = new System.Drawing.Point(580, 225);
             this.tbSDT.MaxLength = 32767;
             this.tbSDT.MinimumSize = new System.Drawing.Size(100, 35);
             this.tbSDT.Modified = false;
@@ -428,7 +468,7 @@
             this.tbCMND.IconRight = null;
             this.tbCMND.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.tbCMND.Lines = new string[0];
-            this.tbCMND.Location = new System.Drawing.Point(580, 149);
+            this.tbCMND.Location = new System.Drawing.Point(580, 152);
             this.tbCMND.MaxLength = 32767;
             this.tbCMND.MinimumSize = new System.Drawing.Size(100, 35);
             this.tbCMND.Modified = false;
@@ -523,7 +563,7 @@
             this.tbHoTen.IconRight = null;
             this.tbHoTen.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.tbHoTen.Lines = new string[0];
-            this.tbHoTen.Location = new System.Drawing.Point(580, 100);
+            this.tbHoTen.Location = new System.Drawing.Point(580, 89);
             this.tbHoTen.MaxLength = 32767;
             this.tbHoTen.MinimumSize = new System.Drawing.Size(100, 35);
             this.tbHoTen.Modified = false;
@@ -739,5 +779,8 @@
         private System.Windows.Forms.Button btSelect;
         private System.Windows.Forms.Label lbGiaTien;
         private Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox tbEmail;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.RadioButton rbTheTinDung;
+        private System.Windows.Forms.RadioButton rbTienMat;
     }
 }

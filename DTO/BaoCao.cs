@@ -9,7 +9,7 @@ namespace Flight.DTO
     class BaoCao
     {
         public string MaBaoCao;
-        public int DoanhThu;
+        public decimal DoanhThu;
         public int Thang;
         public int Nam;
         public int SoChuyenBay;
