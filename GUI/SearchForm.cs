@@ -53,6 +53,7 @@ namespace Flight.GUI
 
         private void datagridChuyenBay_CurrentCellChanged(object sender, EventArgs e)
         {
+            if (datagridChuyenBay.CurrentCell == null) return;
             Index = datagridChuyenBay.CurrentCell.RowIndex;
             tbMaChuyenBay.Text = datagridChuyenBay.Rows[Index].Cells[0].Value.ToString();
         }
